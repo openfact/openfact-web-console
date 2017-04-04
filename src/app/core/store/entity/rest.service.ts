@@ -1,9 +1,9 @@
-import { BaseEntity } from './baseentity.model';
+import { BaseEntity } from './entity.model';
 import { Observable } from 'rxjs/Observable';
 import { Removable } from './../../../shared/model/removable';
 import { Restangular } from 'ng2-restangular';
 
-export abstract class RESTService<T extends BaseEntity, L extends Array<T>> implements Removable<T> {
+export abstract class RESTService<T extends BaseEntity, L extends Array<T>> {
 
     protected constructor(protected restangularService: Restangular) { }
 
@@ -25,6 +25,10 @@ export abstract class RESTService<T extends BaseEntity, L extends Array<T>> impl
 
     delete(obj: T) {
         return this.restangularService.one(obj.id).delete();
+    }
+
+    execute(obj: any, path?: string) {
+        return this.restangularService.all(path || '').post(obj);
     }
 
     /**

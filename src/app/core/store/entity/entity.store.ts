@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { RESTService } from './rest.service';
 import { plural } from 'pluralize';
 
-export abstract class AbstractEntityStore<T extends BaseEntity, L extends Array<T>, R extends RESTService<T, L>> {
+export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, R extends RESTService<T, L>> {
 
     protected _list: BehaviorSubject<L>;
 
