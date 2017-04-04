@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'of-organization-create',
-  templateUrl: './organization-create.component.html',
-  styleUrls: ['./organization-create.component.scss']
+  selector: 'of-create-page',
+  templateUrl: './create-page.component.html',
+  styleUrls: ['./create-page.component.scss']
 })
-export class OrganizationCreateComponent implements OnInit {
+export class OrganizationCreatePageComponent implements OnInit {
 
   form: FormGroup;
   working = false;
 
   organization: any;
   importing = false;
-  
+
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder) { }

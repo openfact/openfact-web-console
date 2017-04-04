@@ -38,10 +38,9 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     }),
     ToastyModule.forRoot(),
     AppRoutingModule,
+
     SharedModule,
-    CoreModule,
-    AdminModule,
-    OrganizationModule
+    CoreModule
   ],
   providers: [
     ConfigService,
