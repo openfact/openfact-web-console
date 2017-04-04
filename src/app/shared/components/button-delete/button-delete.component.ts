@@ -13,7 +13,7 @@ export class ButtonDeleteComponent implements OnInit {
 
   // Object to be deleted
   @Input()
-  object: Removable;
+  object: Removable<any>;
 
   // Resource Kind to delete (e.g., 'Organization' or 'Document').
   @Input()

@@ -13,6 +13,7 @@ import { FormRequiredLabelDirective } from './directives/form-required-label.dir
 import { HttpModule } from '@angular/http';
 import { KeysPipe } from './pipes/keys.pipe';
 import { LimitedStringComponent } from './components/limited-string/limited-string.component';
+import { LoadingComponent } from './components/loading/loading.component';
 import { NgModule } from '@angular/core';
 import { ReadFileComponent } from './components/read-file/read-file.component';
 import { RouterModule } from '@angular/router';
@@ -50,7 +51,9 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     ViewKeyComponent,
     FirstElementPipe,
     ToNumberPipe,
-    LimitedStringComponent
+    LimitedStringComponent,
+
+    LoadingComponent
   ],
   exports: [
     FormFieldsStatusComponent,
@@ -71,7 +74,9 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     ViewKeyComponent,
     FirstElementPipe,
     ToNumberPipe,
-    LimitedStringComponent
+    LimitedStringComponent,
+
+    LoadingComponent
   ]
 })
 export class SharedModule { }

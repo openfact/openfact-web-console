@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs/Observable';
 
-export interface Removable {
-    delete(): Observable<any>;
+export interface Removable<T> {
+    delete(obj: T): Observable<any>;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +16,7 @@ export class OrganizationCreateComponent implements OnInit {
 
   organization: any;
   importing = false;
-
+  
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder) { }
@@ -47,7 +48,7 @@ export class OrganizationCreateComponent implements OnInit {
   }
 
   reset() {
-    this.organization = undefined;
+    this.organization = null;
     this.importing = false;
     this.buildForm();
   }

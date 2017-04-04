@@ -8,7 +8,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BsDropdownModule } from "ng2-bootstrap";
 import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
 import { HttpModule } from '@angular/http';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { NgModule } from '@angular/core';
@@ -24,8 +23,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
