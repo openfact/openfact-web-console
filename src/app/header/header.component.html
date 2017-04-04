@@ -12,21 +12,21 @@
   </div>
   <div class="collapse navbar-collapse navbar-collapse-1">
     <ul class="nav navbar-nav navbar-utility">
-      <li class="dropdown" dropdown>
+      <li class="dropdown" dropdown placement="bottom right">
         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>
           <span class="fa pficon-help"></span> <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu" *dropdownMenu>
+        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
           <li>
             <a href="javascript:void(0);" (click)="about()">About</a>
           </li>
         </ul>
       </li>
-      <li class="dropdown" ngbDropdown>
-        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" ngbDropdownToggle>
+      <li class="dropdown" dropdown placement="bottom right">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" dropdownToggle>
           <span class="pficon pficon-user"></span> Username <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu">
+        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
           <li>
             <a href="javascript:void(0);" (click)="accountManagement()">Manage Account</a>
           </li>

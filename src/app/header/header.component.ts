@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'of-header',
   templateUrl: './header.component.html',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  title = 'Openfact';
+
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -15,4 +21,9 @@ export class HeaderComponent implements OnInit {
   get loggedIn() {
     return true;
   }
+
+  logout() {
+    window.location.replace('/');
+  }
+
 }
