@@ -18,7 +18,9 @@ import { SharedModule } from './../shared/shared.module';
       provide: OPENFACT_RESTANGULAR,
       useFactory: OpenfactRestangularFactory,
       deps: [Restangular, OAuthService, OnLogin]
-    }
+    },
+
+    OnLogin
   ]
 })
 export class CoreModule { }
