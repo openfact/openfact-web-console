@@ -1,5 +1,8 @@
 <openfact-admin-header></openfact-admin-header>
 
-<p>
-  list-page works!
-</p>
+<div class="container-fluid">
+  <div class="organizations list">
+    <openfact-organizations-list-toolbar></openfact-organizations-list-toolbar>
+    <openfact-organizations-list [organizations]="organizations | async" [loading]="loading | async"></openfact-organizations-list>
+  </div>
+</div>

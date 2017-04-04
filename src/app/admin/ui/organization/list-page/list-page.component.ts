@@ -5,7 +5,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Organizations } from './../../../../core/models/organization.model';
 
 @Component({
-  selector: 'of-list-page',
+  selector: 'openfact-organization-list-page',
   templateUrl: './list-page.component.html',
   styleUrls: ['./list-page.component.scss']
 })
