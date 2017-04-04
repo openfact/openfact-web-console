@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OrganizationCreateComponent } from './ui/organization/organization-create/organization-create.component';
-import { OrganizationListComponent } from './ui/organization/organization-list/organization-list.component';
 import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { SharedModule } from './../shared/shared.module';
   ],
   declarations: [
     AdminHeaderComponent,
-    OrganizationListComponent,
     OrganizationCreateComponent,
   ]
 })

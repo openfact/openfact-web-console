@@ -26,7 +26,7 @@ export function OpenfactRestangularFactory(restangular: Restangular, oauthServic
         RestangularConfigurer.setBaseUrl(baseUrl);       
 
         RestangularConfigurer.addFullRequestInterceptor((element, operation, path, url, headers, params) => {
-            let baseUrl = '';
+            /*let baseUrl = '';
             let oauthConfig = currentOAuthConfig();
             if (oauthConfig) {
                 baseUrl = oauthConfig.apiServer || '';
@@ -64,7 +64,7 @@ export function OpenfactRestangularFactory(restangular: Restangular, oauthServic
                 params: params,
                 headers: headers,
                 element: element
-            }
+            }*/
         });
     });
     return config;
