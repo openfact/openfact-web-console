@@ -16,6 +16,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { OrganizationModule } from './organization/organization.module';
 import { RestangularModule } from "ng2-restangular";
 import { SharedModule } from './shared/shared.module';
+import { ToastyModule } from 'ng2-toasty';
 
 export function restangularProviderConfigurer(restangularProvider: any, config: ConfigService) {
   restangularProvider.setBaseUrl(config.getSettings().apiEndpoint);
@@ -37,6 +38,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
       prefix: 'openfact',
       storageType: 'localStorage'
     }),
+    ToastyModule.forRoot(),
     AppRoutingModule,
     SharedModule,
     CoreModule,

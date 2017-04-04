@@ -1,0 +1,41 @@
+<ng-template #confirmDeleteContent let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <h1>Are you sure to delete {{typeDisplayName || kind}} '
+      <strong>{{displayName ? displayName : resourceName}}</strong>'?
+    </h1>
+
+    <p>This
+      <span *ngIf="isOrganization()"> 
+				<strong>Will delete all resources</strong> 
+				associated with organization {{displayName ? displayName : resourceName}} and
+			</span>
+      <strong>cannot be undone</strong>. Make sure you know what are you doing.
+    </p>
+
+    <div [hidden]="!typeNameToConfirm">
+      <p>Type of {{typeDisplayName || kind}} to confirm.</p>
+      <p>
+        <label class="sr-only">{{typeDisplayName || kind}} to delete</label>
+        <input type="text" [(ngModel)]="confirmName" name="confirmName" class="form-control input-lg" autocorrect="off" autocapitalize="off"
+          spellcheck="false" autofocus/>
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button [disabled]="typeNameToConfirm && confirmName !== resourceName && confirmName !== displayName" type="button" class="btn btn-lg btn-danger"
+      (click)="c('Delete')">Delete</button>
+    <button type="button" class="btn btn-lg btn-default" (click)="d('Cancel')">Cancel</button>
+  </div>
+</ng-template>
+
+<a *ngIf="!buttonOnly" href="javascript:void(0);" (click)="openDeleteModal(confirmDeleteContent)" [ngClass]="{ 'disabled': disableDelete }">
+	{{(label || 'delete')}}
+</a>
+
+<div *ngIf="buttonOnly" class="actions">
+  <!-- Avoid whitespace inside the link -->
+  <button type="button" (click)="openDeleteModal(confirmDeleteContent)" class="btn btn-link" [ngClass]="{ 'disabled': disableDelete }">
+		<i class="fa fa-trash-o"></i>
+		<span class="sr-only">Delete {{kind}} {{resourceName}}</span>
+	</button>
+</div>
