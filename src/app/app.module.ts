@@ -9,6 +9,8 @@ import { BsDropdownModule } from "ng2-bootstrap";
 import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
+import { KeycloakService } from './keycloak/keycloak.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { NgModule } from '@angular/core';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -45,6 +47,8 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     CoreModule
   ],
   providers: [
+    KeycloakService,
+    KEYCLOAK_HTTP_PROVIDER,
     ConfigService,
     {
       provide: APP_INITIALIZER,

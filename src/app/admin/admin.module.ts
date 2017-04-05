@@ -5,7 +5,6 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from './../core/core.module';
 import { NgModule } from '@angular/core';
-import { OAuthService } from 'angular2-oauth2/oauth-service';
 import { OrganizationCreatePageComponent } from './ui/organization/create-page/create-page.component';
 import { OrganizationService } from './../core/services/organization.service';
 import { OrganizationStore } from './../core/store/organization.store';
@@ -33,8 +32,6 @@ import { SharedModule } from './../shared/shared.module';
     OrganizationCreatePageComponent,
   ],
   providers: [
-    OAuthService,
-
     OrganizationService,
     OrganizationStore
   ]

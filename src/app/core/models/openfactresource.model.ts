@@ -5,7 +5,6 @@ export class OpenfactResource implements BaseEntity {
     id: string;
     name: string;
     description: string;
-    icon: string;
     labels: Map<string, string>;
     annotations: Map<string, string>;
     resource: any;
@@ -45,8 +44,7 @@ export class OpenfactResource implements BaseEntity {
         this.id = this.name;
         this.creationTimestamp = metadata.creationTimestamp;
         this.labels = metadata.labels || new Map<string, string>();
-        this.annotations = metadata.annotations || new Map<string, string>();
-        this.icon = this.annotations['fabric8.io/iconUrl'] || this.defaultIconUrl();
+        this.annotations = metadata.annotations || new Map<string, string>();        
 
         // TODO any other annotations we should look for?
         this.description = this.annotations['description'] || '';
