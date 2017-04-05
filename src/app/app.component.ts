@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastyConfig } from 'ng2-toasty';
 
 @Component({
   selector: 'of-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'of works!';
+
+  title = 'Openfact';
+
+  constructor(private toastyConfig: ToastyConfig) {
+    this.toastyConfig.theme = 'bootstrap';
+  }
+
 }

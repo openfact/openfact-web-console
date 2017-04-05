@@ -12,6 +12,7 @@ import { HttpModule } from '@angular/http';
 import { KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
 import { KeycloakService } from './keycloak/keycloak.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { ModalModule } from 'ngx-modal';
 import { NgModule } from '@angular/core';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { OrganizationModule } from './organization/organization.module';
@@ -34,6 +35,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     RestangularModule.forRoot([ConfigService], restangularProviderConfigurer),
     NgbModule.forRoot(),
     BsDropdownModule.forRoot(),
+    ModalModule,
     LocalStorageModule.withConfig({
       prefix: 'openfact',
       storageType: 'localStorage'

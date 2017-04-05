@@ -6,8 +6,6 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from './../core/core.module';
 import { NgModule } from '@angular/core';
 import { OrganizationCreatePageComponent } from './ui/organization/create-page/create-page.component';
-import { OrganizationService } from './../core/services/organization.service';
-import { OrganizationStore } from './../core/store/organization.store';
 import { OrganizationsListComponent } from './ui/organization/list/list.component';
 import { OrganizationsListPageComponent } from './ui/organization/list-page/list-page.component';
 import { OrganizationsListToolbarComponent } from './ui/organization/list-toolbar/list-toolbar.component';
@@ -32,8 +30,7 @@ import { SharedModule } from './../shared/shared.module';
     OrganizationCreatePageComponent,
   ],
   providers: [
-    OrganizationService,
-    OrganizationStore
+
   ]
 })
 export class AdminModule { }

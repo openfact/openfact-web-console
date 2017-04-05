@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  keykloakBaseUrl: 'http://localhost:8080/auth'
+  keykloakBaseUrl: 'https://kcopenfact-softgreen.rhcloud.com/auth'
 };

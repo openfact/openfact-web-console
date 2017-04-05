@@ -1,7 +1,10 @@
 import { OPENFACT_RESTANGULAR, OpenfactRestangularFactory } from './services/openfact.restangular';
 
 import { CommonModule } from '@angular/common';
+import { ConfigService } from './../config.service';
 import { NgModule } from '@angular/core';
+import { OrganizationService } from './services/organization.service';
+import { OrganizationStore } from './store/organization.store';
 import { Restangular } from 'ng2-restangular';
 import { SharedModule } from './../shared/shared.module';
 
@@ -15,8 +18,11 @@ import { SharedModule } from './../shared/shared.module';
     {
       provide: OPENFACT_RESTANGULAR,
       useFactory: OpenfactRestangularFactory,
-      deps: [Restangular]
-    }
+      deps: [Restangular, ConfigService]
+    },
+
+    OrganizationService,
+    OrganizationStore
   ]
 })
 export class CoreModule { }

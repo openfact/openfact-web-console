@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastData, ToastOptions, ToastyConfig, ToastyService } from 'ng2-toasty';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -6,10 +6,13 @@ import { Removable } from './../../model/removable';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'of-button-delete',
+  selector: 'openfact-button-delete',
   templateUrl: './button-delete.component.html'
 })
 export class ButtonDeleteComponent implements OnInit {
+
+  @ViewChild('deleteModal')
+  private modal: any;
 
   // Object to be deleted
   @Input()
@@ -63,7 +66,8 @@ export class ButtonDeleteComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private toastyService: ToastyService
   ) { }
 
   ngOnInit() {
@@ -76,30 +80,25 @@ export class ButtonDeleteComponent implements OnInit {
     return false;
   }
 
-  openDeleteModal(confirmDeleteContent: any): void {
+  delete(): void {
     if (this.disableDelete) {
       return;
     }
 
-    // opening the modal with settings scope as parent
-    /*this.modalService.open(confirmDeleteContent).result.then(
-      (result) => {
-        this.model.restangular.delete().subscribe(
-          (data) => {
-            this.alertService.pop('success', 'Success', 'Success! The organization has been deleted.');
+    this.object.delete().subscribe(
+      (data) => {
+        // callback
+        this.success.emit(true);
 
-            // callback
-            this.success.emit(true);
+        this.modal.close();
+        this.toastyService.success('Success! The organization has been deleted.');
 
-            // navigate
-            if (!this.stayOnCurrentPage) {
-              this.router.navigate([this.redirectUrl]);
-            }
-          }
-        );
-      },
-      (reason) => { }
-    );*/
+        // navigate
+        if (!this.stayOnCurrentPage) {
+          this.router.navigate([this.redirectUrl]);
+        }
+      }
+    );
   }
 
 }

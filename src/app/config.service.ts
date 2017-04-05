@@ -8,7 +8,7 @@ const defaults = Object.freeze({
   title: 'Openfact',
 });
 
-const defaultConfigJson = '/config.json';
+const defaultConfigJson = '/assets/config.json';
 
 export function configServiceInitializer(config: ConfigService) {
   return () => config.load();
