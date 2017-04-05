@@ -17,16 +17,20 @@ export class OrganizationsListComponent implements OnInit {
   @Input()
   loading: boolean;
 
+  @Input()
+  showMode = 'th-large';
+
   constructor(
     private organizationStore: OrganizationStore,
     private toastyService: ToastyService) { }
 
   ngOnInit() {
+
   }
 
-  delete(organization: Organization) {
-    const resty: any = organization;
-    this.organizationStore.delete(resty.one(organization.organization)).subscribe((data) => {
+  delete(resource: Organization) {
+    const organization = this.organizationStore.navigateToOrganization(resource);
+    this.organizationStore.delete(organization).subscribe((data) => {
       this.toastyService.success('Success! The organization has been deleted.');
     });
   }

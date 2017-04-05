@@ -7,12 +7,17 @@ import { Organizations } from './../models/organization.model';
 @Injectable()
 export class OrganizationStore extends OpenfactResourceStore<Organization, Organizations, OrganizationService> {
 
-    constructor(organizationService: OrganizationService) {
-        super(organizationService, [], <Organization>{}, Organization);
-    }
+  constructor(organizationService: OrganizationService) {
+    super(organizationService, [], <Organization>{}, Organization);
+  }
 
-    protected get kind() {
-        return 'Organization';
-    }
+  protected get kind() {
+    return 'Organization';
+  }
+
+  navigateToOrganization(organization: Organization) {
+    const resty: any = organization;
+    return resty.one(organization.organization);
+  }
 
 }

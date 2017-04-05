@@ -14,6 +14,8 @@ export class OrganizationsListPageComponent implements OnInit {
   private readonly organizations: Observable<Organizations>;
   private readonly loading: Observable<boolean>;
 
+  showMode: string;
+
   constructor(private organizationStore: OrganizationStore) {
     this.organizations = this.organizationStore.list;
     this.loading = this.organizationStore.loading;
@@ -21,6 +23,10 @@ export class OrganizationsListPageComponent implements OnInit {
 
   ngOnInit() {
     this.organizationStore.loadAll();
+  }
+
+  changeShowMode(showMode: string) {
+    this.showMode = showMode;
   }
 
 }
