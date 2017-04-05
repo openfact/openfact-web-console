@@ -2,6 +2,8 @@ import { OpenfactResource } from './openfactresource.model';
 
 export class Organization extends OpenfactResource {
 
+    organization: string;
+
     environments: Map<string, Organization>;
 
     defaultKind() {

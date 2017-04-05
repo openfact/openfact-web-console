@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { ToastData, ToastOptions, ToastyConfig, ToastyService } from 'ng2-toasty';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Removable } from './../../model/removable';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,10 +12,6 @@ export class ButtonDeleteComponent implements OnInit {
 
   @ViewChild('deleteModal')
   private modal: any;
-
-  // Object to be deleted
-  @Input()
-  object: Removable<any>;
 
   // Resource Kind to delete (e.g., 'Organization' or 'Document').
   @Input()
@@ -50,17 +45,9 @@ export class ButtonDeleteComponent implements OnInit {
   @Input()
   buttonOnly: boolean;
 
-  // Stay on the current page without redirecting to the resource list.
-  @Input()
-  stayOnCurrentPage = true;
-
   // Optional callback when the delete succeeds
   @Output()
-  success: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  // Optional redirect URL when the delete succeeds
-  @Input()
-  redirectUrl: string;
+  onConfirm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   confirmName = '';
 
@@ -84,21 +71,8 @@ export class ButtonDeleteComponent implements OnInit {
     if (this.disableDelete) {
       return;
     }
-
-    this.object.delete().subscribe(
-      (data) => {
-        // callback
-        this.success.emit(true);
-
-        this.modal.close();
-        this.toastyService.success('Success! The organization has been deleted.');
-
-        // navigate
-        if (!this.stayOnCurrentPage) {
-          this.router.navigate([this.redirectUrl]);
-        }
-      }
-    );
+    this.modal.close();
+    this.onConfirm.emit(true);
   }
 
 }

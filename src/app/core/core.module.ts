@@ -7,6 +7,7 @@ import { OrganizationService } from './services/organization.service';
 import { OrganizationStore } from './store/organization.store';
 import { Restangular } from 'ng2-restangular';
 import { SharedModule } from './../shared/shared.module';
+import { ToastyService } from 'ng2-toasty';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { SharedModule } from './../shared/shared.module';
     {
       provide: OPENFACT_RESTANGULAR,
       useFactory: OpenfactRestangularFactory,
-      deps: [Restangular, ConfigService]
+      deps: [Restangular, ConfigService, ToastyService]
     },
 
     OrganizationService,

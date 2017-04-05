@@ -5,8 +5,8 @@
         <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select">
           <div class="card-pf-heading-kebab">
             <div class="pull-right dropdown-kebab-pf">
-              <openfact-button-delete [object]="organization" [kind]="'Organization'" [resourceName]="organization.organization" [typeNameToConfirm]="true"
-                [buttonOnly]="true" (success)="search()"></openfact-button-delete>
+              <openfact-button-delete [kind]="'Organization'" [resourceName]="organization.organization" [typeNameToConfirm]="true" [buttonOnly]="true"
+                (onConfirm)="delete(organization)"></openfact-button-delete>
             </div>
           </div>
           <div class="card-pf-body" (click)="editOrganization(organization)">
