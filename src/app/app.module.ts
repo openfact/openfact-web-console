@@ -5,7 +5,7 @@ import { AdminModule } from './admin/admin.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { BsDropdownModule } from "ng2-bootstrap";
+import { BsDropdownModule } from "ngx-bootstrap";
 import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
