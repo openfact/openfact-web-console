@@ -11,6 +11,7 @@ import { FormFieldValidationMessagesComponent } from './components/form-field-va
 import { FormFieldValidationStateDirective } from './directives/form-field-validation-state.directive';
 import { FormFieldsStatusComponent } from './components/form-fields-status/form-fields-status.component';
 import { FormRequiredLabelDirective } from './directives/form-required-label.directive';
+import { HasRoleDirective } from './directives/has-role.directive';
 import { HttpModule } from '@angular/http';
 import { KeysPipe } from './pipes/keys.pipe';
 import { LimitedStringComponent } from './components/limited-string/limited-string.component';
@@ -65,7 +66,9 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     ToNumberPipe,
     LimitedStringComponent,
 
-    LoadingComponent
+    LoadingComponent,
+
+    HasRoleDirective
   ],
   exports: [
     NgbModule,
@@ -93,7 +96,9 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     ToNumberPipe,
     LimitedStringComponent,
 
-    LoadingComponent
+    LoadingComponent,
+
+    HasRoleDirective
   ]
 })
 export class SharedModule { }
