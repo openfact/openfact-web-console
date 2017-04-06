@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 declare var Keycloak: any;
 
 @Injectable()
-export class KeycloakService {
+export class KeycloakOAuthService {
   static auth: any = {};
 
   static init(): Promise<any> {
@@ -14,14 +14,14 @@ export class KeycloakService {
       clientId: 'openfact-web-console',
     });
 
-    KeycloakService.auth.loggedIn = false;
+    KeycloakOAuthService.auth.loggedIn = false;
 
     return new Promise((resolve, reject) => {
       keycloakAuth.init({ onLoad: 'login-required' })
         .success(() => {
-          KeycloakService.auth.loggedIn = true;
-          KeycloakService.auth.authz = keycloakAuth;
-          KeycloakService.auth.logoutUrl = keycloakAuth.authServerUrl
+          KeycloakOAuthService.auth.loggedIn = true;
+          KeycloakOAuthService.auth.authz = keycloakAuth;
+          KeycloakOAuthService.auth.logoutUrl = keycloakAuth.authServerUrl
             + '/realms/openfact/protocol/openid-connect/logout?redirect_uri='
             + document.baseURI;
           resolve();
@@ -34,19 +34,19 @@ export class KeycloakService {
 
   logout() {
     console.log('*** LOGOUT');
-    KeycloakService.auth.loggedIn = false;
-    KeycloakService.auth.authz = null;
+    KeycloakOAuthService.auth.loggedIn = false;
+    KeycloakOAuthService.auth.authz = null;
 
-    window.location.href = KeycloakService.auth.logoutUrl;
+    window.location.href = KeycloakOAuthService.auth.logoutUrl;
   }
 
   getToken(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
-      if (KeycloakService.auth.authz.token) {
-        KeycloakService.auth.authz
+      if (KeycloakOAuthService.auth.authz.token) {
+        KeycloakOAuthService.auth.authz
           .updateToken(5)
           .success(() => {
-            resolve(<string>KeycloakService.auth.authz.token);
+            resolve(<string>KeycloakOAuthService.auth.authz.token);
           })
           .error(() => {
             reject('Failed to refresh token');

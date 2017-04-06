@@ -1,7 +1,7 @@
 import { ConnectionBackend, Headers, Http, Request, RequestOptions, RequestOptionsArgs, Response, XHRBackend } from '@angular/http';
 
 import { Injectable } from '@angular/core';
-import { KeycloakService } from './keycloak.service';
+import { KeycloakOAuthService } from './keycloak.oauth.service';
 import { Observable } from 'rxjs/Rx';
 
 /**
@@ -9,13 +9,13 @@ import { Observable } from 'rxjs/Rx';
  */
 @Injectable()
 export class KeycloakHttp extends Http {
-    
-    constructor(_backend: ConnectionBackend, _defaultOptions: RequestOptions, private _keycloakService: KeycloakService) {
+
+    constructor(_backend: ConnectionBackend, _defaultOptions: RequestOptions, private _KeycloakOAuthService: KeycloakOAuthService) {
         super(_backend, _defaultOptions);
     }
 
     request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-        const tokenPromise: Promise<string> = this._keycloakService.getToken();
+        const tokenPromise: Promise<string> = this._KeycloakOAuthService.getToken();
         const tokenObservable: Observable<string> = Observable.fromPromise(tokenPromise);
 
         if (typeof url === 'string') {
@@ -30,15 +30,15 @@ export class KeycloakHttp extends Http {
             }).concatMap(request => super.request(request));
         }
     }
-    
+
 }
 
-export function keycloakHttpFactory(backend: XHRBackend, defaultOptions: RequestOptions, keycloakService: KeycloakService) {
-    return new KeycloakHttp(backend, defaultOptions, keycloakService);
+export function keycloakHttpFactory(backend: XHRBackend, defaultOptions: RequestOptions, KeycloakOAuthService: KeycloakOAuthService) {
+    return new KeycloakHttp(backend, defaultOptions, KeycloakOAuthService);
 }
 
 export const KEYCLOAK_HTTP_PROVIDER = {
     provide: Http,
     useFactory: keycloakHttpFactory,
-    deps: [XHRBackend, RequestOptions, KeycloakService]
+    deps: [XHRBackend, RequestOptions, KeycloakOAuthService]
 };

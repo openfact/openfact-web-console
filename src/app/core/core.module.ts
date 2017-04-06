@@ -1,3 +1,4 @@
+import { KEYCLOAK_RESTANGULAR, KeycloakRestangularFactory } from './services/keycloak.restangular';
 import { OPENFACT_RESTANGULAR, OpenfactRestangularFactory } from './services/openfact.restangular';
 
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,11 @@ import { ToastyService } from 'ng2-toasty';
       provide: OPENFACT_RESTANGULAR,
       useFactory: OpenfactRestangularFactory,
       deps: [Restangular, ConfigService, ToastyService]
+    },
+    {
+      provide: KEYCLOAK_RESTANGULAR,
+      useFactory: KeycloakRestangularFactory,
+      deps: [Restangular, ToastyService]
     },
 
     OrganizationService,

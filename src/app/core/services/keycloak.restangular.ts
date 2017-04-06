@@ -1,23 +1,17 @@
 import { InjectionToken, NgModule } from "@angular/core";
 
 import { ConfigService } from './../../config.service';
-import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
 import { Restangular } from 'ng2-restangular';
 import { ToastyService } from 'ng2-toasty';
+import { environment } from './../../../environments/environment';
 
-export const OPENFACT_RESTANGULAR = new InjectionToken('OpenfactRestangular');
+export const KEYCLOAK_RESTANGULAR = new InjectionToken('KeycloakRestangular');
 
-export function OpenfactRestangularFactory(restangular: Restangular, configService: ConfigService, toastyService: ToastyService) {
+export function KeycloakRestangularFactory(restangular: Restangular, toastyService: ToastyService) {
   const config = restangular.withConfig((RestangularConfigurer) => {
 
     RestangularConfigurer.addErrorInterceptor((error, operation, what, url, response) => {
-      if (error.status === 401) {
-        window.location.href = KeycloakOAuthService.auth.logoutUrl;
-      } else if (error.status === 403) {
-        window.location.replace('/forbidden');
-      } else if (error.status === 404) {
-        window.location.replace('/notfound');
-      } else if (error.status) {
+      if (error.status) {
         let data: Response;
         try {
           data = error.json();
@@ -36,7 +30,7 @@ export function OpenfactRestangularFactory(restangular: Restangular, configServi
       return true; // response not handled
     });
 
-    RestangularConfigurer.setBaseUrl(configService.getSettings().apiEndpoint);
+    RestangularConfigurer.setBaseUrl(environment.keykloakBaseUrl);
   });
   return config;
 }

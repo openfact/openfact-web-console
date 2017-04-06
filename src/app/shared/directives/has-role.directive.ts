@@ -1,6 +1,6 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
-import { KeycloakService } from './../../keycloak/keycloak.service';
+import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
 
 const resourceName = 'openfact';
 
@@ -33,7 +33,7 @@ export class HasRoleDirective {
   }
 
   private hasRole(role: string) {
-    return KeycloakService.auth.authz.hasRealmRole(role) || KeycloakService.auth.authz.hasResourceRole(role, resourceName);
+    return KeycloakOAuthService.auth.authz.hasRealmRole(role) || KeycloakOAuthService.auth.authz.hasResourceRole(role, resourceName);
   }
 
 }

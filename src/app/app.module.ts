@@ -10,7 +10,7 @@ import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
-import { KeycloakService } from './keycloak/keycloak.service';
+import { KeycloakOAuthService } from './keycloak/keycloak.oauth.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { ModalModule } from 'ngx-modal';
 import { NgModule } from '@angular/core';
@@ -49,7 +49,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     CoreModule
   ],
   providers: [
-    KeycloakService,
+    KeycloakOAuthService,
     KEYCLOAK_HTTP_PROVIDER,
     ConfigService,
     {
