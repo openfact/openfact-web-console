@@ -5,15 +5,17 @@ import { OPENFACT_RESTANGULAR } from './openfact.restangular';
 import { OpenfactService } from './openfact.service';
 import { Restangular } from 'ng2-restangular';
 
+const organizationsUrl = '/admin/organizations';
+
 @Injectable()
 export class OrganizationService extends OpenfactService<Organization, Organizations> {
 
   constructor( @Inject(OPENFACT_RESTANGULAR) openfactRestangular: Restangular) {
-    super(openfactRestangular.service('admin/organizations'));
+    super(openfactRestangular.service(organizationsUrl));
   }
 
   get serviceUrl(): string {
-    return '';
+    return organizationsUrl;
   }
 }
 

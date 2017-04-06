@@ -6,44 +6,43 @@ import { Restangular } from 'ng2-restangular';
 
 export abstract class OpenfactService<T extends OpenfactResource, L extends Array<T>> extends RESTService<T, L> {
 
-    constructor(openfactRestangular: Restangular) {
-        super(openfactRestangular);
-    }
+  constructor(openfactRestangular: Restangular) {
+    super(openfactRestangular);
+  }
 
-    get(id: string): Observable<T> {
-        return super.get(id);
-    }
+  get(id: string): Observable<T> {
+    return super.get(id);
+  }
 
-    create(obj: T): Observable<T> {
-        let resource = obj.resource || {};
-        if (!resource.kind) {
-            resource.kind = obj.defaultKind();
-        }
-        obj.updateResource(resource);
+  create(obj: T): Observable<T> {
+    // let resource = obj.resource || {};
+    // if (!resource.kind) {
+    //     resource.kind = obj.defaultKind();
+    // }
+    // obj.updateResource(resource);
+    return this.restangularService/*.all(this.serviceUrl)*/.post(obj);
+  }
 
-        return this.restangularService.all(this.serviceUrl).post(resource);
-    }
+  update(obj: T): Observable<T> {
+    let resource = obj.resource;
+    obj.updateResource(resource);
+    return this.updateResource(obj, resource);
+  }
 
-    update(obj: T): Observable<T> {
-        let resource = obj.resource;
-        obj.updateResource(resource);
-        return this.updateResource(obj, resource);
-    }
+  updateResource(obj: T, resource: any) {
+    let id = obj.id;
+    let resty: any = obj;
+    return resty.customPUT(resource);
+  }
 
-    updateResource(obj: T, resource: any) {
-        let id = obj.id;
-        let resty: any = obj;
-        return resty.customPUT(resource);
-    }
+  delete(obj: T): any {
+    let resty: any = obj;
+    return resty.customDELETE();
+  }
 
-    delete(obj: T): any {
-        let resty: any = obj;
-        return resty.customDELETE();
-    }
+  defaultKind() {
+    return 'Organization';
+  }
 
-    defaultKind() {
-        return 'Organization';
-    }
-
-    abstract get serviceUrl(): string;
+  abstract get serviceUrl(): string;
 }

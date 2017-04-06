@@ -8,7 +8,7 @@ import { OrganizationsListPageComponent } from './ui/organization/list-page/list
 const routes: Routes = [
     { path: 'admin', redirectTo: 'admin/organizations', pathMatch: 'full' },
     { path: 'admin/organizations', component: OrganizationsListPageComponent },
-    { path: 'admin/create', component: OrganizationCreatePageComponent }
+    { path: 'admin/organizations/create', component: OrganizationCreatePageComponent }
 ];
 
 @NgModule({

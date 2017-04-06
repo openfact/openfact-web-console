@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
-  selector: 'of-view-object',
+  selector: 'openfact-view-object',
   templateUrl: './view-object.component.html',
   styles: [`
     .viewer {
@@ -19,15 +17,8 @@ export class ViewObjectComponent implements OnInit {
   @Input()
   label: string;
 
-  constructor(private modalService: NgbModal) { }
+  constructor() { }
 
   ngOnInit() { }
-
-  open(content) {
-    this.modalService.open(content).result.then(
-      (result) => { },
-      (reason) => { }
-    );
-  }
 
 }

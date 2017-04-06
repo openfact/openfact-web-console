@@ -21,10 +21,10 @@
               <i class="fa fa-question-circle text-muted" ngbTooltip="Select a file for import organization configuration." placement="right"></i>
             </label>
             <div class="col-md-9" [hidden]="importing">
-              <of-read-file (complete)="importFile($event)"></of-read-file>
+              <openfact-read-file (complete)="importFile($event)" [clear]="clearFileInput"></openfact-read-file>
             </div>
             <div class="col-md-9" [hidden]="!importing">
-              <of-view-object [object]="organization" [label]="'View details'"></of-view-object>
+              <openfact-view-object [object]="organization" [label]="'View details'"></openfact-view-object>
               <input type="button" class="btn btn-default" (click)="reset()" [value]="'Clear import'" />
             </div>
           </div>

@@ -29,6 +29,7 @@ export class OrganizationsListComponent implements OnInit {
     const organization = this.organizationStore.navigateToOrganization(resource);
     this.organizationStore.delete(organization).subscribe((data) => {
       this.toastyService.success('Success! The organization has been deleted.');
+      this.organizationStore.loadAll();
     });
   }
 

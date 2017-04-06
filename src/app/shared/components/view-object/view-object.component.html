@@ -1,9 +1,9 @@
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-body">
+<modal #viewModal>
+  <modal-content>
     <div class="viewer">
       <pre>{{ object | json }}</pre>
     </div>
-  </div>
-</ng-template>
+  </modal-content>
+</modal>
 
-<button type="button" class="btn btn-default" (click)="open(content)">{{label || 'View details'}}</button>
+<button type="button" class="btn btn-default" (click)="viewModal.open()">{{label || 'View details'}}</button>

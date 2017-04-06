@@ -1,15 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'of-view-key',
   templateUrl: './view-key.component.html'
 })
 export class ViewKeyComponent implements OnInit {
-
-  @ViewChild('viewKeyModalContent')
-  content: any;
 
   @Input()
   key: any;
@@ -29,23 +24,9 @@ export class ViewKeyComponent implements OnInit {
   @Input()
   disableOpen: boolean;
 
-  constructor(private modalService: NgbModal) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  open() {
-    this.modalService.open(this.content).result.then((result) => {
-    }, (reason) => {
-    });
-  }
-
-  internalOpen() {
-    if (!this.disableOpen) {
-      this.modalService.open(this.content).result.then((result) => {
-      }, (reason) => {
-      });
-    }
   }
 
 }

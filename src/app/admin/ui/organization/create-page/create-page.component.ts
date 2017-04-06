@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import { OrganizationService } from './../../../../core/services/organization.service';
+import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Router } from '@angular/router';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'openfact-organization-create-page',
@@ -16,9 +19,13 @@ export class OrganizationCreatePageComponent implements OnInit {
   organization: any;
   importing = false;
 
+  clearFileInput: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(
     private _router: Router,
-    private _formBuilder: FormBuilder) { }
+    private _formBuilder: FormBuilder,
+    private toastyService: ToastyService,
+    private organizationService: OrganizationService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -31,24 +38,31 @@ export class OrganizationCreatePageComponent implements OnInit {
     });
   }
 
-  save(form: FormControl): void {
-    /*this.working = true;
+  importFile(file) {
+    this.organization = Object.assign({}, JSON.parse(file.data));
+    this.form.patchValue(this.organization);
+    this.importing = true;
+  }
+
+  save(form: FormControl) {
+    this.working = true;
     const organizationCopy = Object.assign(this.organization || {}, form.value);
 
-    this.dataService.organizations().create(organizationCopy).subscribe(
+    this.organizationService.create(organizationCopy).subscribe(
       result => {
-        this.alertService.pop('success', 'Success', 'Success! The organization has been created.');
-        this.router.navigate(['../']);
+        this.toastyService.success('Success! The organization has been created.');
+        this._router.navigate(['../']);
       },
       error => {
         this.working = false;
       }
-    );*/
+    );
   }
 
   reset() {
     this.organization = null;
     this.importing = false;
+    this.clearFileInput.emit(true);
     this.buildForm();
   }
 

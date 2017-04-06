@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'of-read-file',
+  selector: 'openfact-read-file',
   templateUrl: './read-file.component.html',
   styles: [`
     input[type=file] {
@@ -11,8 +11,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ReadFileComponent implements OnInit {
 
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
+
   @Input()
   showFileName = false;
+
+  @Input()
+  clear: EventEmitter<boolean>;
 
   @Output()
   complete: EventEmitter<any> = new EventEmitter<any>();
@@ -25,6 +31,11 @@ export class ReadFileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (this.clear) {
+      this.clear.subscribe(event => {
+        this.fileInput.nativeElement.value = '';
+      });
+    }
   }
 
   changeListener($event: any) {

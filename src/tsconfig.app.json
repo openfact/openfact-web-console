@@ -6,7 +6,8 @@
     "baseUrl": "",
     "types": [
       "lodash",
-      "pluralize"
+      "pluralize",
+      "file-saver"
     ]
   },
   "exclude": [
