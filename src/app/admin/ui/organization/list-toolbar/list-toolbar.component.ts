@@ -14,11 +14,6 @@ export class OrganizationsListToolbarComponent implements OnInit {
   @Input()
   organizations: Organizations;
 
-  @Output()
-  onChangeShowMode: EventEmitter<string> = new EventEmitter<string>();
-
-  showMode = 'th-large';
-
   constructor(private organizationStore: OrganizationStore) { }
 
   ngOnInit() {
@@ -26,11 +21,6 @@ export class OrganizationsListToolbarComponent implements OnInit {
 
   search() {
     this.organizationStore.loadAll();
-  }
-
-  setShowMode(showMode: string) {
-    this.showMode = showMode;
-    this.onChangeShowMode.emit(this.showMode);
   }
 
 }

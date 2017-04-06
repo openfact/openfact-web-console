@@ -17,9 +17,6 @@ export class OrganizationsListComponent implements OnInit {
   @Input()
   loading: boolean;
 
-  @Input()
-  showMode = 'th-large';
-
   constructor(
     private organizationStore: OrganizationStore,
     private toastyService: ToastyService) { }
