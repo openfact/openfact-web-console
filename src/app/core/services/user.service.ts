@@ -13,16 +13,8 @@ export class UserService extends RealmResourceService<User, Users> {
 
   constructor(
     @Inject(KEYCLOAK_RESTANGULAR) keycloakRestangular: Restangular,
-    realmScope: RealmScope,
-    userStore: UserStore) {
+    realmScope: RealmScope) {
     super(keycloakRestangular, realmScope, '/users', '');
-
-    userStore.loading.subscribe(loading => {
-      if (!loading) {
-        // force recalculation of the URL
-        this._serviceUrl = null;
-      }
-    })
   }
 
 }

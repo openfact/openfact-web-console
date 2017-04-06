@@ -11,7 +11,9 @@ import { OrganizationsListPageComponent } from './ui/organization/list-page/list
 import { OrganizationsListToolbarComponent } from './ui/organization/list-toolbar/list-toolbar.component';
 import { SecurityComponent } from './ui/security/security.component';
 import { SharedModule } from './../shared/shared.module';
+import { UsersListComponent } from './ui/security/user/list/list.component';
 import { UsersListPageComponent } from './ui/security/user/list-page/list-page.component';
+import { UsersListToolbarComponent } from './ui/security/user/list-toolbar/list-toolbar.component';
 
 @NgModule({
   imports: [
@@ -33,9 +35,9 @@ import { UsersListPageComponent } from './ui/security/user/list-page/list-page.c
 
     SecurityComponent,
     UsersListPageComponent,
+    UsersListComponent,
+    UsersListToolbarComponent,
   ],
-  providers: [
-
-  ]
+  providers: []
 })
 export class AdminModule { }

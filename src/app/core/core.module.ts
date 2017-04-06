@@ -6,9 +6,12 @@ import { ConfigService } from './../config.service';
 import { NgModule } from '@angular/core';
 import { OrganizationService } from './services/organization.service';
 import { OrganizationStore } from './store/organization.store';
+import { RealmScope } from './services/realm.scope';
 import { Restangular } from 'ng2-restangular';
 import { SharedModule } from './../shared/shared.module';
 import { ToastyService } from 'ng2-toasty';
+import { UserService } from './services/user.service';
+import { UserStore } from './store/user.store';
 
 @NgModule({
   imports: [
@@ -29,7 +32,11 @@ import { ToastyService } from 'ng2-toasty';
     },
 
     OrganizationService,
-    OrganizationStore
+    OrganizationStore,
+
+    RealmScope,
+    UserService,
+    UserStore,
   ]
 })
 export class CoreModule { }

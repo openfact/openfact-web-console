@@ -1,0 +1,49 @@
+<div class="dataTables_wrapper no-footer">
+  <table class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+    <thead>
+      <tr role="row">
+        <th aria-controls="table1" rowspan="1" colspan="1">Username</th>
+        <th aria-controls="table1" rowspan="1" colspan="1">Organization</th>
+        <th colspan="2" rowspan="1">Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<form class="content-view-pf-pagination table-view-pf-pagination clearfix">
+  <div class="form-group">
+    <div class="btn-group bootstrap-select pagination-pf-pagesize">
+      <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" title="15"><span class="filter-option pull-left">15</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button>
+      <div class="dropdown-menu open">
+        <ul class="dropdown-menu inner" role="menu">
+          <li data-original-index="0"><a><span class="text">6</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+          <li data-original-index="1"><a><span class="text">10</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+          <li data-original-index="2" class="selected"><a><span class="text">15</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+          <li data-original-index="3"><a><span class="text">25</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+          <li data-original-index="4"><a><span class="text">50</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+        </ul>
+      </div><select class="selectpicker pagination-pf-pagesize" tabindex="-98">
+      <option value="6">6</option>
+      <option value="10">10</option>
+      <option value="15" selected="selected">15</option>
+      <option value="25">25</option>
+      <option value="50">50</option>
+    </select></div>
+    <span>per page</span>
+  </div>
+  <div class="form-group">
+    <span><span class="pagination-pf-items-current">1-15</span> of <span class="pagination-pf-items-total">75</span></span>
+    <ul class="pagination pagination-pf-back">
+      <li class="disabled"><a href="#" title="First Page"><span class="i fa fa-angle-double-left"></span></a></li>
+      <li class="disabled"><a href="#" title="Previous Page"><span class="i fa fa-angle-left"></span></a></li>
+    </ul>
+    <label class="sr-only">Current Page</label>
+    <input class="pagination-pf-page" type="text" value="1">
+    <span>of <span class="pagination-pf-pages">5</span></span>
+    <ul class="pagination pagination-pf-forward">
+      <li><a href="#" title="Next Page"><span class="i fa fa-angle-right"></span></a></li>
+      <li><a href="#" title="Last Page"><span class="i fa fa-angle-double-right"></span></a></li>
+    </ul>
+  </div>
+</form>
