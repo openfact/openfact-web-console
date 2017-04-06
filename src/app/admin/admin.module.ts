@@ -9,7 +9,9 @@ import { OrganizationCreatePageComponent } from './ui/organization/create-page/c
 import { OrganizationsListComponent } from './ui/organization/list/list.component';
 import { OrganizationsListPageComponent } from './ui/organization/list-page/list-page.component';
 import { OrganizationsListToolbarComponent } from './ui/organization/list-toolbar/list-toolbar.component';
+import { SecurityComponent } from './ui/security/security.component';
 import { SharedModule } from './../shared/shared.module';
+import { UsersListPageComponent } from './ui/security/user/list-page/list-page.component';
 
 @NgModule({
   imports: [
@@ -28,6 +30,9 @@ import { SharedModule } from './../shared/shared.module';
     OrganizationsListPageComponent,
     OrganizationsListToolbarComponent,
     OrganizationCreatePageComponent,
+
+    SecurityComponent,
+    UsersListPageComponent,
   ],
   providers: [
 
