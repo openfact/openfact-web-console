@@ -1,38 +1,40 @@
-<modal #deleteModal [hideCloseButton]="true">
-  <modal-content>
-    <h1>Are you sure to delete {{typeDisplayName || kind}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</h1>
+<div class="modal fade" bsModal #deleteModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1>Are you sure to delete {{typeDisplayName || kind}} '<strong>{{displayName ? displayName : resourceName}}</strong>'?</h1>
 
-    <p>This
-      <span *ngIf="isOrganization()">
-				<strong>Will delete all resources</strong>
-				associated with organization {{displayName ? displayName : resourceName}} and
-			</span>
-      <strong>cannot be undone</strong>. Make sure you know what are you doing.
-    </p>
+        <p>This
+          <span *ngIf="isOrganization()">
+				  <strong>Will delete all resources</strong>associated with organization {{displayName ? displayName : resourceName}} and</span>
+          <strong>cannot be undone</strong>. Make sure you know what are you doing.
+        </p>
 
-    <div [hidden]="!typeNameToConfirm">
-      <p>Type of {{typeDisplayName || kind}} to confirm.</p>
-      <p>
-        <label class="sr-only">{{typeDisplayName || kind}} to delete</label>
-        <input type="text" [(ngModel)]="confirmName" name="confirmName" class="form-control input-lg" autocorrect="off" autocapitalize="off"
-          spellcheck="false" autofocus/>
-      </p>
+        <div [hidden]="!typeNameToConfirm">
+          <p>Type of {{typeDisplayName || kind}} to confirm.</p>
+          <p>
+            <label class="sr-only">{{typeDisplayName || kind}} to delete</label>
+            <input type="text" [(ngModel)]="confirmName" name="confirmName" class="form-control input-lg" autocorrect="off" autocapitalize="off"
+              spellcheck="false" autofocus/>
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="typeNameToConfirm && confirmName !== resourceName && confirmName !== displayName" type="button" class="btn btn-lg btn-danger"
+          (click)="delete()">Delete</button>
+        <button type="button" class="btn btn-lg btn-default" (click)="deleteModal.hide()">Cancel</button>
+      </div>
     </div>
-  </modal-content>
-  <modal-footer>
-    <button [disabled]="typeNameToConfirm && confirmName !== resourceName && confirmName !== displayName" type="button" class="btn btn-lg btn-danger"
-      (click)="delete()">Delete</button>
-    <button type="button" class="btn btn-lg btn-default" (click)="deleteModal.close()">Cancel</button>
-  </modal-footer>
-</modal>
+  </div>
+</div>
 
-<a *ngIf="!buttonOnly" href="javascript:void(0);" (click)="deleteModal.open()" [ngClass]="{ 'disabled': disableDelete }">
+<a *ngIf="!buttonOnly" href="javascript:void(0);" (click)="deleteModal.show()" [ngClass]="{ 'disabled': disableDelete }">
 	{{(label || 'delete')}}
 </a>
 
 <div *ngIf="buttonOnly" class="actions">
   <!-- Avoid whitespace inside the link -->
-  <button type="button" (click)="deleteModal.open()" class="btn btn-link" [ngClass]="{ 'disabled': disableDelete }">
+  <button type="button" (click)="deleteModal.show()" class="btn btn-link" [ngClass]="{ 'disabled': disableDelete }">
 		<i class="fa fa-trash-o"></i>
 		<span class="sr-only">Delete {{kind}} {{resourceName}}</span>
 	</button>

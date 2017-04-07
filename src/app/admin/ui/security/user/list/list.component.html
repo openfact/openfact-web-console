@@ -23,8 +23,7 @@
             </td>
           </ng-template>
           <td>
-            <span *ngIf="!user.enabled"><i class="pficon pficon-warning-triangle-o"></i></span>
-            {{user.enabled}}
+            <span *ngIf="!user.enabled"><i class="pficon pficon-warning-triangle-o"></i></span> {{user.enabled}}
           </td>
           <td class="table-view-pf-actions" *openfactAccess="'manageUsers'">
             <div class="table-view-pf-btn">
@@ -85,8 +84,9 @@
   </form>
 </of-loading>
 
-<modal #deleteUserModal title="Delete User">
-  <modal-content>
+<div class="modal fade" bsModal #deleteUserModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
     <openfact-delete-user-dialog></openfact-delete-user-dialog>
-  </modal-content>
-</modal>
+  </div>
+</div>

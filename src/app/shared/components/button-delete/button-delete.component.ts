@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToastData, ToastOptions, ToastyConfig, ToastyService } from 'ng2-toasty';
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDirective } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ButtonDeleteComponent implements OnInit {
 
   @ViewChild('deleteModal')
-  private modal: any;
+  private modal: ModalDirective;
 
   // Resource Kind to delete (e.g., 'Organization' or 'Document').
   @Input()
@@ -53,7 +53,6 @@ export class ButtonDeleteComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private modalService: NgbModal,
     private toastyService: ToastyService
   ) { }
 
@@ -71,7 +70,7 @@ export class ButtonDeleteComponent implements OnInit {
     if (this.disableDelete) {
       return;
     }
-    this.modal.close();
+    this.modal.show();
     this.onConfirm.emit(true);
   }
 

@@ -1,7 +1,7 @@
+import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AccessDirective } from './directives/access.directive';
-import { BsDropdownModule } from 'ngx-bootstrap';
 import { ButtonCancelComponent } from './components/button-cancel/button-cancel.component';
 import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
 import { ButtonResetComponent } from './components/button-reset/button-reset.component';
@@ -17,7 +17,6 @@ import { KeysPipe } from './pipes/keys.pipe';
 import { LimitedStringComponent } from './components/limited-string/limited-string.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { ModalModule } from 'ngx-modal';
 import { MomentModule } from 'angular2-moment';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';

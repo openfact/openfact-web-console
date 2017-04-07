@@ -21,7 +21,7 @@ export class UserDeleteDialogComponent implements OnInit {
 
   ok() {
     console.log('deleting user ' + this.user.username);
-    this.modal.close();
+    this.modal.hide();
     this.userService.delete(this.user).subscribe(
       () => {
         this.userStore.loadAll();
@@ -30,7 +30,7 @@ export class UserDeleteDialogComponent implements OnInit {
   }
 
   close() {
-    this.modal.close();
+    this.modal.hide();
   }
 
 }

@@ -1,3 +1,4 @@
+import { BsDropdownModule, ModalModule } from "ngx-bootstrap";
 import { ConfigService, configServiceInitializer } from './config.service';
 
 import { APP_INITIALIZER } from '@angular/core';
@@ -6,14 +7,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { BsDropdownModule } from "ngx-bootstrap";
 import { CoreModule } from './core/core.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
 import { KeycloakOAuthService } from './keycloak/keycloak.oauth.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { ModalModule } from 'ngx-modal';
 import { MomentModule } from 'angular2-moment';
 import { NgModule } from '@angular/core';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -38,7 +37,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     RestangularModule.forRoot([ConfigService], restangularProviderConfigurer),
     NgbModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ModalModule,
+    ModalModule.forRoot(),
     MomentModule,
     LocalStorageModule.withConfig({
       prefix: 'openfact',
