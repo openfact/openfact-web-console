@@ -1,0 +1,4 @@
+<div class="users detail container-fluid" *ngIf='user'>
+  <openfact-edit-user-toolbar [user]="user | async"></openfact-edit-user-toolbar>
+  <openfact-edit-user [user]="user | async"></openfact-edit-user>
+</div>

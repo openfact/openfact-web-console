@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Organization, Organizations } from './../../../../../core/models/organization.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { OrganizationStore } from './../../../../../core/store/organization.store';
-import { Router } from '@angular/router';
+import { Organizations } from './../../../../../core/models/organization.model';
 import { ToastyService } from 'ng2-toasty';
 import { User } from './../../../../../core/models/user.model';
 import { UserService } from './../../../../../core/services/user.service';
 
 @Component({
-  selector: 'openfact-create-page',
-  templateUrl: './create-page.component.html',
-  styleUrls: ['./create-page.component.scss']
+  selector: 'openfact-edit-user',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
-export class CreateUserPageComponent implements OnInit {
+export class EditUserComponent implements OnInit, OnChanges {
+
+  @Input()
+  user: User;
 
   form: FormGroup;
   working = false;
-
-  user: User;
 
   private readonly organizations: Observable<Organizations>;
 
@@ -39,26 +39,27 @@ export class CreateUserPageComponent implements OnInit {
     this.buildForm();
   }
 
+  ngOnChanges() {
+    if (this.form && this.user.attributes) {
+      this.form.get('attributes').patchValue({
+        organization: this.user.attributes ? this.user.attributes['organization'] : null
+      });
+    }
+  }
+
   buildForm() {
     this.form = this.formBuilder.group({
-      username: [null, Validators.compose([Validators.required, Validators.maxLength(120)])],
-      enabled: [true],
       attributes: this.formBuilder.group({
         organization: [null, Validators.compose([])]
-      }),
+      })
     });
   }
 
-  save(form: FormControl) {
-    this.working = true;
-
-    this.userService.create(form.value).subscribe(
+  save(form: FormGroup) {
+    this.userService.updateResource(this.user, form.value).subscribe(
       () => {
-        this.toastyService.success('Success! The user has been created.');
+        this.toastyService.success('Success! User updated.');
         this.router.navigate(['../../'], { relativeTo: this.route });
-      },
-      (error) => {
-        this.working = false;
       }
     );
   }

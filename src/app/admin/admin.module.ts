@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from './../core/core.module';
 import { CreateOrganizationPageComponent } from './ui/organization/create-page/create-page.component';
 import { CreateUserPageComponent } from './ui/security/user/create-page/create-page.component';
+import { EditUserComponent } from './ui/security/user/edit/edit.component';
 import { EditUserPageComponent } from './ui/security/user/edit-page/edit-page.component';
 import { NgModule } from '@angular/core';
 import { OrganizationsListComponent } from './ui/organization/list/list.component';
@@ -14,6 +15,8 @@ import { OrganizationsListToolbarComponent } from './ui/organization/list-toolba
 import { SecurityComponent } from './ui/security/security.component';
 import { SharedModule } from './../shared/shared.module';
 import { UserDeleteDialogComponent } from './ui/security/user/delete-dialog/delete-dialog.component';
+import { UserEditToolbarComponent } from './ui/security/user/edit-toolbar/edit-toolbar.component';
+import { UserEditWrapperComponent } from './ui/security/user/edit-wrapper/edit-wrapper.component';
 import { UsersListComponent } from './ui/security/user/list/list.component';
 import { UsersListPageComponent } from './ui/security/user/list-page/list-page.component';
 import { UsersListToolbarComponent } from './ui/security/user/list-toolbar/list-toolbar.component';
@@ -43,6 +46,9 @@ import { UsersListToolbarComponent } from './ui/security/user/list-toolbar/list-
     UserDeleteDialogComponent,
     CreateUserPageComponent,
     EditUserPageComponent,
+    UserEditWrapperComponent,
+    UserEditToolbarComponent,
+    EditUserComponent,
   ],
   providers: []
 })

@@ -4,6 +4,7 @@ import { OpenfactResource } from './openfactresource.model';
 export class User extends KeycloakResource {
 
   username: string;
+  attributes: Map<string, Array<string>>;
 
   defaultKind() {
     return 'User';

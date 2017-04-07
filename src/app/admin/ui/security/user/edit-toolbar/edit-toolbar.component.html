@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <ol class="breadcrumb">
+      <li>
+        <a href="javascript:void(0);" routerLink="../../">Users</a>
+      </li>
+      <li class="active">Edit user</li>
+    </ol>
+
+    <div>
+      <h3>
+        Edit user <span *ngIf="user">{{user.username}}</span>
+        <small *ngIf="user">Created <span>{{user.createdTimestamp | amTimeAgo}}</span></small>
+      </h3>
+
+    </div>
+
+  </div>
+</div>
