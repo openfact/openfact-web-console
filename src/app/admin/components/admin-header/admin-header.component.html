@@ -39,10 +39,10 @@
     </ul>
     <ul class="nav navbar-nav navbar-primary">
       <li routerLinkActive="active">
-        <a routerLink="../organizations">Organizations</a>
+        <a routerLink="../organizations" *openfactAccess="'organizationMenu'">Organizations</a>
       </li>
       <li routerLinkActive="active">
-        <a routerLink="../security">Security</a>
+        <a routerLink="../security" *openfactAccess="'securityMenu'">Security</a>
       </li>
     </ul>
   </div>

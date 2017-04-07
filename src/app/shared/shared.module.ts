@@ -1,5 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AccessDirective } from './directives/access.directive';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { ButtonCancelComponent } from './components/button-cancel/button-cancel.component';
 import { ButtonDeleteComponent } from './components/button-delete/button-delete.component';
@@ -11,7 +12,6 @@ import { FormFieldValidationMessagesComponent } from './components/form-field-va
 import { FormFieldValidationStateDirective } from './directives/form-field-validation-state.directive';
 import { FormFieldsStatusComponent } from './components/form-fields-status/form-fields-status.component';
 import { FormRequiredLabelDirective } from './directives/form-required-label.directive';
-import { HasRoleDirective } from './directives/has-role.directive';
 import { HttpModule } from '@angular/http';
 import { KeysPipe } from './pipes/keys.pipe';
 import { LimitedStringComponent } from './components/limited-string/limited-string.component';
@@ -68,7 +68,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
 
     LoadingComponent,
 
-    HasRoleDirective
+    AccessDirective
   ],
   exports: [
     NgbModule,
@@ -98,7 +98,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
 
     LoadingComponent,
 
-    HasRoleDirective
+    AccessDirective,
   ]
 })
 export class SharedModule { }
