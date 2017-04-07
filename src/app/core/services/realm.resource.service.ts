@@ -56,7 +56,6 @@ export abstract class RealmResourceService<T extends KeycloakResource, L extends
       realm = obj.realm;
     }
     let url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
-    obj.updateResource();
     return this.restangularService.all(url).post(obj);
   }
 

@@ -31,7 +31,7 @@ export function OpenfactRestangularFactory(restangular: Restangular, configServi
           toastyService.error('An unexpected server response has occurred');
         }
 
-        return false; // response handled
+        //return false; // response handled
       }
       return true; // response not handled
     });

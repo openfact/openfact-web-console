@@ -11,7 +11,7 @@ import { ToastyService } from 'ng2-toasty';
   templateUrl: './create-page.component.html',
   styleUrls: ['./create-page.component.scss']
 })
-export class OrganizationCreatePageComponent implements OnInit {
+export class CreateOrganizationPageComponent implements OnInit {
 
   form: FormGroup;
   working = false;

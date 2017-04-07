@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { KeycloakOAuthService } from './../../../keycloak/keycloak.oauth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,19 +10,22 @@ import { Router } from '@angular/router';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  title = 'Openfact';
-
   constructor(public router: Router) { }
 
   ngOnInit() {
+
   }
 
-  get loggedIn() {
-    return true;
+  get username(): string {
+    return KeycloakOAuthService.auth.authz.tokenParsed.username;
+  }
+
+  accountManagement() {
+    KeycloakOAuthService.auth.authz.accountManagement();
   }
 
   logout() {
-    window.location.replace('/');
+    KeycloakOAuthService.auth.authz.logout();
   }
 
 }

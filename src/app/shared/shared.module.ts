@@ -18,6 +18,7 @@ import { LimitedStringComponent } from './components/limited-string/limited-stri
 import { LoadingComponent } from './components/loading/loading.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { ModalModule } from 'ngx-modal';
+import { MomentModule } from 'angular2-moment';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReadFileComponent } from './components/read-file/read-file.component';
@@ -42,6 +43,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     NgbModule,
     BsDropdownModule,
     ModalModule,
+    MomentModule,
     LocalStorageModule,
     ToastyModule,
   ],
@@ -73,6 +75,8 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
   exports: [
     NgbModule,
     BsDropdownModule,
+    ModalModule,
+    MomentModule,
     LocalStorageModule,
     ToastyModule,
 

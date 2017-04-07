@@ -14,6 +14,7 @@ import { KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
 import { KeycloakOAuthService } from './keycloak/keycloak.oauth.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { ModalModule } from 'ngx-modal';
+import { MomentModule } from 'angular2-moment';
 import { NgModule } from '@angular/core';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { OrganizationModule } from './organization/organization.module';
@@ -38,6 +39,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     NgbModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule,
+    MomentModule,
     LocalStorageModule.withConfig({
       prefix: 'openfact',
       storageType: 'localStorage'

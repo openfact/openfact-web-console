@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+
+      <ol class="breadcrumb">
+        <li>
+          <a href="javascript:void(0);" routerLink="../../">Users</a>
+        </li>
+        <li class="active">Create user</li>
+      </ol>
+
+      <div>
+        <h3>Create user</h3>
+        <form [formGroup]="form" (ngSubmit)="save(form)" class="form-horizontal">
+          <of-form-fields-status [ofForm]="form"></of-form-fields-status>
+
+          <div class="form-group" [ofFormFieldValidationState]="form.get('username')">
+            <label class="col-md-2 control-label" [ofFormRequiredLabel]="form.get('username')">Username
+						  <i class="fa fa-question-circle text-muted" ngbTooltip="Name of the username." placement="right"></i>
+            </label>
+            <div class="col-md-3">
+              <input formControlName="username" type="text" class="form-control" autofocus/>
+              <of-form-field-validation-messages [ofFormControl]="form.get('username')">
+              </of-form-field-validation-messages>
+            </div>
+          </div>
+
+          <div class="form-group" formGroupName="attributes">
+            <label class="col-md-2 control-label" [ofFormRequiredLabel]="form.get('attributes').get('organization')">Organizations
+						  <i class="fa fa-question-circle text-muted" ngbTooltip="Name of the organization." placement="right"></i>
+            </label>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-3">
+                  <label class="control-label">Available Organizations <i class="fa fa-question-circle text-muted" ngbTooltip="Organizations that can be assigned to the user." placement="right"></i></label>
+                  <select formControlName="organization" multiple class="form-control">
+                    <option *ngFor="let organization of organizations | async" [value]="organization.organization">{{organization.organization}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <of-form-field-validation-messages [ofFormControl]="form.get('attributes').get('organization')">
+            </of-form-field-validation-messages>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
+              <of-button-save [ofForm]="form" [working]="working"></of-button-save>
+              <of-button-cancel (ofOnCancel)="cancel($event)"></of-button-cancel>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
