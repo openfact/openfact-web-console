@@ -4,6 +4,7 @@ import { APP_INITIALIZER } from '@angular/core';
 import { AdminModule } from './admin/admin.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { BsDropdownModule } from "ngx-bootstrap";
 import { CoreModule } from './core/core.module';
@@ -32,6 +33,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     RestangularModule.forRoot([ConfigService], restangularProviderConfigurer),
     NgbModule.forRoot(),
     BsDropdownModule.forRoot(),
