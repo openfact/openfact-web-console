@@ -14,7 +14,7 @@ export class UserService extends RealmResourceService<User, Users> {
   constructor(
     @Inject(KEYCLOAK_RESTANGULAR) keycloakRestangular: Restangular,
     realmScope: RealmScope) {
-    super(keycloakRestangular, realmScope, '/users', '');
+    super(keycloakRestangular, realmScope, '/users', '/admin/realms');
   }
 
 }
