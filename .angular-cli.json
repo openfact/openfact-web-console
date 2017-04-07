@@ -26,6 +26,11 @@
         "../node_modules/ng2-toasty/style-material.css",
         "styles.scss"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "../node_modules/patternfly-sass/assets"
+        ]
+      },
       "scripts": [
         "../node_modules/keycloak-js/dist/keycloak.min.js",
         "../node_modules/keycloak-js/dist/keycloak-authz.min.js"
