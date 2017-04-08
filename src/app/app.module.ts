@@ -20,6 +20,7 @@ import { OrganizationModule } from './organization/organization.module';
 import { RestangularModule } from "ng2-restangular";
 import { SharedModule } from './shared/shared.module';
 import { ToastyModule } from 'ng2-toasty';
+import { AboutComponent } from './common/about/about.component';
 
 export function restangularProviderConfigurer(restangularProvider: any, config: ConfigService) {
   restangularProvider.setBaseUrl(config.getSettings().apiEndpoint);
@@ -27,7 +28,8 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

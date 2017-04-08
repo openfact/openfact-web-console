@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { KeycloakOAuthService } from './../../../keycloak/keycloak.oauth.service';
 import { Router } from '@angular/router';
 
@@ -10,10 +11,9 @@ import { Router } from '@angular/router';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-
   }
 
   get username(): string {
@@ -26,6 +26,11 @@ export class AdminHeaderComponent implements OnInit {
 
   logout() {
     KeycloakOAuthService.auth.authz.logout();
+  }
+
+  about() {
+    const url = this.router.createUrlTree(['./', { outlets: { secondary: 'about' } }]);
+    this.router.navigateByUrl(url, { relativeTo: this.route });
   }
 
 }
