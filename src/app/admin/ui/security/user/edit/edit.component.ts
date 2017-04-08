@@ -58,7 +58,7 @@ export class EditUserComponent implements OnInit, OnChanges {
   save(form: FormGroup) {
     this.userService.updateResource(this.user, form.value).subscribe(
       () => {
-        this.toastyService.success('Success! User updated.');
+        this.toastyService.success('Success! The user has been updated.');
         this.router.navigate(['../../'], { relativeTo: this.route });
       }
     );
