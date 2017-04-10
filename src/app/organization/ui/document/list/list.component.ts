@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+import { Documents } from './../../../../core/models/document.model';
 
 @Component({
-  selector: 'openfact-list',
+  selector: 'openfact-documents-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class DocumentsListComponent implements OnInit {
 
-  constructor() { }
+  parentLink: string;
 
-  ngOnInit() {
+  @Input()
+  documents: Documents;
+
+  @Input() loading: boolean;
+
+  //@ViewChild(NamespaceDeleteDialog) deleteDialog: NamespaceDeleteDialog;
+
+  constructor(/*parentLinkFactory: ParentLinkFactory*/) {
+    //this.parentLink = parentLinkFactory.parentLink;
+  }
+
+  ngOnInit() { }
+
+  openDeleteDialog(deleteNamespaceModal, namespace) {
+    //this.deleteDialog.modal = deleteNamespaceModal;
+    //this.deleteDialog.namespace = namespace;
+    deleteNamespaceModal.open();
   }
 
 }

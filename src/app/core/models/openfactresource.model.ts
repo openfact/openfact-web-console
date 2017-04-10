@@ -4,6 +4,5 @@ import { Restangular } from 'ng2-restangular';
 export class OpenfactResource implements BaseEntity {
 
   id: string;
-  organization: string;
 
 }

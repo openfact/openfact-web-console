@@ -3,6 +3,8 @@ import { OPENFACT_RESTANGULAR, OpenfactRestangularFactory } from './services/ope
 
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './../config.service';
+import { DocumentService } from './services/document.service';
+import { DocumentStore } from './store/document.store';
 import { NgModule } from '@angular/core';
 import { OrganizationScope } from './services/organization.scope';
 import { OrganizationService } from './services/organization.service';
@@ -39,6 +41,9 @@ import { UserStore } from './store/user.store';
     RealmScope,
     UserService,
     UserStore,
+
+    DocumentService,
+    DocumentStore
   ]
 })
 export class CoreModule { }

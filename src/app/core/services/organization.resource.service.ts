@@ -52,9 +52,6 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   }
 
   create(obj: T, organization: string = null): Observable<T> {
-    if (!organization) {
-      organization = obj.organization;
-    }
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     return this.restangularService.all(url).post(obj);
   }
