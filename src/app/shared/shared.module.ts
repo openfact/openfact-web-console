@@ -8,6 +8,7 @@ import { ButtonResetComponent } from './components/button-reset/button-reset.com
 import { ButtonSaveComponent } from './components/button-save/button-save.component';
 import { CommonModule } from '@angular/common';
 import { FirstElementPipe } from './pipes/first-element.pipe';
+import { FirstLetterUpperCasePipe } from './pipes/first-letter-upper-case.pipe';
 import { FormFieldValidationMessagesComponent } from './components/form-field-validation-messages/form-field-validation-messages.component';
 import { FormFieldValidationStateDirective } from './directives/form-field-validation-state.directive';
 import { FormFieldsStatusComponent } from './components/form-fields-status/form-fields-status.component';
@@ -66,10 +67,11 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     FirstElementPipe,
     ToNumberPipe,
     LimitedStringComponent,
+    FirstLetterUpperCasePipe,
 
     LoadingComponent,
 
-    AccessDirective
+    AccessDirective,
   ],
   exports: [
     NgbModule,
@@ -98,6 +100,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     FirstElementPipe,
     ToNumberPipe,
     LimitedStringComponent,
+    FirstLetterUpperCasePipe,
 
     LoadingComponent,
 

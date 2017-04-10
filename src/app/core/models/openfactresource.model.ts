@@ -11,6 +11,8 @@ export class OpenfactResource implements BaseEntity {
   resource: any;
   creationTimestamp: any;
 
+  organization: string;
+
   public setResource(resource) {
     this.resource = resource || {};
     this.updateValuesFromResource();

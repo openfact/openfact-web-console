@@ -4,6 +4,7 @@ import { OPENFACT_RESTANGULAR, OpenfactRestangularFactory } from './services/ope
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './../config.service';
 import { NgModule } from '@angular/core';
+import { OrganizationScope } from './services/organization.scope';
 import { OrganizationService } from './services/organization.service';
 import { OrganizationStore } from './store/organization.store';
 import { RealmScope } from './services/realm.scope';
@@ -31,6 +32,7 @@ import { UserStore } from './store/user.store';
       deps: [Restangular, ToastyService]
     },
 
+    OrganizationScope,
     OrganizationService,
     OrganizationStore,
 
