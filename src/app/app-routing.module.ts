@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'forbidden', component: Error403Component },
   { path: 'server-error', component: Error500Component },
   { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
+  { path: 'organizations', loadChildren: 'app/organization/organization.module#OrganizationModule' },
   // { path: '**', component: Error404Component }
 ];
 

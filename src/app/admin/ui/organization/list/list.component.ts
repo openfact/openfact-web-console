@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Organization, Organizations } from './../../../../core/models/organization.model';
 
 import { OrganizationStore } from './../../../../core/store/organization.store';
+import { Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
 
 @Component({
@@ -18,11 +19,16 @@ export class OrganizationsListComponent implements OnInit {
   loading: boolean;
 
   constructor(
+    private router: Router,
     private organizationStore: OrganizationStore,
     private toastyService: ToastyService) { }
 
   ngOnInit() {
 
+  }
+
+  edit(organization: Organization) {
+    this.router.navigate(['/organizations', organization.organization]);
   }
 
   delete(resource: Organization) {
