@@ -1,5 +1,4 @@
 import { KeycloakResource } from './keycloakresource.model';
-import { OpenfactResource } from './openfactresource.model';
 
 export class User extends KeycloakResource {
 
@@ -9,9 +8,6 @@ export class User extends KeycloakResource {
   defaultKind() {
     return 'User';
   }
-
 }
 
-export class Users extends Array<User> {
-
-}
+export class Users extends Array<User> { }

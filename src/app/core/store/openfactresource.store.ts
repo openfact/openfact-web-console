@@ -24,10 +24,7 @@ export abstract class OpenfactResourceStore<T extends OpenfactResource, L extend
        */
     instantiate(resource: any): T {
         if (resource) {
-            let item = new this.type();
-            item.setResource(resource);
-            // lets add the Restangular crack
-            return this.service.restangularize(item);
+            return this.service.restangularize(resource);
         } else {
             return null;
         }

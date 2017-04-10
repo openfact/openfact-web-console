@@ -11,6 +11,4 @@ export class Realm extends KeycloakResource {
 
 }
 
-export class Realms extends Array<Realm> {
-
-}
+export class Realms extends Array<Realm> { }

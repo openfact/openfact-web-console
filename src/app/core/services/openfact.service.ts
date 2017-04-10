@@ -15,22 +15,17 @@ export abstract class OpenfactService<T extends OpenfactResource, L extends Arra
   }
 
   create(obj: T): Observable<T> {
-    // let resource = obj.resource || {};
-    // if (!resource.kind) {
-    //     resource.kind = obj.defaultKind();
-    // }
-    // obj.updateResource(resource);
-    return this.restangularService/*.all(this.serviceUrl)*/.post(obj);
+    return this.restangularService.post(obj);
   }
 
   update(obj: T): Observable<T> {
-    let resource = obj.resource;
-    obj.updateResource(resource);
-    return this.updateResource(obj, resource);
+    let resty: any = obj;
+    return resty.customPUT(obj);
   }
 
   updateResource(obj: T, resource: any) {
     let id = obj.id;
+    console.log('Updating key ' + id + ' with value ' + JSON.stringify(resource, null, '  '));
     let resty: any = obj;
     return resty.customPUT(resource);
   }
