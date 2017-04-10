@@ -17,6 +17,7 @@ const routes: Routes = [
             { path: 'smtp', component: SmtpComponent }
         ]
     },
+    { path: 'organizations/:organization/documents', component: DocumentsListPageComponent }
 ];
 
 @NgModule({
