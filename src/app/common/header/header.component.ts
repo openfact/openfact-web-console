@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { KeycloakOAuthService } from './../../../keycloak/keycloak.oauth.service';
+import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'openfact-admin-header',
-  templateUrl: './admin-header.component.html',
-  styleUrls: ['./admin-header.component.scss']
+  selector: 'openfact-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class AdminHeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
