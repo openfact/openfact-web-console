@@ -40,5 +40,9 @@ export abstract class OpenfactService<T extends OpenfactResource, L extends Arra
     return 'Organization';
   }
 
+  get searchPath(): string {
+    return 'search';
+  };
+
   abstract get serviceUrl(): string;
 }

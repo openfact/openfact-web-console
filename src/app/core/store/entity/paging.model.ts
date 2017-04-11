@@ -1,31 +1,27 @@
 export class Paging {
 
-  private _page: number;
-  private _pageSize: number;
+  private page: number;
+  private pageSize: number;
 
   constructor(page: number = 1, pageSize: number = 10) {
-    this._page = page;
-    this._pageSize = pageSize;
+    this.page = page;
+    this.pageSize = pageSize;
   }
 
   nextPage() {
-    this._pageSize++;
+    this.pageSize++;
   }
 
   previousPage() {
-    this._pageSize--;
+    this.pageSize--;
   }
 
   jumpTo(page: number) {
-    this._page = page;
-  }
-
-  set pageSize(pageSize: number) {
-    this._pageSize = pageSize;
+    this.page = page;
   }
 
   maxNumberOfItems() {
-    return this._page * this._pageSize;
+    return this.page * this.pageSize;
   }
 
 }

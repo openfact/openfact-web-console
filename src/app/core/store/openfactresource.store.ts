@@ -21,10 +21,6 @@ export abstract class OpenfactResourceStore<T extends OpenfactResource, L extend
     super(service, initialList, initialSearch, initialCurrent);
   }
 
-  protected get searchPath(): string {
-    return this.defaultSearchPath;
-  }
-
   /**
      * Creates a new instance of the resource type from the given data - typically received from a web socket event
      */
@@ -56,7 +52,7 @@ export abstract class OpenfactResourceStore<T extends OpenfactResource, L extend
     return this.list;
   }
 
-  searchAll(): Observable<S> {
+  searchAll(criteria: any = null): Observable<S> {
     super.searchAll();
     return this.search;
   }
@@ -67,14 +63,6 @@ export abstract class OpenfactResourceStore<T extends OpenfactResource, L extend
 
   listQueryParams() {
     return null;
-  }
-
-  searchCriteria(criteria: any): SearchCriteria {
-    return <SearchCriteria>Object.assign(criteria, { paging: this._paging });
-  }
-
-  get defaultSearchPath() {
-    return 'search';
   }
 
 }

@@ -6,6 +6,8 @@ import { SearchResults } from './search.model';
 export abstract class RESTService<T extends BaseEntity, L extends Array<T>, S extends SearchResults<T>> {
 
   protected constructor(protected restangularService: Restangular) { }
+  
+  protected abstract get searchPath(): string;
 
   get(id: string): Observable<T> {
     return this.restangularService.one(id).get();
@@ -15,8 +17,8 @@ export abstract class RESTService<T extends BaseEntity, L extends Array<T>, S ex
     return this.restangularService.getList(queryParams);
   }
 
-  search(queryParams: any = null, path: string): Observable<S> {
-    return this.restangularService.all(path).post(queryParams);
+  search(criteria: any = null): Observable<S> {
+    return this.restangularService.all(this.searchPath).post(criteria);
   }
 
   create(obj: T): Observable<T> {

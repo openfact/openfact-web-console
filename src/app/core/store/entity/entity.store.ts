@@ -31,9 +31,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     this._current = new BehaviorSubject(initialCurrent);
   }
 
-  protected abstract get kind(): string;
-
-  protected abstract get searchPath(): string;
+  protected abstract get kind(): string;  
 
   get list(): Observable<L> { return this._list.asObservable(); }
 
@@ -60,7 +58,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     return this.service.update(obj);
   }
 
-  loadAll(): Observable<L> {
+  loadAll(): Observable<L> { 
     this._isSearch = false;
     this._loadId = null;
     this._loading.next(true);
@@ -82,7 +80,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     this._hasMore.next(false);
     this._loadId = null;
     this._loading.next(true);
-    let searchObserver = this.service.search(this.searchCriteria(criteria), this.searchPath);
+    let searchObserver = this.service.search(this.searchCriteria(criteria));
     searchObserver.subscribe(
       (search) => {
         this._hasMore.next(search.totalSize > this._paging.maxNumberOfItems());
@@ -139,7 +137,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   }
 
   searchCriteria(criteria: any): SearchCriteria {
-    return <SearchCriteria>Object.assign(criteria, { paging: this._paging });
+    return <SearchCriteria>Object.assign(criteria || {}, { paging: this._paging });
   }
 
 }

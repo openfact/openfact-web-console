@@ -53,9 +53,9 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
     return this.restangularService.all(url).getList(queryParams);
   }
 
-  search(organization: string = null, queryParams: any = null, path: string = null): Observable<S> {
+  search(criteria: any = null, organization: string = null): Observable<S> {
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
-    return this.restangularService.all(url).all(path).getList(queryParams);
+    return this.restangularService.all(url).all(this.searchPath).post(criteria);
   }
 
   create(obj: T, organization: string = null): Observable<T> {

@@ -41,5 +41,9 @@ export abstract class KeycloakService<T extends KeycloakResource, L extends Arra
     return 'Keycloak';
   }
 
+  get searchPath(): string {
+    return 'search';
+  };
+
   abstract get serviceUrl(): string;
 }

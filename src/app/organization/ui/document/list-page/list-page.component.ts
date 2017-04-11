@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Document } from './../../../../core/models/document.model';
 import { DocumentStore } from './../../../../core/store/document.store';
-import { Documents } from './../../../../core/models/document.model';
 import { Observable } from 'rxjs/Rx';
+import { SearchResults } from './../../../../core/store/entity/search.model';
 
 @Component({
   selector: 'openfact-list-page',
@@ -11,16 +12,16 @@ import { Observable } from 'rxjs/Rx';
 })
 export class DocumentsListPageComponent implements OnInit {
 
-  private readonly documents: Observable<Documents>;
+  private readonly search: Observable<SearchResults<Document>>;
   private readonly loading: Observable<boolean>;
 
   constructor(private documentStore: DocumentStore) {
-    this.documents = this.documentStore.list;
+    this.search = this.documentStore.search;
     this.loading = this.documentStore.loading;
   }
 
   ngOnInit() {
-    this.documentStore.loadAll();
+    this.documentStore.searchAll();
   }
 
 }

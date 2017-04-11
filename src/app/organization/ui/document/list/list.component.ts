@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Documents } from './../../../../core/models/document.model';
+import { Document } from './../../../../core/models/document.model';
+import { SearchResults } from './../../../../core/store/entity/search.model';
 
 @Component({
   selector: 'openfact-documents-list',
@@ -12,9 +13,10 @@ export class DocumentsListComponent implements OnInit {
   parentLink: string;
 
   @Input()
-  documents: Documents;
+  search: SearchResults<Document>;
 
-  @Input() loading: boolean;
+  @Input()
+  loading: boolean;
 
   //@ViewChild(NamespaceDeleteDialog) deleteDialog: NamespaceDeleteDialog;
 
