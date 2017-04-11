@@ -1,7 +1,7 @@
 export class Paging {
 
-  private page: number;
-  private pageSize: number;
+  public page: number;
+  public pageSize: number;
 
   constructor(page: number = 1, pageSize: number = 10) {
     this.page = page;
@@ -21,6 +21,14 @@ export class Paging {
   }
 
   maxNumberOfItems() {
+    return this.page * this.pageSize;
+  }
+
+  pointerFrom() {
+    return (this.page - 1) * this.pageSize;
+  }
+
+  pointerTo() {
     return this.page * this.pageSize;
   }
 

@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { Document } from './../../../../core/models/document.model';
+import { DocumentDeleteDialogComponent } from './../delete-dialog/delete-dialog.component';
+import { DocumentStore } from './../../../../core/store/document.store';
+import { Paging } from './../../../../core/store/entity/paging.model';
 import { SearchResults } from './../../../../core/store/entity/search.model';
 
 @Component({
@@ -18,18 +21,25 @@ export class DocumentsListComponent implements OnInit {
   @Input()
   loading: boolean;
 
-  //@ViewChild(NamespaceDeleteDialog) deleteDialog: NamespaceDeleteDialog;
+  @ViewChild(DocumentDeleteDialogComponent)
+  deleteDialog: DocumentDeleteDialogComponent;
 
-  constructor(/*parentLinkFactory: ParentLinkFactory*/) {
-    //this.parentLink = parentLinkFactory.parentLink;
-  }
+  constructor(private store: DocumentStore) { }
 
   ngOnInit() { }
 
-  openDeleteDialog(deleteNamespaceModal, namespace) {
-    //this.deleteDialog.modal = deleteNamespaceModal;
-    //this.deleteDialog.namespace = namespace;
-    deleteNamespaceModal.open();
+  openDeleteDialog(deleteDocumentModal, document) {
+    this.deleteDialog.modal = deleteDocumentModal;
+    this.deleteDialog.document = document;
+    deleteDocumentModal.shown();
+  }
+
+  changePage(page: number) {
+    this.store.changePage(page);
+  }
+
+  changePageSize(pageSize: number) {
+    this.store.changePageSize(pageSize);
   }
 
 }

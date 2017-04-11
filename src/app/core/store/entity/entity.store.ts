@@ -12,12 +12,10 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   protected _list: BehaviorSubject<L>;
 
   protected _search: BehaviorSubject<S>;
-
   protected _isSearch: boolean = null;
-
   protected _paging = new Paging();
-
   protected _hasMore: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  protected _totalPages: BehaviorSubject<number> = new BehaviorSubject(1);
 
   protected _current: BehaviorSubject<T>;
 
@@ -31,7 +29,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     this._current = new BehaviorSubject(initialCurrent);
   }
 
-  protected abstract get kind(): string;  
+  protected abstract get kind(): string;
 
   get list(): Observable<L> { return this._list.asObservable(); }
 
@@ -39,10 +37,22 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
 
   get hasMore(): Observable<boolean> { return this._hasMore.asObservable(); }
 
+  get totalPages(): Observable<number> { return this._totalPages.asObservable(); }
+
   get paging(): Paging { return this._paging; }
 
   set paging(paging: Paging) {
     this._paging = paging;
+    this.searchAll();
+  }
+
+  changePage(page: number) {
+    this._paging.page = page;
+    this.searchAll();
+  }
+
+  changePageSize(pageSize: number) {
+    this._paging.pageSize = pageSize;
     this.searchAll();
   }
 
@@ -58,7 +68,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     return this.service.update(obj);
   }
 
-  loadAll(): Observable<L> { 
+  loadAll(): Observable<L> {
     this._isSearch = false;
     this._loadId = null;
     this._loading.next(true);
@@ -84,6 +94,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     searchObserver.subscribe(
       (search) => {
         this._hasMore.next(search.totalSize > this._paging.maxNumberOfItems());
+        this._totalPages.next(Math.ceil((search.totalSize + this._paging.pageSize - 1) / this._paging.pageSize));
         this._search.next(search);
         this._loading.next(false);
       },
@@ -126,14 +137,30 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     return null;
   }
 
-  nextPage() {
-    this._paging.nextPage();
-    this.searchAll();
+  firstPage() {
+    if (this._paging.page > 1) {
+      this.changePage(1);
+    }
   }
 
   previousPage() {
-    this._paging.previousPage();
-    this.searchAll();
+    if (this._paging.page > 1) {
+      this._paging.previousPage();
+      this.changePage(this._paging.page);
+    }
+  }
+
+  nextPage() {
+    if (this._hasMore.getValue()) {
+      this._paging.nextPage()
+      this.changePage(this._paging.page);
+    }
+  }
+
+  lastPage() {
+    if (this._paging.pageSize < this._totalPages.getValue()) {
+      this.changePage(this._totalPages.getValue());
+    }
   }
 
   searchCriteria(criteria: any): SearchCriteria {
