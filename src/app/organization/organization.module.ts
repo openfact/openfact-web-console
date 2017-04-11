@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { DocumentCreatePageComponent } from './ui/document/create-page/create-page.component';
 import { DocumentDeleteDialogComponent } from './ui/document/delete-dialog/delete-dialog.component';
+import { DocumentUploadPageComponent } from './ui/document/upload-page/upload-page.component';
 import { DocumentsListComponent } from './ui/document/list/list.component';
 import { DocumentsListPageComponent } from './ui/document/list-page/list-page.component';
 import { EditComponent } from './ui/document/edit/edit.component';
@@ -49,6 +51,8 @@ import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.co
     ViewWrapperComponent,
     OrganizationComponent,
     DocumentDeleteDialogComponent,
+    DocumentCreatePageComponent,
+    DocumentUploadPageComponent,
   ]
 })
 export class OrganizationModule { }
