@@ -8,49 +8,58 @@ import { KeycloakService } from '../services/keycloak.service';
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
+import { SearchResults } from './entity/search.model';
 
 function nameOfResource(resource: any) {
-    let obj = resource || {};
-    let metadata = obj.metadata || {};
-    return metadata.name || '';
+  let obj = resource || {};
+  let metadata = obj.metadata || {};
+  return metadata.name || '';
 }
 
-export abstract class KeycloakResourceStore<T extends KeycloakResource, L extends Array<T>, R extends KeycloakService<T, L>> extends AbstractStore<T, L, R>{
+export abstract class KeycloakResourceStore<T extends KeycloakResource, L extends Array<T>, S extends SearchResults<T>, R extends KeycloakService<T, L, S>> extends AbstractStore<T, L, S, R>{
 
-    constructor(service: R, private initialList: L, initialCurrent: T, protected type: { new (): T; }) {
-        super(service, initialList, initialCurrent);
-    }
+  constructor(service: R, private initialList: L, private initialSearch: S, initialCurrent: T, protected type: { new (): T; }) {
+    super(service, initialList, initialSearch, initialCurrent);
+  }
 
-    /**
-       * Creates a new instance of the resource type from the given data - typically received from a web socket event
-       */
-    instantiate(resource: any): T {
-        if (resource) {
-            return this.service.restangularize(resource);
-        } else {
-            return null;
-        }
-    }
+  protected get searchPath(): string {
+    return this.defaultSearchPath;
+  }
 
-    update(obj: T): Observable<T> {
-        return this.service.update(obj);
+  /**
+     * Creates a new instance of the resource type from the given data - typically received from a web socket event
+     */
+  instantiate(resource: any): T {
+    if (resource) {
+      return this.service.restangularize(resource);
+    } else {
+      return null;
     }
+  }
 
-    delete(obj: T): Observable<any> {
-        return this.service.delete(obj);
-    }
+  update(obj: T): Observable<T> {
+    return this.service.update(obj);
+  }
 
-    loadAll(): Observable<L> {
-        super.loadAll();
-        return this.list;
-    }
+  delete(obj: T): Observable<any> {
+    return this.service.delete(obj);
+  }
 
-    load(id: string): void {
-        super.load(id);
-    }
+  loadAll(): Observable<L> {
+    super.loadAll();
+    return this.list;
+  }
 
-    listQueryParams() {
-        return null;
-    }
+  load(id: string): void {
+    super.load(id);
+  }
+
+  listQueryParams() {
+    return null;
+  }
+
+  get defaultSearchPath() {
+    return 'search';
+  }
 
 }

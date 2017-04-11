@@ -1,47 +1,48 @@
 import { BaseEntity } from './entity.model';
 import { Observable } from 'rxjs/Observable';
 import { Restangular } from 'ng2-restangular';
+import { SearchResults } from './search.model';
 
-export abstract class RESTService<T extends BaseEntity, L extends Array<T>> {
+export abstract class RESTService<T extends BaseEntity, L extends Array<T>, S extends SearchResults<T>> {
 
-    protected constructor(protected restangularService: Restangular) { }
+  protected constructor(protected restangularService: Restangular) { }
 
-    get(id: string): Observable<T> {
-        return this.restangularService.one(id).get();
-    }
+  get(id: string): Observable<T> {
+    return this.restangularService.one(id).get();
+  }
 
-    list(queryParams: any = null): Observable<L> {
-        return this.restangularService.getList(queryParams);
-    }
+  list(queryParams: any = null): Observable<L> {
+    return this.restangularService.getList(queryParams);
+  }
 
-    create(obj: T): Observable<T> {
-        return this.restangularService.post(obj);
-    }
+  search(queryParams: any = null, path: string): Observable<S> {
+    return this.restangularService.all(path).post(queryParams);
+  }
 
-    update(obj: T): Observable<T> {
-        return this.restangularService.one(obj.id).put(obj);
-    }
+  create(obj: T): Observable<T> {
+    return this.restangularService.post(obj);
+  }
 
-    delete(obj: T) {
-        return this.restangularService.one(obj.id).delete();
-    }
+  update(obj: T): Observable<T> {
+    return this.restangularService.one(obj.id).put(obj);
+  }
 
-    execute(obj: any, path?: string) {
-        return this.restangularService.all(path || '').post(obj);
-    }
+  delete(obj: T) {
+    return this.restangularService.one(obj.id).delete();
+  }
 
-    /**
-       * If a new item has been loaded via a websocket then lets restanguarlize it
-       * so that the REST APIs appear on it
-       */
-    restangularize(item: T): T {
-        let restangularService = this.restangularService;
-        let parent = restangularService.parentResource;
-        let route = restangularService.route;
-        let fromServer = restangularService.fromServer;
-        let collection = restangularService.restangularCollection;
-        let reqParams = restangularService.reqParams;
-        return this.restangularService.restangularizeElement(parent, item, route, fromServer, collection, reqParams);
-    }
+  /**
+     * If a new item has been loaded via a websocket then lets restanguarlize it
+     * so that the REST APIs appear on it
+     */
+  restangularize(item: T): T {
+    let restangularService = this.restangularService;
+    let parent = restangularService.parentResource;
+    let route = restangularService.route;
+    let fromServer = restangularService.fromServer;
+    let collection = restangularService.restangularCollection;
+    let reqParams = restangularService.reqParams;
+    return this.restangularService.restangularizeElement(parent, item, route, fromServer, collection, reqParams);
+  }
 
 }

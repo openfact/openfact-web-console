@@ -6,53 +6,75 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
+import { SearchCriteria } from './entity/searchcriteria.model';
+import { SearchResults } from './entity/search.model';
 
 function nameOfResource(resource: any) {
-    let obj = resource || {};
-    let metadata = obj.metadata || {};
-    return metadata.name || '';
+  let obj = resource || {};
+  let metadata = obj.metadata || {};
+  return metadata.name || '';
 }
 
-export abstract class OpenfactResourceStore<T extends OpenfactResource, L extends Array<T>, R extends OpenfactService<T, L>> extends AbstractStore<T, L, R>{
+export abstract class OpenfactResourceStore<T extends OpenfactResource, L extends Array<T>, S extends SearchResults<T>, R extends OpenfactService<T, L, S>> extends AbstractStore<T, L, S, R>{
 
-    constructor(service: R, private initialList: L, initialCurrent: T, protected type: { new (): T; }) {
-        super(service, initialList, initialCurrent);
-    }
+  constructor(service: R, private initialList: L, private initialSearch: S, initialCurrent: T, protected type: { new (): T; }) {
+    super(service, initialList, initialSearch, initialCurrent);
+  }
 
-    /**
-       * Creates a new instance of the resource type from the given data - typically received from a web socket event
-       */
-    instantiate(resource: any): T {
-        if (resource) {
-            return this.service.restangularize(resource);
-        } else {
-            return null;
-        }
-    }
+  protected get searchPath(): string {
+    return this.defaultSearchPath;
+  }
 
-    update(obj: T): Observable<T> {
-        return this.service.update(obj);
+  /**
+     * Creates a new instance of the resource type from the given data - typically received from a web socket event
+     */
+  instantiate(resource: any): T {
+    if (resource) {
+      let item = new this.type();
+      item.setResource(resource);
+      // lets add the Restangular crack
+      return this.service.restangularize(item);
+    } else {
+      return null;
     }
+  }
 
-    updateResource(obj: T, resource: any): Observable<T> {
-        return this.service.updateResource(obj, resource);
-    }
+  update(obj: T): Observable<T> {
+    return this.service.update(obj);
+  }
 
-    delete(obj: T): Observable<any> {
-        return this.service.delete(obj);
-    }
+  updateResource(obj: T, resource: any): Observable<T> {
+    return this.service.updateResource(obj, resource);
+  }
 
-    loadAll(): Observable<L> {
-        super.loadAll();
-        return this.list;
-    }
+  delete(obj: T): Observable<any> {
+    return this.service.delete(obj);
+  }
 
-    load(id: string): void {
-        super.load(id);
-    }
+  loadAll(): Observable<L> {
+    super.loadAll();
+    return this.list;
+  }
 
-    listQueryParams() {
-        return null;
-    }
+  searchAll(): Observable<S> {
+    super.searchAll();
+    return this.search;
+  }
+
+  load(id: string): void {
+    super.load(id);
+  }
+
+  listQueryParams() {
+    return null;
+  }
+
+  searchCriteria(criteria: any): SearchCriteria {
+    return <SearchCriteria>Object.assign(criteria, { paging: this._paging });
+  }
+
+  get defaultSearchPath() {
+    return 'search';
+  }
 
 }

@@ -5,11 +5,12 @@ import { KEYCLOAK_RESTANGULAR } from './keycloak.restangular';
 import { RealmResourceService } from './realm.resource.service';
 import { RealmScope } from './realm.scope';
 import { Restangular } from 'ng2-restangular';
+import { SearchResults } from './../store/entity/search.model';
 import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
 
 @Injectable()
-export class UserService extends RealmResourceService<User, Users> {
+export class UserService extends RealmResourceService<User, Users, SearchResults<User>> {
 
   constructor(
     @Inject(KEYCLOAK_RESTANGULAR) keycloakRestangular: Restangular,

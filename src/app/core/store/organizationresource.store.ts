@@ -12,15 +12,16 @@ import { OpenfactService } from '../services/openfact.service';
 import { OrganizationResourceService } from '../services/organization.resource.service';
 import { OrganizationScope } from './../services/organization.scope';
 import { RealmScope } from './../services/realm.scope';
+import { SearchResults } from './entity/search.model';
 import { Subscription } from 'rxjs/Subscription';
 
 @Injectable()
-export abstract class OrganizationResourceStore<T extends OpenfactResource, L extends Array<T>, R extends OrganizationResourceService<T, L>> extends OpenfactResourceStore<T, L, R> {
+export abstract class OrganizationResourceStore<T extends OpenfactResource, L extends Array<T>, S extends SearchResults<T>, R extends OrganizationResourceService<T, L, S>> extends OpenfactResourceStore<T, L, S, R> {
 
   private organizationSubscription: Subscription;
 
-  constructor(service: any, initialList: any, initialCurrent: any, public organizationScope: OrganizationScope, type: any) {
-    super(service, initialList, initialCurrent, type);
+  constructor(service: any, initialList, initialSearch: any, initialCurrent: any, public organizationScope: OrganizationScope, type: any) {
+    super(service, initialList, initialSearch, initialCurrent, type);
     if (this.organizationScope) {
       this.organizationSubscription = this.organizationScope.organization.subscribe(
         organization => {

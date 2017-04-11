@@ -3,10 +3,12 @@ import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from "./openfact.service";
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ng2-restangular';
+import { SearchResults } from './../store/entity/search.model';
 import { Subscription } from 'rxjs/Subscription';
 import { pathJoin } from '../models/utils';
 
-export abstract class OrganizationResourceService<T extends OpenfactResource, L extends Array<T>> extends OpenfactService<T, L> {
+export abstract class OrganizationResourceService<T extends OpenfactResource, L extends Array<T>, S extends SearchResults<T>> extends OpenfactService<T, L, S> {
+
   private organizationSubscription: Subscription;
   private _organization: string;
   protected _serviceUrl: string;
@@ -49,6 +51,11 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   list(organization: string = null, queryParams: any = null): Observable<L> {
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     return this.restangularService.all(url).getList(queryParams);
+  }
+
+  search(organization: string = null, queryParams: any = null, path: string = null): Observable<S> {
+    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    return this.restangularService.all(url).all(path).getList(queryParams);
   }
 
   create(obj: T, organization: string = null): Observable<T> {

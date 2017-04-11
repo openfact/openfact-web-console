@@ -3,10 +3,11 @@ import { KeycloakService } from './keycloak.service';
 import { Observable } from 'rxjs/Observable';
 import { RealmScope } from './realm.scope';
 import { Restangular } from 'ng2-restangular';
+import { SearchResults } from './../store/entity/search.model';
 import { Subscription } from 'rxjs/Subscription';
 import { pathJoin } from '../models/utils';
 
-export abstract class RealmResourceService<T extends KeycloakResource, L extends Array<T>> extends KeycloakService<T, L> {
+export abstract class RealmResourceService<T extends KeycloakResource, L extends Array<T>, S extends SearchResults<T>> extends KeycloakService<T, L, S> {
   private realmSubscription: Subscription;
   private _realm: string;
   protected _serviceUrl: string;
