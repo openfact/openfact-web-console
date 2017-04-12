@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FileItem, FileUploader } from 'ng2-file-upload';
+
+import { DocumentService } from './../../../../core/services/document.service';
 
 @Component({
   selector: 'openfact-upload-page',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentUploadPageComponent implements OnInit {
 
-  constructor() { }
+  uploader: FileUploader;
+
+  constructor(private documentService: DocumentService) { }
 
   ngOnInit() {
+    this.uploader = this.documentService.buildFileUpload();
   }
 
 }

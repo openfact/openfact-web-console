@@ -7,6 +7,7 @@ import { ButtonDeleteComponent } from './components/button-delete/button-delete.
 import { ButtonResetComponent } from './components/button-reset/button-reset.component';
 import { ButtonSaveComponent } from './components/button-save/button-save.component';
 import { CommonModule } from '@angular/common';
+import { FileUploadModule } from 'ng2-file-upload';
 import { FirstElementPipe } from './pipes/first-element.pipe';
 import { FirstLetterUpperCasePipe } from './pipes/first-letter-upper-case.pipe';
 import { FormFieldValidationMessagesComponent } from './components/form-field-validation-messages/form-field-validation-messages.component';
@@ -44,6 +45,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     BsDropdownModule,
     ModalModule,
     MomentModule,
+    FileUploadModule,
     LocalStorageModule,
     ToastyModule,
   ],
@@ -78,6 +80,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     BsDropdownModule,
     ModalModule,
     MomentModule,
+    FileUploadModule,
     LocalStorageModule,
     ToastyModule,
 

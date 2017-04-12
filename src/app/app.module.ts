@@ -11,6 +11,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CoreModule } from './core/core.module';
 import { Error403Component } from './common/error403/error403.component'
 import { Error404Component } from './common/error404/error404.component';
+import { Error500Component } from './common/error500/error500.component';
+import { FileUploadModule } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './common/header/header.component';
 import { HttpModule } from '@angular/http';
@@ -25,7 +27,6 @@ import { RestangularModule } from "ng2-restangular";
 import { ServerInfoComponent } from './common/server-info/server-info.component';
 import { SharedModule } from './shared/shared.module';
 import { ToastyModule } from 'ng2-toasty';
-import { Error500Component } from './common/error500/error500.component';
 
 export function restangularProviderConfigurer(restangularProvider: any, config: ConfigService) {
   restangularProvider.setBaseUrl(config.getSettings().apiEndpoint);
@@ -51,6 +52,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     MomentModule,
+    FileUploadModule,
     LocalStorageModule.withConfig({
       prefix: 'openfact',
       storageType: 'localStorage'
