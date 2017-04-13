@@ -69,6 +69,8 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   }
 
   loadAll(): Observable<L> {
+    console.log("AbstractStore[loadAll]");
+
     this._isSearch = false;
     this._loadId = null;
     this._loading.next(true);
@@ -86,6 +88,8 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   }
 
   searchAll(criteria: any = null): Observable<S> {
+    console.log("AbstractStore[searchAll]");
+    
     this._isSearch = true;
     this._hasMore.next(false);
     this._loadId = null;
@@ -125,10 +129,13 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     let id = this._loadId;
     let isSearch = this._isSearch;
     if (id) {
+      console.log("AbstractStore[reload] id");
       this.load(id);
     } else if (isSearch) {
+      console.log("AbstractStore[reload] searchAll");
       this.searchAll();
     } else {
+      console.log("AbstractStore[reload] loadAll");
       this.loadAll();
     }
   }
