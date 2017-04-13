@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { DocumentCreatePageComponent } from './ui/document/create-page/create-page.component';
 import { DocumentDeleteDialogComponent } from './ui/document/delete-dialog/delete-dialog.component';
@@ -27,6 +29,8 @@ import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.co
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     OrganizationRoutingModule,
 
     SharedModule

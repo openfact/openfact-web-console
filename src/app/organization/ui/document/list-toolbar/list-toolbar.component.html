@@ -2,10 +2,10 @@
   <div class="col-sm-12">
     <form (ngSubmit)="search()" class="toolbar-pf-actions">
       <div class="form-group toolbar-pf-filter">
-        <input type="text" class="form-control" placeholder="Filter By Id..." autocomplete="off" id="filterInput">
+        <input type="text" class="form-control" placeholder="Filter By Id..." autocomplete="off">
       </div>
       <div class="form-group">
-        <!--<button class="btn btn-default" type="button" (click)="createDocument()" *openfactAccess="'manageDocuments'">Create</button>-->
+        <button class="btn btn-default" type="button" (click)="createDocument()" *openfactAccess="'manageDocuments'">Create</button>
         <button class="btn btn-default" type="button" (click)="uploadDocument()" *openfactAccess="'manageDocuments'">Upload</button>
       </div>
       <div class="toolbar-pf-action-right">
