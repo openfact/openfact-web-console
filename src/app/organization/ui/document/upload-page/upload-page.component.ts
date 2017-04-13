@@ -15,7 +15,11 @@ export class DocumentUploadPageComponent implements OnInit {
   constructor(private documentService: DocumentService) { }
 
   ngOnInit() {
-    this.uploader = this.documentService.buildFileUpload();
+    this.uploader = this.documentService.fileUpload();
+  }
+
+  uploadAll() {
+    this.documentService.uploadAll(this.uploader);
   }
 
 }

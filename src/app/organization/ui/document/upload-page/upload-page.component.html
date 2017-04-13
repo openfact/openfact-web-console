@@ -8,9 +8,9 @@
 
     <h1>Upload Document</h1>
     <ul class="nav nav-tabs">
-      <li routerLinkActive="active">
+      <!--<li routerLinkActive="active">
         <a routerLink="../create">Create</a>
-      </li>
+      </li>-->
       <li routerLinkActive="active">
         <a routerLink="../upload">Upload</a>
       </li>
@@ -68,7 +68,7 @@
             <form class="form-horizontal">
                 <div class="form-group">
                     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
-                        <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="btn btn-primary">Upload</button>
+                        <button type="button" (click)="uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="btn btn-primary">Upload</button>
                         <button type="button" (click)="uploader.clearQueue()" [disabled]="uploader.isUploading" class="btn btn-default">Cancel</button>
                     </div>
                 </div>

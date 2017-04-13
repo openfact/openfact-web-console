@@ -23,6 +23,14 @@ export class AccessDirective {
 
     } else if (access === 'createOrganizations') {
       this.updateView(this.canCreateOrganizations());
+    } else if (access === 'manageOrganizations') {
+      this.updateView(this.canManageOrganizations());
+    } else if (access === 'viewOrganizations') {
+      this.updateView(this.canViewOrganizations());
+    } else if (access === 'viewDocuments') {
+      this.updateView(this.canViewDocuments());
+    } else if (access === 'manageDocuments') {
+      this.updateView(this.canManageDocuments());
 
     } else if (access === 'manageUsers') {
       this.updateView(this.canManageUsers());
@@ -50,6 +58,23 @@ export class AccessDirective {
   // Openfact
   private canCreateOrganizations() {
     return this.hasRole('create-organization', openfactResource);
+  }
+
+  private canManageOrganizations() {
+    return this.hasRole('manage-organization', openfactResource);
+  }
+
+  private canViewOrganizations() {
+    return this.hasRole('view-organization', openfactResource);
+  }
+
+
+  private canViewDocuments() {
+    return this.hasRole('view-documents', openfactResource);
+  }
+
+  private canManageDocuments() {
+    return this.hasRole('manage-documents', openfactResource);
   }
 
   // Keycloak

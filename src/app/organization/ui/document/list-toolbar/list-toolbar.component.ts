@@ -17,4 +17,8 @@ export class ListToolbarComponent implements OnInit {
     this.router.navigate(['./create'], { relativeTo: this.route });
   }
 
+  uploadDocument() {
+    this.router.navigate(['./upload'], { relativeTo: this.route });
+  }
+
 }

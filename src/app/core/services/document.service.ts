@@ -15,6 +15,8 @@ import { pathJoin } from '../models/utils';
 @Injectable()
 export class DocumentService extends OrganizationResourceService<Document, Documents, SearchResults<Document>> {
 
+  private uploader: FileUploader;
+
   constructor(
     @Inject(OPENFACT_RESTANGULAR) openfactRestangular: Restangular,
     organizationScope: OrganizationScope,
@@ -22,21 +24,41 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     super(openfactRestangular, organizationScope, '/documents', '/admin/organizations');
   }
 
-  buildFileUpload(organization: string = null, config: any = {}): FileUploader {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
-    url = this.restangularService.all(url).all('upload').getRestangularUrl();
-    const uploader = new FileUploader(Object.assign({ url: url }, config));
+  private refreshUploader() {
+    if (this.uploader) {
+      this.uploader.setOptions({
+        url: this.restangularService.all(this.serviceUrl).all('upload').getRestangularUrl()
+      });
+    }
+  }
 
+  uploadAll(uploader: FileUploader) {
     this.keycloakOAuthService.getToken().then(
       (token: string) => {
-        uploader.onBeforeUploadItem = (item: FileItem) => {
-          uploader.setOptions({ authToken: 'Bearer ' + token });
-        };        
+        uploader.setOptions({ authToken: 'Bearer ' + token });
+        uploader.uploadAll();
       }
     );
+  }
 
+  fileUpload() {
+    if (!this.uploader) {
+      this.uploader = new FileUploader({});
+      this.refreshUploader();
+    }
+    return this.uploader;
+  }
 
-    return uploader;
+  buildFileUpload(organization: string = null, config: any = {}): FileUploader {
+    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+
+    url = this.restangularService.all(url).all('upload').getRestangularUrl();
+    return new FileUploader(Object.assign({ url: url }, config));
+  }
+
+  onOrganizationChanged() {
+    super.onOrganizationChanged();
+    this.refreshUploader();
   }
 
 }
