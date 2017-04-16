@@ -54,8 +54,14 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   }
 
   search(criteria: any = null, organization: string = null): Observable<S> {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
-    return this.restangularService.all(url).all(this.searchPath).post(criteria);
+    if (this.organization || organization) {
+      let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+      return this.restangularService.all(url).all(this.searchPath).post(criteria);
+    } else {
+      return Observable.create(observer => {
+        observer.next(<SearchResults<T>>{ items: [], totalSize: 0 });
+      });
+    }
   }
 
   create(obj: T, organization: string = null): Observable<T> {

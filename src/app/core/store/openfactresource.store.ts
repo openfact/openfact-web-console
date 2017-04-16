@@ -48,13 +48,11 @@ export abstract class OpenfactResourceStore<T extends OpenfactResource, L extend
   }
 
   loadAll(): Observable<L> {
-    console.log("OpenfactResourceStore[loadAll]");
     super.loadAll();
     return this.list;
   }
 
   searchAll(criteria: any = null): Observable<S> {
-    console.log("OpenfactResourceStore[searchAll]");
     super.searchAll();
     return this.search;
   }

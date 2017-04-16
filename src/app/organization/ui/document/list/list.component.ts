@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { Document } from './../../../../core/models/document.model';
@@ -24,7 +25,10 @@ export class DocumentsListComponent implements OnInit {
   @ViewChild(DocumentDeleteDialogComponent)
   deleteDialog: DocumentDeleteDialogComponent;
 
-  constructor(private store: DocumentStore) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private store: DocumentStore) { }
 
   ngOnInit() { }
 
@@ -40,6 +44,14 @@ export class DocumentsListComponent implements OnInit {
 
   changePageSize(pageSize: number) {
     this.store.changePageSize(pageSize);
+  }
+
+  view(document: Document) {
+    this.router.navigate([document.id], { relativeTo: this.route })
+  }
+
+  edit(document: Document) {
+    this.router.navigate([document.id, 'edit'], { relativeTo: this.route })
   }
 
 }

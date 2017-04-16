@@ -27,9 +27,8 @@ export class OrganizationScope {
     return this.getRouteParams()['organization'] || this.defaultOrganization();
   }
 
-  defaultOrganization(): string {
-    // TODO use some other mechanism to return the default?
-    return 'master';
+  defaultOrganization(): string {    
+    return null;
   }
 
   private getRouteParams(): any {

@@ -19,7 +19,7 @@
           </td>
           <td class="table-view-pf-actions" *openfactAccess="'viewDocuments'">
             <div class="table-view-pf-btn">
-              <button class="btn btn-default" type="button" (click)="edit(document)">View</button>
+              <button class="btn btn-default" type="button" (click)="view(document)">View</button>
             </div>
           </td>
           <td class="table-view-pf-actions" *openfactAccess="'viewDocuments'">
@@ -62,7 +62,7 @@
       <span>per page</span>
     </div>
     <div class="form-group">
-      <span><span class="pagination-pf-items-current">{{store.paging.pointerFrom()}}-{{store.paging.pointerTo()}}</span> of <span class="pagination-pf-items-total">{{search.totalSize}}</span></span>
+      <span><span class="pagination-pf-items-current">{{store.paging.pointerFrom()}}-{{store.paging.pointerTo()}}</span>      of <span class="pagination-pf-items-total">{{search.totalSize}}</span></span>
       <ul class="pagination pagination-pf-back">
         <li [ngClass]="{'disabled': store.paging.page == 1}"><a (click)="store.firstPage()" href="javascript:void(0)" title="First Page"><span class="i fa fa-angle-double-left"></span></a></li>
         <li [ngClass]="{'disabled': store.paging.page == 1}"><a (click)="store.previousPage()" href="javascript:void(0)" title="Previous Page"><span class="i fa fa-angle-left"></span></a></li>

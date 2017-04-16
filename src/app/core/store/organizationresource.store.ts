@@ -27,7 +27,7 @@ export abstract class OrganizationResourceStore<T extends OpenfactResource, L ex
         organization => {
           this.service.organization = organization;
           this.reload();
-        },
+        }
       );
     }
   }

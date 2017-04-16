@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { ViewPageComponent } from './view-page.component';
+import { DocumentViewPageComponent } from './view-page.component';
 
 describe('ViewPageComponent', () => {
-  let component: ViewPageComponent;
-  let fixture: ComponentFixture<ViewPageComponent>;
+  let component: DocumentViewPageComponent;
+  let fixture: ComponentFixture<DocumentViewPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewPageComponent ]
+      declarations: [ DocumentViewPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewPageComponent);
+    fixture = TestBed.createComponent(DocumentViewPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
