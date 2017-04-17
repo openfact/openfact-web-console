@@ -16,6 +16,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './common/header/header.component';
 import { HttpModule } from '@angular/http';
+import { JWBootstrapSwitchModule } from 'jw-bootstrap-switch-ng2';
 import { KEYCLOAK_HTTP_PROVIDER } from './keycloak/keycloak.http';
 import { KeycloakOAuthService } from './keycloak/keycloak.oauth.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -52,6 +53,7 @@ export function restangularProviderConfigurer(restangularProvider: any, config: 
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     MomentModule,
+    JWBootstrapSwitchModule,
     FileUploadModule,
     LocalStorageModule.withConfig({
       prefix: 'openfact',

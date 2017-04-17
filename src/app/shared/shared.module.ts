@@ -15,6 +15,7 @@ import { FormFieldValidationStateDirective } from './directives/form-field-valid
 import { FormFieldsStatusComponent } from './components/form-fields-status/form-fields-status.component';
 import { FormRequiredLabelDirective } from './directives/form-required-label.directive';
 import { HttpModule } from '@angular/http';
+import { JWBootstrapSwitchModule } from 'jw-bootstrap-switch-ng2';
 import { KeysPipe } from './pipes/keys.pipe';
 import { LimitedStringComponent } from './components/limited-string/limited-string.component';
 import { LoadingComponent } from './components/loading/loading.component';
@@ -45,6 +46,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     BsDropdownModule,
     ModalModule,
     MomentModule,
+    JWBootstrapSwitchModule,
     FileUploadModule,
     LocalStorageModule,
     ToastyModule,
@@ -80,6 +82,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     BsDropdownModule,
     ModalModule,
     MomentModule,
+    JWBootstrapSwitchModule,
     FileUploadModule,
     LocalStorageModule,
     ToastyModule,
