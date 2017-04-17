@@ -1,5 +1,8 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AdditionalInformationComponent } from './ui/settings/additional-information/additional-information.component';
+import { AdditionalInformationPageComponent } from './ui/settings/additional-information-page/additional-information-page.component';
+import { AdditionalInformationWrapperComponent } from './ui/settings/additional-information-wrapper/additional-information-wrapper.component';
 import { CommonModule } from '@angular/common';
 import { DocumentCreatePageComponent } from './ui/document/create-page/create-page.component';
 import { DocumentDeleteDialogComponent } from './ui/document/delete-dialog/delete-dialog.component';
@@ -11,6 +14,9 @@ import { DocumentsListPageComponent } from './ui/document/list-page/list-page.co
 import { EditComponent } from './ui/document/edit/edit.component';
 import { EditToolbarComponent } from './ui/document/edit-toolbar/edit-toolbar.component';
 import { EditWrapperComponent } from './ui/document/edit-wrapper/edit-wrapper.component';
+import { GeneralInformationComponent } from './ui/settings/general-information/general-information.component';
+import { GeneralInformationPageComponent } from './ui/settings/general-information-page/general-information-page.component';
+import { GeneralInformationWrapperComponent } from './ui/settings/general-information-wrapper/general-information-wrapper.component';
 import { ListToolbarComponent } from './ui/document/list-toolbar/list-toolbar.component';
 import { NgModule } from '@angular/core';
 import { OrganizationComponent } from './organization.component';
@@ -19,16 +25,19 @@ import { OrganizationHeaderComponent } from './components/organization-header/or
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { OrganizationSidebarComponent } from './components/organization-sidebar/organization-sidebar.component';
 import { SharedModule } from './../shared/shared.module';
-import { ViewComponent } from './ui/document/view/view.component';
-import { ViewToolbarComponent } from './ui/document/view-toolbar/view-toolbar.component';
-import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.component';
+import { SmtpComponent } from './ui/settings/smtp/smtp.component';
 import { SmtpPageComponent } from './ui/settings/smtp-page/smtp-page.component';
 import { SmtpWrapperComponent } from './ui/settings/smtp-wrapper/smtp-wrapper.component';
 import { ToolbarComponent } from './ui/settings/toolbar/toolbar.component';
-import { SmtpComponent } from './ui/settings/smtp/smtp.component';
-import { GeneralInformationPageComponent } from './ui/settings/general-information-page/general-information-page.component';
-import { GeneralInformationWrapperComponent } from './ui/settings/general-information-wrapper/general-information-wrapper.component';
-import { GeneralInformationComponent } from './ui/settings/general-information/general-information.component';
+import { ViewComponent } from './ui/document/view/view.component';
+import { ViewToolbarComponent } from './ui/document/view-toolbar/view-toolbar.component';
+import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.component';
+import { ThemeComponent } from './ui/settings/theme/theme.component';
+import { ThemePageComponent } from './ui/settings/theme-page/theme-page.component';
+import { ThemeWrapperComponent } from './ui/settings/theme-wrapper/theme-wrapper.component';
+import { TasksComponent } from './ui/settings/tasks/tasks.component';
+import { TasksPageComponent } from './ui/settings/tasks-page/tasks-page.component';
+import { TasksWrapperComponent } from './ui/settings/tasks-wrapper/tasks-wrapper.component';
 
 @NgModule({
   imports: [
@@ -65,6 +74,15 @@ import { GeneralInformationComponent } from './ui/settings/general-information/g
     GeneralInformationPageComponent,
     GeneralInformationWrapperComponent,
     GeneralInformationComponent,
+    AdditionalInformationPageComponent,
+    AdditionalInformationWrapperComponent,
+    AdditionalInformationComponent,
+    ThemeComponent,
+    ThemePageComponent,
+    ThemeWrapperComponent,
+    TasksComponent,
+    TasksPageComponent,
+    TasksWrapperComponent,
   ]
 })
 export class OrganizationModule { }

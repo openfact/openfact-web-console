@@ -5,6 +5,8 @@ import { DocumentEditPageComponent } from './ui/document/edit-page/edit-page.com
 import { DocumentUploadPageComponent } from './ui/document/upload-page/upload-page.component';
 import { DocumentViewPageComponent } from './ui/document/view-page/view-page.component';
 import { DocumentsListPageComponent } from './ui/document/list-page/list-page.component';
+import { GeneralInformationComponent } from './ui/settings/general-information/general-information.component';
+import { GeneralInformationPageComponent } from './ui/settings/general-information-page/general-information-page.component';
 import { NgModule } from '@angular/core';
 import { OrganizationComponent } from './organization.component';
 import { SmtpPageComponent } from './ui/settings/smtp-page/smtp-page.component';
@@ -16,11 +18,13 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'documents', pathMatch: 'full' },
       { path: 'documents', component: DocumentsListPageComponent },
-      { path: 'documents/create', component: DocumentCreatePageComponent },
+      { path: 'documents/creat<ge', component: DocumentCreatePageComponent },
       { path: 'documents/upload', component: DocumentUploadPageComponent },
       { path: 'documents/:document', component: DocumentViewPageComponent },
       { path: 'documents/:document/edit', component: DocumentEditPageComponent },
-      { path: 'settings', component: SmtpPageComponent }
+      { path: 'settings', redirectTo: 'settings/general-information', pathMatch: 'full' },
+      { path: 'settings/general-information', component: GeneralInformationPageComponent },
+      { path: 'settings/smtp-settings', component: SmtpPageComponent },
     ]
   }
 ];
