@@ -5,11 +5,9 @@ import { DocumentEditPageComponent } from './ui/document/edit-page/edit-page.com
 import { DocumentUploadPageComponent } from './ui/document/upload-page/upload-page.component';
 import { DocumentViewPageComponent } from './ui/document/view-page/view-page.component';
 import { DocumentsListPageComponent } from './ui/document/list-page/list-page.component';
-import { GeneralInformationComponent } from './ui/settings/general-information/general-information.component';
 import { NgModule } from '@angular/core';
 import { OrganizationComponent } from './organization.component';
-import { SettingsComponent } from './ui/settings/settings.component';
-import { SmtpComponent } from './ui/settings/smtp/smtp.component';
+import { SmtpPageComponent } from './ui/settings/smtp-page/smtp-page.component';
 
 const routes: Routes = [
   {
@@ -21,19 +19,10 @@ const routes: Routes = [
       { path: 'documents/create', component: DocumentCreatePageComponent },
       { path: 'documents/upload', component: DocumentUploadPageComponent },
       { path: 'documents/:document', component: DocumentViewPageComponent },
-      { path: 'documents/:document/edit', component: DocumentEditPageComponent }
+      { path: 'documents/:document/edit', component: DocumentEditPageComponent },
+      { path: 'settings', component: SmtpPageComponent }
     ]
-  },
-  // { path: 'organizations/:organization', component: DocumentsListPageComponent },
-  // {
-  //     path: 'organizations/:organization/settings',
-  //     component: SettingsComponent,
-  //     children: [
-  //         { path: '', component: GeneralInformationComponent },
-  //         { path: 'smtp', component: SmtpComponent }
-  //     ]
-  // },
-  // { path: 'organizations/:organization/documents', component: DocumentsListPageComponent }
+  }
 ];
 
 @NgModule({

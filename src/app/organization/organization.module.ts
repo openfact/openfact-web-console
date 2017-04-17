@@ -11,7 +11,6 @@ import { DocumentsListPageComponent } from './ui/document/list-page/list-page.co
 import { EditComponent } from './ui/document/edit/edit.component';
 import { EditToolbarComponent } from './ui/document/edit-toolbar/edit-toolbar.component';
 import { EditWrapperComponent } from './ui/document/edit-wrapper/edit-wrapper.component';
-import { GeneralInformationComponent } from './ui/settings/general-information/general-information.component';
 import { ListToolbarComponent } from './ui/document/list-toolbar/list-toolbar.component';
 import { NgModule } from '@angular/core';
 import { OrganizationComponent } from './organization.component';
@@ -19,12 +18,17 @@ import { OrganizationContentComponent } from './components/organization-content/
 import { OrganizationHeaderComponent } from './components/organization-header/organization-header.component';
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { OrganizationSidebarComponent } from './components/organization-sidebar/organization-sidebar.component';
-import { SettingsComponent } from './ui/settings/settings.component';
 import { SharedModule } from './../shared/shared.module';
-import { SmtpComponent } from './ui/settings/smtp/smtp.component';
 import { ViewComponent } from './ui/document/view/view.component';
 import { ViewToolbarComponent } from './ui/document/view-toolbar/view-toolbar.component';
 import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.component';
+import { SmtpPageComponent } from './ui/settings/smtp-page/smtp-page.component';
+import { SmtpWrapperComponent } from './ui/settings/smtp-wrapper/smtp-wrapper.component';
+import { ToolbarComponent } from './ui/settings/toolbar/toolbar.component';
+import { SmtpComponent } from './ui/settings/smtp/smtp.component';
+import { GeneralInformationPageComponent } from './ui/settings/general-information-page/general-information-page.component';
+import { GeneralInformationWrapperComponent } from './ui/settings/general-information-wrapper/general-information-wrapper.component';
+import { GeneralInformationComponent } from './ui/settings/general-information/general-information.component';
 
 @NgModule({
   imports: [
@@ -40,9 +44,6 @@ import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.co
     DocumentsListPageComponent,
     OrganizationSidebarComponent,
     OrganizationContentComponent,
-    SmtpComponent,
-    SettingsComponent,
-    GeneralInformationComponent,
     DocumentsListComponent,
     ListToolbarComponent,
     EditComponent,
@@ -57,6 +58,13 @@ import { ViewWrapperComponent } from './ui/document/view-wrapper/view-wrapper.co
     DocumentDeleteDialogComponent,
     DocumentCreatePageComponent,
     DocumentUploadPageComponent,
+    SmtpPageComponent,
+    SmtpWrapperComponent,
+    ToolbarComponent,
+    SmtpComponent,
+    GeneralInformationPageComponent,
+    GeneralInformationWrapperComponent,
+    GeneralInformationComponent,
   ]
 })
 export class OrganizationModule { }

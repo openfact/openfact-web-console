@@ -1,16 +1,15 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { OrganizationStore } from './../../../core/store/organization.store';
+import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  selector: 'openfact-general-information-page',
+  templateUrl: './general-information-page.component.html',
+  styleUrls: ['./general-information-page.component.scss']
 })
-export class SettingsComponent implements OnInit, OnDestroy {
+export class GeneralInformationPageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 
@@ -20,7 +19,9 @@ export class SettingsComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
 
   ngOnDestroy() { this.idSubscription.unsubscribe(); }
 

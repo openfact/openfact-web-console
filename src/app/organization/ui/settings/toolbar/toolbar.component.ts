@@ -3,11 +3,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Organization } from './../../../../core/models/organization.model';
 
 @Component({
-  selector: 'openfact-organization-settings-general-information',
-  templateUrl: './general-information.component.html',
-  styleUrls: ['./general-information.component.scss']
+  selector: 'openfact-organization-settings-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
 })
-export class GeneralInformationComponent implements OnInit {
+export class ToolbarComponent implements OnInit {
 
   @Input()
   organization: Organization;
