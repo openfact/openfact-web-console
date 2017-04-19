@@ -24,7 +24,7 @@ import { MomentModule } from 'angular2-moment';
 import { NgModule } from '@angular/core';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { OrganizationModule } from './organization/organization.module';
-import { RestangularModule } from "ng2-restangular";
+import { RestangularModule } from 'ngx-restangular';
 import { ServerInfoComponent } from './common/server-info/server-info.component';
 import { SharedModule } from './shared/shared.module';
 import { ToastyModule } from 'ng2-toasty';

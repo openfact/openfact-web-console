@@ -1,5 +1,5 @@
 import { BaseEntity } from './../store/entity/entity.model';
-import { Restangular } from 'ng2-restangular';
+import { Restangular } from 'ngx-restangular';
 
 export class KeycloakResource implements BaseEntity {
 

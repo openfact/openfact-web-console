@@ -12,26 +12,31 @@ import { ToastyService } from 'ng2-toasty';
 })
 export class GeneralInformationComponent implements OnInit {
 
-  _organization: Organization;
-
-  @Input()
-  set organization(organization: Organization) {
-    this._organization = organization;
-    /*if (organization) {
-      this.loadData();
-    }*/
-  }
+  private _organization: Organization;
 
   form: FormGroup;
   working = false;
 
+  @Input()
+  set organization(organization: Organization) {
+    this._organization = organization;
+    this.loadData();
+  }
+
+  get organization() {
+    return this._organization;
+  }
+
+
+
   constructor(
     private formBuilder: FormBuilder,
     private organizationService: OrganizationService,
-    private toastyService: ToastyService) { }
+    private toastyService: ToastyService) {
+    this.buildForm();
+  }
 
   ngOnInit() {
-    this.buildForm();
   }
 
   buildForm() {

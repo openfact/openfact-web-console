@@ -4,7 +4,7 @@ import { User, Users } from './../models/user.model';
 import { KEYCLOAK_RESTANGULAR } from './keycloak.restangular';
 import { RealmResourceService } from './realm.resource.service';
 import { RealmScope } from './realm.scope';
-import { Restangular } from 'ng2-restangular';
+import { Restangular } from 'ngx-restangular';
 import { SearchResults } from './../store/entity/search.model';
 import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';

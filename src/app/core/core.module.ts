@@ -10,7 +10,7 @@ import { OrganizationScope } from './services/organization.scope';
 import { OrganizationService } from './services/organization.service';
 import { OrganizationStore } from './store/organization.store';
 import { RealmScope } from './services/realm.scope';
-import { Restangular } from 'ng2-restangular';
+import { Restangular } from 'ngx-restangular';
 import { SharedModule } from './../shared/shared.module';
 import { ToastyService } from 'ng2-toasty';
 import { UserService } from './services/user.service';

@@ -2,7 +2,7 @@ import { InjectionToken, NgModule } from "@angular/core";
 
 import { ConfigService } from './../../config.service';
 import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
-import { Restangular } from 'ng2-restangular';
+import { Restangular } from 'ngx-restangular';
 import { ToastyService } from 'ng2-toasty';
 
 export const OPENFACT_RESTANGULAR = new InjectionToken('OpenfactRestangular');

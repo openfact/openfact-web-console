@@ -1,7 +1,7 @@
 import { InjectionToken, NgModule } from "@angular/core";
 
 import { ConfigService } from './../../config.service';
-import { Restangular } from 'ng2-restangular';
+import { Restangular } from 'ngx-restangular';
 import { ToastyService } from 'ng2-toasty';
 import { environment } from './../../../environments/environment';
 
