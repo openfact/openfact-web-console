@@ -12,7 +12,9 @@ const organizationsUrl = '/admin/organizations';
 export class OrganizationService extends OpenfactService<Organization, Organizations, SearchResults<Organization>> {
 
   constructor( @Inject(OPENFACT_RESTANGULAR) openfactRestangular: Restangular) {
-    super(openfactRestangular.service(organizationsUrl));
+    super(openfactRestangular.withConfig((RestangularConfigurer) => {
+      RestangularConfigurer.setRestangularFields({ 'id': 'organization' });
+    }).service(organizationsUrl));
   }
 
   get serviceUrl(): string {
