@@ -1,4 +1,5 @@
 import { KEYCLOAK_RESTANGULAR, KeycloakRestangularFactory } from './services/keycloak.restangular';
+import { OPENFACT_ORGANIZATION_RESTANGULAR, OpenfactOrganizationRestangularFactory } from './services/openfact.organization.restangular';
 import { OPENFACT_RESTANGULAR, OpenfactRestangularFactory } from './services/openfact.restangular';
 
 import { CommonModule } from '@angular/common';
@@ -26,6 +27,11 @@ import { UserStore } from './store/user.store';
     {
       provide: OPENFACT_RESTANGULAR,
       useFactory: OpenfactRestangularFactory,
+      deps: [Restangular, ConfigService, ToastyService]
+    },
+    {
+      provide: OPENFACT_ORGANIZATION_RESTANGULAR,
+      useFactory: OpenfactOrganizationRestangularFactory,
       deps: [Restangular, ConfigService, ToastyService]
     },
     {
