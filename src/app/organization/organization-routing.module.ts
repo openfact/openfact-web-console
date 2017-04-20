@@ -18,7 +18,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'documents', pathMatch: 'full' },
       { path: 'documents', component: DocumentsListPageComponent },
-      { path: 'documents/creat<ge', component: DocumentCreatePageComponent },
+      { path: 'documents/create', component: DocumentCreatePageComponent },
       { path: 'documents/upload', component: DocumentUploadPageComponent },
       { path: 'documents/:document', component: DocumentViewPageComponent },
       { path: 'documents/:document/edit', component: DocumentEditPageComponent },
