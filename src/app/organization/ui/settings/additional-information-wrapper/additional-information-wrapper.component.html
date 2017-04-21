@@ -1,3 +1,4 @@
-<p>
-  additional-information-wrapper works!
-</p>
+<div class="organizations detail" *ngIf="organization">
+  <openfact-organization-settings-toolbar [organization]="organization | async"></openfact-organization-settings-toolbar>
+  <openfact-organization-settings-additional-information [organization]="organization | async"></openfact-organization-settings-additional-information>
+</div>

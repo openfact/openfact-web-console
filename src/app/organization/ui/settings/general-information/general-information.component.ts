@@ -27,8 +27,6 @@ export class GeneralInformationComponent implements OnInit {
     return this._organization;
   }
 
-
-
   constructor(
     private formBuilder: FormBuilder,
     private organizationService: OrganizationService,

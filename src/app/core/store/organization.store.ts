@@ -16,9 +16,4 @@ export class OrganizationStore extends OpenfactResourceStore<Organization, Organ
     return 'Organization';
   }
 
-  navigateToOrganization(organization: Organization) {
-    const resty: any = organization;
-    return resty.one(organization.organization);
-  }
-
 }

@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AdditionalInformationPageComponent } from './ui/settings/additional-information-page/additional-information-page.component';
 import { DocumentCreatePageComponent } from './ui/document/create-page/create-page.component';
 import { DocumentEditPageComponent } from './ui/document/edit-page/edit-page.component';
 import { DocumentUploadPageComponent } from './ui/document/upload-page/upload-page.component';
@@ -10,6 +11,7 @@ import { GeneralInformationPageComponent } from './ui/settings/general-informati
 import { NgModule } from '@angular/core';
 import { OrganizationComponent } from './organization.component';
 import { SmtpPageComponent } from './ui/settings/smtp-page/smtp-page.component';
+import { ThemePageComponent } from './ui/settings/theme-page/theme-page.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,8 @@ const routes: Routes = [
       { path: 'documents/:document/edit', component: DocumentEditPageComponent },
       { path: 'settings', redirectTo: 'settings/general-information', pathMatch: 'full' },
       { path: 'settings/general-information', component: GeneralInformationPageComponent },
+      { path: 'settings/additional-information', component: AdditionalInformationPageComponent },
+      { path: 'settings/theme-settings', component: ThemePageComponent },
       { path: 'settings/smtp-settings', component: SmtpPageComponent },
     ]
   }

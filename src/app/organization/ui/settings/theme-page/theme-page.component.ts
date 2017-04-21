@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import { OrganizationStore } from './../../../../core/store/organization.store';
+import { ServerInfoStore } from './../../../../core/store/serverinfo.store';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'openfact-theme-page',
   templateUrl: './theme-page.component.html',
   styleUrls: ['./theme-page.component.scss']
 })
-export class ThemePageComponent implements OnInit {
+export class ThemePageComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  private idSubscription: Subscription;
+
+  constructor(
+    organizationStore: OrganizationStore,
+    serverInfoStore: ServerInfoStore,
+    route: ActivatedRoute) {
+    this.idSubscription = route.parent.params.pluck<Params, string>('organization')
+      .map((id) => organizationStore.load(id))
+      .subscribe();
+    serverInfoStore.load(null);
+  }
 
   ngOnInit() {
+
   }
+
+  ngOnDestroy() { this.idSubscription.unsubscribe(); }
 
 }

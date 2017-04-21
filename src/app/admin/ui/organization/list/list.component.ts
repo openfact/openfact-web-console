@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Organization, Organizations } from './../../../../core/models/organization.model';
 
+import { OrganizationService } from './../../../../core/services/organization.service';
 import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Router } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
@@ -20,6 +21,7 @@ export class OrganizationsListComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private organizationService: OrganizationService,
     private organizationStore: OrganizationStore,
     private toastyService: ToastyService) { }
 
@@ -32,8 +34,7 @@ export class OrganizationsListComponent implements OnInit {
   }
 
   delete(resource: Organization) {
-    const organization = this.organizationStore.navigateToOrganization(resource);
-    this.organizationStore.delete(organization).subscribe((data) => {
+    this.organizationService.delete(resource).subscribe((data) => {
       this.toastyService.success('Success! The organization has been deleted.');
       this.organizationStore.loadAll();
     });
