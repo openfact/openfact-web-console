@@ -38,6 +38,9 @@ import { ThemeWrapperComponent } from './ui/settings/theme-wrapper/theme-wrapper
 import { TasksComponent } from './ui/settings/tasks/tasks.component';
 import { TasksPageComponent } from './ui/settings/tasks-page/tasks-page.component';
 import { TasksWrapperComponent } from './ui/settings/tasks-wrapper/tasks-wrapper.component';
+import { KeysPageComponent } from './ui/settings/keys-page/keys-page.component';
+import { KeysWrapperComponent } from './ui/settings/keys-wrapper/keys-wrapper.component';
+import { KeysComponent } from './ui/settings/keys/keys.component';
 
 @NgModule({
   imports: [
@@ -83,6 +86,9 @@ import { TasksWrapperComponent } from './ui/settings/tasks-wrapper/tasks-wrapper
     TasksComponent,
     TasksPageComponent,
     TasksWrapperComponent,
+    KeysPageComponent,
+    KeysWrapperComponent,
+    KeysComponent,
   ]
 })
 export class OrganizationModule { }

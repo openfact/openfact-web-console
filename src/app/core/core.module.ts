@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { ConfigService } from './../config.service';
 import { DocumentService } from './services/document.service';
 import { DocumentStore } from './store/document.store';
+import { KeyService } from './services/key.service';
+import { KeysStore } from './store/key.store';
 import { NgModule } from '@angular/core';
 import { OrganizationScope } from './services/organization.scope';
 import { OrganizationService } from './services/organization.service';
@@ -49,12 +51,15 @@ import { UserStore } from './store/user.store';
     OrganizationService,
     OrganizationStore,
 
+    KeyService,
+    KeysStore,
+
+    DocumentService,
+    DocumentStore,
+
     RealmScope,
     UserService,
     UserStore,
-
-    DocumentService,
-    DocumentStore
   ]
 })
 export class CoreModule { }
