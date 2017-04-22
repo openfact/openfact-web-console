@@ -1,6 +1,5 @@
 import { KEYCLOAK_RESTANGULAR, KeycloakRestangularFactory } from './services/keycloak.restangular';
-import { OPENFACT_ORGANIZATION_RESTANGULAR, OpenfactOrganizationRestangularFactory } from './services/openfact.organization.restangular';
-import { OPENFACT_RESTANGULAR, OpenfactRestangularFactory } from './services/openfact.restangular';
+import { OPENFACT_ORGANIZATION_RESTANGULAR, OPENFACT_RESTANGULAR, OpenfactOrganizationRestangularFactory, OpenfactRestangularFactory } from './services/openfact.restangular';
 
 import { CommonModule } from '@angular/common';
 import { ConfigService } from './../config.service';
