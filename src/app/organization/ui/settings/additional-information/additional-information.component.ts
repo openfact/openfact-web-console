@@ -56,7 +56,7 @@ export class AdditionalInformationComponent implements OnInit {
   }
 
   loadData(): void {
-    this.form.patchValue(this._organization);
+    this.form.patchValue(this.organization);
   }
 
   save(form: FormControl) {

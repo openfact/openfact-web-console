@@ -5,11 +5,13 @@ import { Organization } from './../../../../core/models/organization.model';
 import { OrganizationStore } from './../../../../core/store/organization.store';
 import { ServerInfo } from './../../../../core/models/serverinfo.model';
 import { ServerInfoStore } from './../../../../core/store/serverinfo.store';
+import { showStateTrigger } from './../../../../shared/animations/animations';
 
 @Component({
   selector: 'openfact-organization-settings-key-providers-wrapper',
   templateUrl: './key-providers-wrapper.component.html',
-  styleUrls: ['./key-providers-wrapper.component.scss']
+  styleUrls: ['./key-providers-wrapper.component.scss'],
+  animations: [showStateTrigger]
 })
 export class KeyProvidersWrapperComponent implements OnInit {
 

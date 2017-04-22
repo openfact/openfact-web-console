@@ -5,11 +5,13 @@ import { KeysStore } from './../../../../core/store/key.store';
 import { Observable } from 'rxjs/Rx';
 import { Organization } from './../../../../core/models/organization.model';
 import { OrganizationStore } from './../../../../core/store/organization.store';
+import { showStateTrigger } from './../../../../shared/animations/animations';
 
 @Component({
   selector: 'openfact-organization-settings-all-keys-wrapper',
   templateUrl: './all-keys-wrapper.component.html',
-  styleUrls: ['./all-keys-wrapper.component.scss']
+  styleUrls: ['./all-keys-wrapper.component.scss'],
+  animations: [showStateTrigger]
 })
 export class AllKeysWrapperComponent implements OnInit {
 
