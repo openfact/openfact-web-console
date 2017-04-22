@@ -28,7 +28,7 @@ export class UsersListToolbarComponent implements OnInit {
   }
 
   createUser() {
-    this.router.navigate(['./', 'users', 'create'], { relativeTo: this.route });
+    this.router.navigate(['./create'], { relativeTo: this.route });
   }
 
 }

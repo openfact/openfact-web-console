@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './view-wrapper.component.html',
   styleUrls: ['./view-wrapper.component.scss']
 })
-export class ViewWrapperComponent implements OnInit {
+export class DocumentViewWrapperComponent implements OnInit {
 
   document: Observable<Document>;
 

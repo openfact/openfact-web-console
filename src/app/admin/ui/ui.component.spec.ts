@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { DocumentEditPageComponent } from './edit-page.component';
+import { AdminUIComponent } from './ui.component';
 
-describe('EditPageComponent', () => {
-  let component: DocumentEditPageComponent;
-  let fixture: ComponentFixture<DocumentEditPageComponent>;
+describe('UiComponent', () => {
+  let component: AdminUIComponent;
+  let fixture: ComponentFixture<AdminUIComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocumentEditPageComponent ]
+      declarations: [ AdminUIComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocumentEditPageComponent);
+    fixture = TestBed.createComponent(AdminUIComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

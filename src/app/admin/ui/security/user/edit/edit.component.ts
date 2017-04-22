@@ -14,7 +14,7 @@ import { UserService } from './../../../../../core/services/user.service';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditUserComponent implements OnInit, OnChanges {
+export class UserEditComponent implements OnInit, OnChanges {
 
   @Input()
   user: User;

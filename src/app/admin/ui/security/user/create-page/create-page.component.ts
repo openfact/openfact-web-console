@@ -15,7 +15,7 @@ import { UserService } from './../../../../../core/services/user.service';
   templateUrl: './create-page.component.html',
   styleUrls: ['./create-page.component.scss']
 })
-export class CreateUserPageComponent implements OnInit {
+export class UsersCreatePageComponent implements OnInit {
 
   form: FormGroup;
   working = false;

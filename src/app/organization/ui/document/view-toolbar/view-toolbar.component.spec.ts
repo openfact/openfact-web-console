@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { ViewToolbarComponent } from './view-toolbar.component';
+import { DocumentViewToolbarComponent } from './view-toolbar.component';
 
 describe('ViewToolbarComponent', () => {
-  let component: ViewToolbarComponent;
-  let fixture: ComponentFixture<ViewToolbarComponent>;
+  let component: DocumentViewToolbarComponent;
+  let fixture: ComponentFixture<DocumentViewToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewToolbarComponent ]
+      declarations: [ DocumentViewToolbarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewToolbarComponent);
+    fixture = TestBed.createComponent(DocumentViewToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

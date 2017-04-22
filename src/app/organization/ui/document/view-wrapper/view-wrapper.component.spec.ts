@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { ViewWrapperComponent } from './view-wrapper.component';
+import { DocumentViewWrapperComponent } from './view-wrapper.component';
 
 describe('ViewWrapperComponent', () => {
-  let component: ViewWrapperComponent;
-  let fixture: ComponentFixture<ViewWrapperComponent>;
+  let component: DocumentViewWrapperComponent;
+  let fixture: ComponentFixture<DocumentViewWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewWrapperComponent ]
+      declarations: [ DocumentViewWrapperComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewWrapperComponent);
+    fixture = TestBed.createComponent(DocumentViewWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

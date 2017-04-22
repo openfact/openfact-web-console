@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './view-toolbar.component.html',
   styleUrls: ['./view-toolbar.component.scss']
 })
-export class ViewToolbarComponent implements OnInit {
+export class DocumentViewToolbarComponent implements OnInit {
 
   @Input()
   document: Document;

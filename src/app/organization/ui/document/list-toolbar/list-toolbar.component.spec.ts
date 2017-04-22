@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { ListToolbarComponent } from './list-toolbar.component';
+import { DocumentsListToolbarComponent } from './list-toolbar.component';
 
 describe('ListToolbarComponent', () => {
-  let component: ListToolbarComponent;
-  let fixture: ComponentFixture<ListToolbarComponent>;
+  let component: DocumentsListToolbarComponent;
+  let fixture: ComponentFixture<DocumentsListToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListToolbarComponent ]
+      declarations: [ DocumentsListToolbarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListToolbarComponent);
+    fixture = TestBed.createComponent(DocumentsListToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

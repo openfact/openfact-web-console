@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './common/about/about.component';
 import { Error403Component } from './common/error403/error403.component';
@@ -8,20 +8,19 @@ import { NgModule } from '@angular/core';
 import { ServerInfoComponent } from './common/server-info/server-info.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'admin/organizations', pathMatch: 'full' },
-  { path: 'home', redirectTo: 'admin/organizations', pathMatch: 'full' },
-  { path: 'about', component: AboutComponent, outlet: 'secondary' },
+  { path: '', redirectTo: 'admin', pathMatch: 'full' },
+  { path: 'home', redirectTo: 'admin', pathMatch: 'full' },
   { path: 'server-info', component: ServerInfoComponent },
+  { path: 'admin', loadChildren: 'app/admin/ui/ui.module#AdminUIModule' },
+  { path: 'organizations/:organization', loadChildren: 'app/organization/ui/ui.module#OrganizationUIModule' },
   { path: 'notfound', component: Error404Component },
   { path: 'forbidden', component: Error403Component },
   { path: 'server-error', component: Error500Component },
-  { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
-  { path: 'organizations', loadChildren: 'app/organization/organization.module#OrganizationModule' },
-  // { path: '**', component: Error404Component }
+  { path: 'about', component: AboutComponent, outlet: 'popup' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

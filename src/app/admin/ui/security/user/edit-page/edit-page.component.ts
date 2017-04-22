@@ -9,7 +9,7 @@ import { UserStore } from './../../../../../core/store/user.store';
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss']
 })
-export class EditUserPageComponent implements OnInit, OnDestroy {
+export class UserEditPageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 

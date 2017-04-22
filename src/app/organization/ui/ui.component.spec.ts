@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { DocumentCreatePageComponent } from './create-page.component';
+import { OrganizationUIComponent } from './ui.component';
 
-describe('CreatePageComponent', () => {
-  let component: DocumentCreatePageComponent;
-  let fixture: ComponentFixture<DocumentCreatePageComponent>;
+describe('UiComponent', () => {
+  let component: OrganizationUIComponent;
+  let fixture: ComponentFixture<OrganizationUIComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocumentCreatePageComponent ]
+      declarations: [ OrganizationUIComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocumentCreatePageComponent);
+    fixture = TestBed.createComponent(OrganizationUIComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

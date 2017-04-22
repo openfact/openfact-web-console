@@ -8,7 +8,7 @@ import { DocumentStore } from './../../../../core/store/document.store';
   templateUrl: './list-toolbar.component.html',
   styleUrls: ['./list-toolbar.component.scss']
 })
-export class ListToolbarComponent implements OnInit {
+export class DocumentsListToolbarComponent implements OnInit {
 
   constructor(
     private router: Router,

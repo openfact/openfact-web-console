@@ -14,7 +14,7 @@ export class AdditionalInformationPageComponent implements OnInit, OnDestroy {
   private idSubscription: Subscription;
 
   constructor(store: OrganizationStore, route: ActivatedRoute) {
-    this.idSubscription = route.parent.params.pluck<Params, string>('organization')
+    this.idSubscription = route.parent.parent.params.pluck<Params, string>('organization')
       .map((id) => store.load(id))
       .subscribe();
   }

@@ -18,7 +18,7 @@ export class KeysPageComponent implements OnInit, OnDestroy {
     organizationStore: OrganizationStore,
     keyStore: KeysStore,
     route: ActivatedRoute) {
-    this.idSubscription = route.parent.params.pluck<Params, string>('organization')
+    this.idSubscription = route.parent.parent.params.pluck<Params, string>('organization')
       .map((id) => organizationStore.load(id))
       .subscribe();
     keyStore.load(null);
