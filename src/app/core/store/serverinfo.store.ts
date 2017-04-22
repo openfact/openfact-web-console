@@ -19,4 +19,18 @@ export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInf
     return 'ServerInfo';
   }
 
+  emptyLoad() {
+    this._loadId = '';
+    this._loading.next(true);
+    this.service.get('').subscribe(
+      (entity) => {
+        this._current.next(entity);
+        this._loading.next(false);
+      },
+      (error) => {
+        console.log('Error retrieving ' + this.kind + ': ' + error);
+        this._loading.next(false);
+      });
+  }
+
 }

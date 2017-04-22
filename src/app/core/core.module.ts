@@ -2,6 +2,8 @@ import { KEYCLOAK_RESTANGULAR, KeycloakRestangularFactory } from './services/key
 import { OPENFACT_ORGANIZATION_RESTANGULAR, OPENFACT_RESTANGULAR, OpenfactOrganizationRestangularFactory, OpenfactRestangularFactory } from './services/openfact.restangular';
 
 import { CommonModule } from '@angular/common';
+import { ComponentService } from './services/component.service';
+import { ComponentStore } from './store/component.store';
 import { ConfigService } from './../config.service';
 import { DocumentService } from './services/document.service';
 import { DocumentStore } from './store/document.store';
@@ -52,6 +54,9 @@ import { UserStore } from './store/user.store';
 
     KeyService,
     KeysStore,
+
+    ComponentService,
+    ComponentStore,
 
     DocumentService,
     DocumentStore,

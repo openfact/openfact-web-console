@@ -4,6 +4,7 @@ export class ServerInfo extends OpenfactResource {
 
   id: string;
   themes: Array<string>;
+  componentTypes: any;
 
   defaultKind() {
     return 'ServerInfo';

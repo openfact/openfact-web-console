@@ -124,7 +124,7 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   reload() {
     let id = this._loadId;
     let isSearch = this._isSearch;
-    if (id) {
+    if (id != null) {
       this.load(id);
     } else if (isSearch) {
       this.searchAll();

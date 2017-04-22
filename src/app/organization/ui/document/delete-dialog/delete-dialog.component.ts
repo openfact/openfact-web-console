@@ -30,7 +30,7 @@ export class DocumentDeleteDialogComponent implements OnInit {
   }
 
   close() {
-    this.modal.close();
+    this.modal.hide();
   }
 
 }

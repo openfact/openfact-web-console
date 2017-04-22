@@ -6,11 +6,11 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-keys-page',
-  templateUrl: './keys-page.component.html',
-  styleUrls: ['./keys-page.component.scss']
+  selector: 'openfact-all-keys-page',
+  templateUrl: './all-keys-page.component.html',
+  styleUrls: ['./all-keys-page.component.scss']
 })
-export class KeysPageComponent implements OnInit, OnDestroy {
+export class AllKeysPageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 

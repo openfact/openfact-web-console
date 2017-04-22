@@ -1,0 +1,62 @@
+<ul class="nav nav-tabs nav-tabs-pf">
+  <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+    <a routerLink="../" router>Active</a>
+  </li>
+  <li routerLinkActive="active">
+    <a routerLink="../list">All</a>
+  </li>
+  <li routerLinkActive="active">
+    <a routerLink="../providers">Providers</a>
+  </li>
+</ul>
+
+<br>
+
+<table class="table table-striped table-bordered table-hover dataTable no-footer">
+  <thead>
+    <tr [hidden]="providers && providers.length == 0">
+      <th colspan="6" class="kc-table-actions">
+        <div class="pull-right">
+          <div>
+            <select class="form-control" (change)="addProvider($event.target.value)">
+              <option value="" disabled selected>Add keystore...</option>
+              <option *ngFor="let item of providers" [value]="item.id" >{{item.id}}</option>
+            </select>
+          </div>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Id</th>
+      <th>Provider</th>
+      <th>Priority</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let instance of instances">
+      <td>{{instance.name}}</td>
+      <td><a [routerLink]="['./', instance.providerId, instance.id]">{{instance.id}}</a></td>
+      <td>{{instance.providerId}}</td>
+      <td>{{instance.config['priority'][0]}}</td>
+      <td class="table-view-pf-actions">
+        <div class="table-view-pf-btn">
+          <button (click)="editInstance(instance)" class="btn btn-default" type="button">Edit</button>
+        </div>
+      </td>
+      <td class="table-view-pf-actions">
+        <div class="table-view-pf-btn">
+          <button (click)="openDeleteDialog(deleteComponentModal, instance)" class="btn btn-default" type="button">Delete</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" bsModal #deleteComponentModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <openfact-component-delete-dialog></openfact-component-delete-dialog>
+  </div>
+</div>

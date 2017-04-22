@@ -1,7 +1,9 @@
+import { ComponentModel, Components } from './../models/component.model';
 import { Document, Documents } from './../models/document.model';
 import { Key, Keys } from './../models/key.model';
 import { User, Users } from './../models/user.model';
 
+import { ComponentService } from './../services/component.service';
 import { DocumentService } from './../services/document.service';
 import { Injectable } from '@angular/core';
 import { KeyService } from './../services/key.service';
@@ -12,28 +14,14 @@ import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/search.model';
 
 @Injectable()
-export class KeysStore extends OrganizationResourceStore<Key, Keys, SearchResults<Key>, KeyService> {
+export class ComponentStore extends OrganizationResourceStore<ComponentModel, Components, SearchResults<ComponentModel>, ComponentService> {
 
   constructor(keyService: KeyService, organizationScope: OrganizationScope) {
-    super(keyService, [], <SearchResults<Document>>{ items: [], totalSize: 0 }, <Document>{}, organizationScope, Document);
+    super(keyService, [], <SearchResults<ComponentModel>>{ items: [], totalSize: 0 }, <ComponentModel>{}, organizationScope, ComponentModel);
   }
 
   protected get kind() {
-    return 'Key';
-  }
-
-  emptyLoad() {
-    this._loadId = '';
-    this._loading.next(true);
-    this.service.get('').subscribe(
-      (entity) => {
-        this._current.next(entity);
-        this._loading.next(false);
-      },
-      (error) => {
-        console.log('Error retrieving ' + this.kind + ': ' + error);
-        this._loading.next(false);
-      });
+    return 'Component';
   }
 
 }

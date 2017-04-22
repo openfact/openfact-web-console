@@ -1,27 +1,27 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { KeysStore } from './../../../../core/store/key.store';
 import { OrganizationStore } from './../../../../core/store/organization.store';
+import { ServerInfoStore } from './../../../../core/store/serverinfo.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-keys-page',
-  templateUrl: './keys-page.component.html',
-  styleUrls: ['./keys-page.component.scss']
+  selector: 'openfact-key-providers-page',
+  templateUrl: './key-providers-page.component.html',
+  styleUrls: ['./key-providers-page.component.scss']
 })
-export class KeysPageComponent implements OnInit, OnDestroy {
+export class KeyProvidersPageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 
   constructor(
     organizationStore: OrganizationStore,
-    keyStore: KeysStore,
+    serverInfoStore: ServerInfoStore,
     route: ActivatedRoute) {
     this.idSubscription = route.parent.parent.params.pluck<Params, string>('organization')
       .map((id) => organizationStore.load(id))
       .subscribe();
-    keyStore.emptyLoad();
+    serverInfoStore.emptyLoad();
   }
 
   ngOnInit() {

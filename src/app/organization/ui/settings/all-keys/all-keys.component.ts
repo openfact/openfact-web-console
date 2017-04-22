@@ -1,22 +1,20 @@
 import * as Collections from 'typescript-collections';
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { ComponentService } from './../../../../core/services/component.service';
 import { Key } from './../../../../core/models/key.model';
 import { Organization } from './../../../../core/models/organization.model';
-import { OrganizationService } from './../../../../core/services/organization.service';
 import { ToastyService } from 'ng2-toasty';
 
 const type = 'org.openfact.keys.KeyProvider';
 
 @Component({
-  selector: 'openfact-organization-settings-keys',
-  templateUrl: './keys.component.html',
-  styleUrls: ['./keys.component.scss']
+  selector: 'openfact-organization-settings-all-keys',
+  templateUrl: './all-keys.component.html',
+  styleUrls: ['./all-keys.component.scss']
 })
-export class KeysComponent implements OnInit {
+export class AllKeysComponent implements OnInit {
 
   private _organization: Organization;
   private _key: Key;
@@ -34,6 +32,10 @@ export class KeysComponent implements OnInit {
   set key(key: Key) {
     this._key = key;
     this.loadData();
+  }
+
+  get key() {
+    return this._key;
   }
 
   constructor(
@@ -74,13 +76,6 @@ export class KeysComponent implements OnInit {
                 this.active[t] = this._key.keys[i];
               }
             }
-          }
-        }
-
-        this.activeMap = new Collections.Dictionary<String, any>();
-        for (const key in this.active) {
-          if (this.active[key]) {
-            this.activeMap.setValue(key, this.active[key]);
           }
         }
       }

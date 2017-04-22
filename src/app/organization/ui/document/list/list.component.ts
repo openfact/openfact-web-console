@@ -35,7 +35,7 @@ export class DocumentsListComponent implements OnInit {
   openDeleteDialog(deleteDocumentModal, document) {
     this.deleteDialog.modal = deleteDocumentModal;
     this.deleteDialog.document = document;
-    deleteDocumentModal.shown();
+    deleteDocumentModal.show();
   }
 
   changePage(page: number) {
