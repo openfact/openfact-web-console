@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Organization } from './../../../../../core/models/organization.model';
 import { OrganizationService } from './../../../../../core/services/organization.service';
 import { Router } from '@angular/router';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { UserDeleteDialogComponent } from './../delete-dialog/delete-dialog.component';
 import { UserService } from './../../../../../core/services/user.service';
 
@@ -28,7 +28,7 @@ export class UsersListComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private toastyService: ToastyService,
+    private toastr: ToastsManager,
     private userService: UserService,
     private organizationService: OrganizationService) { }
 

@@ -4,7 +4,7 @@ import { Organization, Organizations } from './../../../../core/models/organizat
 import { OrganizationService } from './../../../../core/services/organization.service';
 import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Router } from '@angular/router';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'openfact-organizations-list',
@@ -23,7 +23,7 @@ export class OrganizationsListComponent implements OnInit {
     private router: Router,
     private organizationService: OrganizationService,
     private organizationStore: OrganizationStore,
-    private toastyService: ToastyService) { }
+    private toastr: ToastsManager) { }
 
   ngOnInit() {
 
@@ -35,7 +35,7 @@ export class OrganizationsListComponent implements OnInit {
 
   delete(resource: Organization) {
     this.organizationService.delete(resource).subscribe((data) => {
-      this.toastyService.success('Success! The organization has been deleted.');
+      this.toastr.success('Success! The organization has been deleted.');
       this.organizationStore.loadAll();
     });
   }

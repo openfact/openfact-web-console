@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { Organization } from './../../../../core/models/organization.model';
 import { OrganizationService } from './../../../../core/services/organization.service';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'openfact-organization-settings-general-information',
@@ -30,7 +30,7 @@ export class SettingsGeneralInformationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private organizationService: OrganizationService,
-    private toastyService: ToastyService) {
+    private toastr: ToastsManager) {
     this.buildForm();
   }
 
@@ -57,7 +57,7 @@ export class SettingsGeneralInformationComponent implements OnInit {
       () => {
         this.working = false;
         this.form.markAsPristine();
-        this.toastyService.success('Success! Your changes have been saved to the organization.');
+        this.toastr.success('Success! Your changes have been saved to the organization.');
       },
       (error) => {
         this.working = false;

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ToastyConfig } from 'ng2-toasty';
+import { Component, ViewContainerRef } from '@angular/core';
+
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'of-root',
@@ -10,8 +11,8 @@ export class AppComponent {
 
   title = 'Openfact';
 
-  constructor(private toastyConfig: ToastyConfig) {
-    this.toastyConfig.theme = 'bootstrap';
+  constructor(private toastr: ToastsManager, vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
 }

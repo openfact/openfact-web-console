@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { OrganizationStore } from './../../../../../core/store/organization.store';
 import { Organizations } from './../../../../../core/models/organization.model';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { User } from './../../../../../core/models/user.model';
 import { UserService } from './../../../../../core/services/user.service';
 
@@ -28,7 +28,7 @@ export class UserEditComponent implements OnInit, OnChanges {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private toastyService: ToastyService,
+    private toastr: ToastsManager,
     private userService: UserService,
     private organizationStore: OrganizationStore) {
     this.organizations = this.organizationStore.list;
@@ -58,7 +58,7 @@ export class UserEditComponent implements OnInit, OnChanges {
   save(form: FormGroup) {
     this.userService.updateResource(this.user, form.value).subscribe(
       () => {
-        this.toastyService.success('Success! The user has been updated.');
+        this.toastr.success('Success! The user has been updated.');
         this.router.navigate(['../../'], { relativeTo: this.route });
       }
     );

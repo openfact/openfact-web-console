@@ -21,9 +21,7 @@
       "styles": [
         "../node_modules/patternfly/dist/css/patternfly.min.css",
         "../node_modules/patternfly/dist/css/patternfly-additions.min.css",
-        "../node_modules/ng2-toasty/style-default.css",
-        "../node_modules/ng2-toasty/style-bootstrap.css",
-        "../node_modules/ng2-toasty/style-material.css",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
         "styles.scss"
       ],
       "stylePreprocessorOptions": {

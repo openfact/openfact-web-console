@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { OrganizationService } from './../../../../core/services/organization.service';
 import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Router } from '@angular/router';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'openfact-organization-create-page',
@@ -24,7 +24,7 @@ export class OrganizationsCreatePageComponent implements OnInit {
   constructor(
     private _router: Router,
     private _formBuilder: FormBuilder,
-    private toastyService: ToastyService,
+    private toastr: ToastsManager,
     private organizationService: OrganizationService) { }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class OrganizationsCreatePageComponent implements OnInit {
 
     this.organizationService.create(organizationCopy).subscribe(
       result => {
-        this.toastyService.success('Success! The organization has been created.');
+        this.toastr.success('Success! The organization has been created.');
         this._router.navigate(['../']);
       },
       error => {

@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
 import { ToArrayPipe } from './pipes/to-array.pipe';
 import { ToDatePipe } from './pipes/to-date.pipe';
 import { ToNumberPipe } from './pipes/to-number.pipe';
-import { ToastyModule } from 'ng2-toasty';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { ViewKeyComponent } from './components/view-key/view-key.component';
 import { ViewObjectComponent } from './components/view-object/view-object.component';
 import { YesNoPipe } from './pipes/yes-no.pipe';
@@ -49,7 +49,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     JWBootstrapSwitchModule,
     FileUploadModule,
     LocalStorageModule,
-    ToastyModule,
+    ToastModule,
   ],
   declarations: [
     FormFieldsStatusComponent,
@@ -85,7 +85,7 @@ import { YesNoPipe } from './pipes/yes-no.pipe';
     JWBootstrapSwitchModule,
     FileUploadModule,
     LocalStorageModule,
-    ToastyModule,
+    ToastModule,
 
     FormFieldsStatusComponent,
     FormRequiredLabelDirective,

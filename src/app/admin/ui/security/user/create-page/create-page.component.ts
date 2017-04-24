@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { OrganizationStore } from './../../../../../core/store/organization.store';
 import { Router } from '@angular/router';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { User } from './../../../../../core/models/user.model';
 import { UserService } from './../../../../../core/services/user.service';
 
@@ -28,7 +28,7 @@ export class UsersCreatePageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private toastyService: ToastyService,
+    private toastr: ToastsManager,
     private userService: UserService,
     private organizationStore: OrganizationStore) {
     this.organizations = this.organizationStore.list;
@@ -54,7 +54,7 @@ export class UsersCreatePageComponent implements OnInit {
 
     this.userService.create(form.value).subscribe(
       () => {
-        this.toastyService.success('Success! The user has been created.');
+        this.toastr.success('Success! The user has been created.');
         this.router.navigate(['../../'], { relativeTo: this.route });
       },
       (error) => {

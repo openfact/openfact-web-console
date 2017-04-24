@@ -7,7 +7,7 @@ import { ComponentService } from './../../../../core/services/component.service'
 import { Key } from './../../../../core/models/key.model';
 import { Organization } from './../../../../core/models/organization.model';
 import { OrganizationService } from './../../../../core/services/organization.service';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 const type = 'org.openfact.keys.KeyProvider';
 
@@ -38,7 +38,7 @@ export class SettingsKeysComponent implements OnInit {
 
   constructor(
     private componentService: ComponentService,
-    private toastyService: ToastyService) {
+    private toastr: ToastsManager) {
   }
 
   ngOnInit() {

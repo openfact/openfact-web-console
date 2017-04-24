@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ToastData, ToastOptions, ToastyConfig, ToastyService } from 'ng2-toasty';
 
 import { ModalDirective } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
@@ -52,8 +51,7 @@ export class ButtonDeleteComponent implements OnInit {
   confirmName = '';
 
   constructor(
-    private router: Router,
-    private toastyService: ToastyService
+    private router: Router
   ) { }
 
   ngOnInit() {

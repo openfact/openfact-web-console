@@ -18,7 +18,7 @@ import { Restangular } from 'ngx-restangular';
 import { ServerInfoService } from './services/serverinfo.service';
 import { ServerInfoStore } from './store/serverinfo.store';
 import { SharedModule } from './../shared/shared.module';
-import { ToastyService } from 'ng2-toasty';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { UserService } from './services/user.service';
 import { UserStore } from './store/user.store';
 
@@ -32,17 +32,17 @@ import { UserStore } from './store/user.store';
     {
       provide: OPENFACT_RESTANGULAR,
       useFactory: OpenfactRestangularFactory,
-      deps: [Restangular, ConfigService, ToastyService]
+      deps: [Restangular, ConfigService, ToastsManager]
     },
     {
       provide: OPENFACT_ORGANIZATION_RESTANGULAR,
       useFactory: OpenfactOrganizationRestangularFactory,
-      deps: [Restangular, ConfigService, ToastyService]
+      deps: [Restangular, ConfigService, ToastsManager]
     },
     {
       provide: KEYCLOAK_RESTANGULAR,
       useFactory: KeycloakRestangularFactory,
-      deps: [Restangular, ToastyService]
+      deps: [Restangular, ToastsManager]
     },
 
     ServerInfoService,
