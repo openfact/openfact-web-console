@@ -13,7 +13,7 @@ import { showStateTrigger } from './../../../../shared/animations/animations';
   styleUrls: ['./all-keys-wrapper.component.scss'],
   animations: [showStateTrigger]
 })
-export class AllKeysWrapperComponent implements OnInit {
+export class SettingsAllKeysWrapperComponent implements OnInit {
 
   organization: Observable<Organization>;
   key: Observable<Key>;

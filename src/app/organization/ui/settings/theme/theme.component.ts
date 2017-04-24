@@ -30,7 +30,6 @@ export class SettingsThemeComponent implements OnInit {
   @Input()
   set serverInfo(serverInfo: ServerInfo) {
     this._serverInfo = serverInfo;
-    this.loadData();
   }
 
   get serverInfo() {
@@ -62,13 +61,7 @@ export class SettingsThemeComponent implements OnInit {
   }
 
   loadData(): void {
-    this.form.patchValue(this._organization);
-  }
-
-  refreshSupportedLocalesSelectValue(values: [any]) {
-    this.form.patchValue({
-      supportedLocales: values.map(f => f.id)
-    });
+    this.form.patchValue(this.organization);
   }
 
   save(form: FormControl) {

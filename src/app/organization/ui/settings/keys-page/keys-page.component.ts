@@ -24,9 +24,7 @@ export class SettingsKeysPageComponent implements OnInit, OnDestroy {
     keyStore.emptyLoad();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   ngOnDestroy() { this.idSubscription.unsubscribe(); }
 

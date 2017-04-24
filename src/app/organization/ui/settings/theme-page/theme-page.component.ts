@@ -24,9 +24,7 @@ export class SettingsThemePageComponent implements OnInit, OnDestroy {
     serverInfoStore.emptyLoad();
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   ngOnDestroy() { this.idSubscription.unsubscribe(); }
 

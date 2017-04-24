@@ -7,7 +7,7 @@ import { Organization } from './../../../../core/models/organization.model';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class SettingsToolbarComponent implements OnInit {
 
   @Input()
   organization: Organization;

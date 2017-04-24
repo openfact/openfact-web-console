@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { KeyProvidersComponent } from './key-providers.component';
+import { SettingsKeyProvidersComponent } from './key-providers.component';
 
 describe('KeyProvidersComponent', () => {
-  let component: KeyProvidersComponent;
-  let fixture: ComponentFixture<KeyProvidersComponent>;
+  let component: SettingsKeyProvidersComponent;
+  let fixture: ComponentFixture<SettingsKeyProvidersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ KeyProvidersComponent ]
+      declarations: [ SettingsKeyProvidersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KeyProvidersComponent);
+    fixture = TestBed.createComponent(SettingsKeyProvidersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

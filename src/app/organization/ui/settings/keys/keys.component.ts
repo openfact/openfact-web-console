@@ -36,6 +36,14 @@ export class SettingsKeysComponent implements OnInit {
     this.loadData();
   }
 
+  get organization() {
+    return this._organization;
+  }
+
+  get key() {
+    return this._key;
+  }
+
   constructor(
     private componentService: ComponentService,
     private toastr: ToastsManager) {
@@ -45,33 +53,33 @@ export class SettingsKeysComponent implements OnInit {
   }
 
   loadData(): void {
-    if (!this._organization || !this._organization.id) {
+    if (!this.organization || !this.organization.id) {
       return;
     }
-    if (!this._key || !this._key.keys) {
+    if (!this.key || !this.key.keys) {
       return;
     }
 
     const queryParams = {
       type: type,
-      parent: this._organization.id
+      parent: this.organization.id
     };
 
     this.componentService.list(null, queryParams).subscribe(
       (components) => {
-        for (let i = 0; i < this._key.keys.length; i++) {
+        for (let i = 0; i < this.key.keys.length; i++) {
           for (let j = 0; j < components.length; j++) {
-            if (this._key.keys[i].providerId === components[j].id) {
-              this._key.keys[i].provider = components[j];
+            if (this.key.keys[i].providerId === components[j].id) {
+              this.key.keys[i].provider = components[j];
             }
           }
         }
 
-        for (const t in this._key.active) {
-          if (this._key.active[t]) {
-            for (let i = 0; i < this._key.keys.length; i++) {
-              if (this._key.active[t] === this._key.keys[i].kid) {
-                this.active[t] = this._key.keys[i];
+        for (const t in this.key.active) {
+          if (this.key.active[t]) {
+            for (let i = 0; i < this.key.keys.length; i++) {
+              if (this.key.active[t] === this.key.keys[i].kid) {
+                this.active[t] = this.key.keys[i];
               }
             }
           }

@@ -14,7 +14,7 @@ const type = 'org.openfact.keys.KeyProvider';
   templateUrl: './all-keys.component.html',
   styleUrls: ['./all-keys.component.scss']
 })
-export class AllKeysComponent implements OnInit {
+export class SettingsAllKeysComponent implements OnInit {
 
   private _organization: Organization;
   private _key: Key;

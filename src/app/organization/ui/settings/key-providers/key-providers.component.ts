@@ -11,7 +11,7 @@ import { ServerInfo } from './../../../../core/models/serverinfo.model';
   templateUrl: './key-providers.component.html',
   styleUrls: ['./key-providers.component.scss']
 })
-export class KeyProvidersComponent implements OnInit {
+export class SettingsKeyProvidersComponent implements OnInit {
 
   private _organization: Organization;
   private _serverInfo: ServerInfo;
