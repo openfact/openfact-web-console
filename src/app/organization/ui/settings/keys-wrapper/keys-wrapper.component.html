@@ -1,4 +1,4 @@
-<div class="organizations detail" *ngIf="organization" @showState>
+<div class="organizations detail" *ngIf="organization">
   <openfact-organization-settings-toolbar [organization]="organization | async"></openfact-organization-settings-toolbar>
-  <openfact-organization-settings-keys [organization]="organization | async" [key]="key | async"></openfact-organization-settings-keys>
+  <openfact-organization-settings-keys [organization]="organization | async" [key]="key | async" @showState></openfact-organization-settings-keys>
 </div>

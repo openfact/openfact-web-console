@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './general-information-page.component.html',
   styleUrls: ['./general-information-page.component.scss']
 })
-export class GeneralInformationPageComponent implements OnInit, OnDestroy {
+export class SettingsGeneralInformationPageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 

@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { SmtpPageComponent } from './smtp-page.component';
+import { SetttingsSmtpPageComponent } from './smtp-page.component';
 
 describe('SmtpPageComponent', () => {
-  let component: SmtpPageComponent;
-  let fixture: ComponentFixture<SmtpPageComponent>;
+  let component: SetttingsSmtpPageComponent;
+  let fixture: ComponentFixture<SetttingsSmtpPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SmtpPageComponent ]
+      declarations: [ SetttingsSmtpPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SmtpPageComponent);
+    fixture = TestBed.createComponent(SetttingsSmtpPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,7 +10,7 @@ import { ToastyService } from 'ng2-toasty';
   templateUrl: './general-information.component.html',
   styleUrls: ['./general-information.component.scss']
 })
-export class GeneralInformationComponent implements OnInit {
+export class SettingsGeneralInformationComponent implements OnInit {
 
   private _organization: Organization;
 
@@ -41,12 +41,12 @@ export class GeneralInformationComponent implements OnInit {
     this.form = this.formBuilder.group({
       organization: [{ value: null, disabled: true }, Validators.compose([Validators.required, Validators.maxLength(60)])],
       description: [null, Validators.compose([Validators.maxLength(250)])],
-      enabled: [null, Validators.compose([Validators.required])],
+      enabled: [false, Validators.compose([Validators.required])],
     });
   }
 
   loadData(): void {
-    this.form.patchValue(this._organization);
+    this.form.patchValue(this.organization);
   }
 
   save(form: FormControl) {

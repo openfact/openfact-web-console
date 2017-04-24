@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { ThemePageComponent } from './theme-page.component';
+import { SettingsThemePageComponent } from './theme-page.component';
 
 describe('ThemePageComponent', () => {
-  let component: ThemePageComponent;
-  let fixture: ComponentFixture<ThemePageComponent>;
+  let component: SettingsThemePageComponent;
+  let fixture: ComponentFixture<SettingsThemePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThemePageComponent ]
+      declarations: [ SettingsThemePageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThemePageComponent);
+    fixture = TestBed.createComponent(SettingsThemePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

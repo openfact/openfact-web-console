@@ -11,7 +11,7 @@ import { showStateTrigger } from './../../../../shared/animations/animations';
   styleUrls: ['./smtp-wrapper.component.scss'],
   animations: [showStateTrigger]
 })
-export class SmtpWrapperComponent implements OnInit {
+export class SettingsSmtpWrapperComponent implements OnInit {
 
   organization: Observable<Organization>;
 

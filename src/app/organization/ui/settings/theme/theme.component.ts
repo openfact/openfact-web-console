@@ -11,7 +11,7 @@ import { ToastyService } from 'ng2-toasty';
   templateUrl: './theme.component.html',
   styleUrls: ['./theme.component.scss']
 })
-export class ThemeComponent implements OnInit {
+export class SettingsThemeComponent implements OnInit {
 
   private _organization: Organization;
   private _serverInfo: ServerInfo;

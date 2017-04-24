@@ -10,7 +10,7 @@ import { ToastyService } from 'ng2-toasty';
   templateUrl: './smtp.component.html',
   styleUrls: ['./smtp.component.scss']
 })
-export class SmtpComponent implements OnInit {
+export class SettingsSmtpComponent implements OnInit {
 
   private _organization: Organization;
 
@@ -20,7 +20,9 @@ export class SmtpComponent implements OnInit {
   @Input()
   set organization(organization: Organization) {
     this._organization = organization;
-    this.loadData();
+    if (this._organization && this._organization.smtpServer) {
+      this.loadData();
+    }
   }
 
   get organization() {
@@ -51,9 +53,7 @@ export class SmtpComponent implements OnInit {
   }
 
   loadData(): void {
-    if (this._organization && this._organization.smtpServer) {
-      this.form.patchValue(this._organization.smtpServer);
-    }
+    this.form.patchValue(this.organization.smtpServer);
   }
 
   save(form: FormControl) {
@@ -62,6 +62,8 @@ export class SmtpComponent implements OnInit {
     let resource = { smtpServer: form.value };
     this.organizationService.updateResource(this.organization, resource).subscribe(
       () => {
+        console.log("entro");
+
         this.working = false;
         this.form.markAsPristine();
         this.toastyService.success('Success! Your changes have been saved to the organization.');

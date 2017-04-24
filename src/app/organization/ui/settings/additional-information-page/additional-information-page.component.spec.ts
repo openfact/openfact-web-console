@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { AdditionalInformationPageComponent } from './additional-information-page.component';
+import { SettingsAdditionalInformationPageComponent } from './additional-information-page.component';
 
 describe('AdditionalInformationPageComponent', () => {
-  let component: AdditionalInformationPageComponent;
-  let fixture: ComponentFixture<AdditionalInformationPageComponent>;
+  let component: SettingsAdditionalInformationPageComponent;
+  let fixture: ComponentFixture<SettingsAdditionalInformationPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdditionalInformationPageComponent ]
+      declarations: [ SettingsAdditionalInformationPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdditionalInformationPageComponent);
+    fixture = TestBed.createComponent(SettingsAdditionalInformationPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

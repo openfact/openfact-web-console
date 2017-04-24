@@ -11,7 +11,7 @@ import { showStateTrigger } from './../../../../shared/animations/animations';
   styleUrls: ['./general-information-wrapper.component.scss'],
   animations: [showStateTrigger]
 })
-export class GeneralInformationWrapperComponent implements OnInit {
+export class SettingsGeneralInformationWrapperComponent implements OnInit {
 
   organization: Observable<Organization>;
 

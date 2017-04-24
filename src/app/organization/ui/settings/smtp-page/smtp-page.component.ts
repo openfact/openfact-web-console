@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './smtp-page.component.html',
   styleUrls: ['./smtp-page.component.scss']
 })
-export class SmtpPageComponent implements OnInit, OnDestroy {
+export class SetttingsSmtpPageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 

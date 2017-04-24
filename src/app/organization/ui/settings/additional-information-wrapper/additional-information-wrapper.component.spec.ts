@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { AdditionalInformationWrapperComponent } from './additional-information-wrapper.component';
+import { SettingsAdditionalInformationWrapperComponent } from './additional-information-wrapper.component';
 
 describe('AdditionalInformationWrapperComponent', () => {
-  let component: AdditionalInformationWrapperComponent;
-  let fixture: ComponentFixture<AdditionalInformationWrapperComponent>;
+  let component: SettingsAdditionalInformationWrapperComponent;
+  let fixture: ComponentFixture<SettingsAdditionalInformationWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdditionalInformationWrapperComponent ]
+      declarations: [ SettingsAdditionalInformationWrapperComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdditionalInformationWrapperComponent);
+    fixture = TestBed.createComponent(SettingsAdditionalInformationWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

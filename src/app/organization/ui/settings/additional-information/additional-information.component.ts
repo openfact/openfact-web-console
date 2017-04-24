@@ -10,7 +10,7 @@ import { ToastyService } from 'ng2-toasty';
   templateUrl: './additional-information.component.html',
   styleUrls: ['./additional-information.component.scss']
 })
-export class AdditionalInformationComponent implements OnInit {
+export class SettingsAdditionalInformationComponent implements OnInit {
 
   private _organization: Organization;
 

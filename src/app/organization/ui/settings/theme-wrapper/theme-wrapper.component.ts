@@ -13,7 +13,7 @@ import { showStateTrigger } from './../../../../shared/animations/animations';
   styleUrls: ['./theme-wrapper.component.scss'],
   animations: [showStateTrigger]
 })
-export class ThemeWrapperComponent implements OnInit {
+export class SettingsThemeWrapperComponent implements OnInit {
 
   organization: Observable<Organization>;
   serverInfo: Observable<ServerInfo>;

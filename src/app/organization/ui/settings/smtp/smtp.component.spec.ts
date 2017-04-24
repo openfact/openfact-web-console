@@ -1,20 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 
-import { SmtpComponent } from './smtp.component';
+import { SettingsSmtpComponent } from './smtp.component';
 
 describe('SmtpComponent', () => {
-  let component: SmtpComponent;
-  let fixture: ComponentFixture<SmtpComponent>;
+  let component: SettingsSmtpComponent;
+  let fixture: ComponentFixture<SettingsSmtpComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SmtpComponent ]
+      declarations: [ SettingsSmtpComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SmtpComponent);
+    fixture = TestBed.createComponent(SettingsSmtpComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

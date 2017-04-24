@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './theme-page.component.html',
   styleUrls: ['./theme-page.component.scss']
 })
-export class ThemePageComponent implements OnInit, OnDestroy {
+export class SettingsThemePageComponent implements OnInit, OnDestroy {
 
   private idSubscription: Subscription;
 
