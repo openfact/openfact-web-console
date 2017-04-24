@@ -16,8 +16,8 @@ import { SearchResults } from './entity/search.model';
 @Injectable()
 export class ComponentStore extends OrganizationResourceStore<ComponentModel, Components, SearchResults<ComponentModel>, ComponentService> {
 
-  constructor(keyService: KeyService, organizationScope: OrganizationScope) {
-    super(keyService, [], <SearchResults<ComponentModel>>{ items: [], totalSize: 0 }, <ComponentModel>{}, organizationScope, ComponentModel);
+  constructor(componentService: ComponentService, organizationScope: OrganizationScope) {
+    super(componentService, [], <SearchResults<ComponentModel>>{ items: [], totalSize: 0 }, <ComponentModel>{}, organizationScope, ComponentModel);
   }
 
   protected get kind() {

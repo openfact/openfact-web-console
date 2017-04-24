@@ -50,7 +50,7 @@ export class SettingsEditGenericKeystoreComponent implements OnInit {
     return this._serverInfo;
   }
 
-  get isntance() {
+  get instance() {
     return this._instance;
   }
 
@@ -82,7 +82,7 @@ export class SettingsEditGenericKeystoreComponent implements OnInit {
     if (!this.serverInfo || !this.serverInfo.componentTypes) {
       return;
     }
-    if (!this.instance || !this.instance.config) {
+    if (!this.instance || !this.instance.id) {
       return;
     }
 
@@ -124,10 +124,10 @@ export class SettingsEditGenericKeystoreComponent implements OnInit {
   save(config: any) {
     this.working = true;
 
-    this.componentService.update(Object.assign(this.form.value, { config: config })).subscribe(
+    this.componentService.update(Object.assign(this.instance, this.form.value, { config: config })).subscribe(
       result => {
         this.toastr.success('Success! The component has been updated.');
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.router.navigate(['../../'], { relativeTo: this.route });
       },
       error => {
         this.working = false;

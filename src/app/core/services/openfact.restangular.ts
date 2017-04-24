@@ -26,7 +26,7 @@ export function OpenfactOrganizationRestangularFactory(restangular: Restangular,
       });
     });
     RestangularConfigurer.setBaseUrl(configService.getSettings().apiEndpoint);
-    RestangularConfigurer.setRestangularFields({ 'id': 'organization' });
+    //RestangularConfigurer.setRestangularFields({ 'id': 'organization' });
   });
   return config;
 }
