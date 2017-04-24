@@ -6,7 +6,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-all-keys-page',
+  selector: 'openfact-settings-all-keys-page',
   templateUrl: './all-keys-page.component.html',
   styleUrls: ['./all-keys-page.component.scss']
 })

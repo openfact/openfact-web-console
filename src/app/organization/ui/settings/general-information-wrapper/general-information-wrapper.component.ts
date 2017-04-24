@@ -6,7 +6,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { showStateTrigger } from './../../../../shared/animations/animations';
 
 @Component({
-  selector: 'openfact-organization-settings-general-information-wrapper',
+  selector: 'openfact-settings-general-information-wrapper',
   templateUrl: './general-information-wrapper.component.html',
   styleUrls: ['./general-information-wrapper.component.scss'],
   animations: [showStateTrigger]

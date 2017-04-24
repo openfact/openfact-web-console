@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Organization } from './../../../../core/models/organization.model';
 
 @Component({
-  selector: 'openfact-organization-settings-toolbar',
+  selector: 'openfact-settings-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })

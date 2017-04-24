@@ -1,9 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { showStateTrigger } from './../../animations/animations';
+
 @Component({
   selector: 'of-loading',
   templateUrl: './loading.component.html',
-  styleUrls: ['./loading.component.scss']
+  styleUrls: ['./loading.component.scss'],
+  animations: [showStateTrigger]
 })
 export class LoadingComponent implements OnInit {
 

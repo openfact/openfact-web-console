@@ -8,7 +8,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { showStateTrigger } from './../../../../shared/animations/animations';
 
 @Component({
-  selector: 'openfact-organization-settings-all-keys-wrapper',
+  selector: 'openfact-settings-all-keys-wrapper',
   templateUrl: './all-keys-wrapper.component.html',
   styleUrls: ['./all-keys-wrapper.component.scss'],
   animations: [showStateTrigger]

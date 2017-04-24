@@ -6,7 +6,7 @@ import { OrganizationService } from './../../../../core/services/organization.se
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
-  selector: 'openfact-organization-settings-additional-information',
+  selector: 'openfact-settings-additional-information',
   templateUrl: './additional-information.component.html',
   styleUrls: ['./additional-information.component.scss']
 })

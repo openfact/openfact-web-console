@@ -8,7 +8,7 @@ import { ServerInfoStore } from './../../../../core/store/serverinfo.store';
 import { showStateTrigger } from './../../../../shared/animations/animations';
 
 @Component({
-  selector: 'openfact-organization-settings-theme-wrapper',
+  selector: 'openfact-settings-theme-wrapper',
   templateUrl: './theme-wrapper.component.html',
   styleUrls: ['./theme-wrapper.component.scss'],
   animations: [showStateTrigger]

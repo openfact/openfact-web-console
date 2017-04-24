@@ -6,7 +6,7 @@ import { ServerInfoStore } from './../../../../core/store/serverinfo.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-key-providers-page',
+  selector: 'openfact-settings-key-providers-page',
   templateUrl: './key-providers-page.component.html',
   styleUrls: ['./key-providers-page.component.scss']
 })

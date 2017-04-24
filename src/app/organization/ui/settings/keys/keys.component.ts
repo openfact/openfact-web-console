@@ -12,7 +12,7 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 const type = 'org.openfact.keys.KeyProvider';
 
 @Component({
-  selector: 'openfact-organization-settings-keys',
+  selector: 'openfact-settings-keys',
   templateUrl: './keys.component.html',
   styleUrls: ['./keys.component.scss']
 })

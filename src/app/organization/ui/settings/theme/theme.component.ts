@@ -7,7 +7,7 @@ import { ServerInfo } from './../../../../core/models/serverinfo.model';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
-  selector: 'openfact-organization-settings-theme',
+  selector: 'openfact-settings-theme',
   templateUrl: './theme.component.html',
   styleUrls: ['./theme.component.scss']
 })

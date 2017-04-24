@@ -6,7 +6,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { showStateTrigger } from './../../../../shared/animations/animations';
 
 @Component({
-  selector: 'openfact-organization-settings-smtp-wrapper',
+  selector: 'openfact-settings-smtp-wrapper',
   templateUrl: './smtp-wrapper.component.html',
   styleUrls: ['./smtp-wrapper.component.scss'],
   animations: [showStateTrigger]

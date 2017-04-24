@@ -5,7 +5,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-general-information-page',
+  selector: 'openfact-settings-general-information-page',
   templateUrl: './general-information-page.component.html',
   styleUrls: ['./general-information-page.component.scss']
 })

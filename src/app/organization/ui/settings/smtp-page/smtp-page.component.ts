@@ -5,7 +5,7 @@ import { OrganizationStore } from './../../../../core/store/organization.store';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'openfact-smtp-page',
+  selector: 'openfact-settings-smtp-page',
   templateUrl: './smtp-page.component.html',
   styleUrls: ['./smtp-page.component.scss']
 })

@@ -7,7 +7,7 @@ import { Organization } from './../../../../core/models/organization.model';
 import { ServerInfo } from './../../../../core/models/serverinfo.model';
 
 @Component({
-  selector: 'openfact-organization-settings-key-providers',
+  selector: 'openfact-settings-key-providers',
   templateUrl: './key-providers.component.html',
   styleUrls: ['./key-providers.component.scss']
 })
@@ -66,10 +66,10 @@ export class SettingsKeyProvidersComponent implements OnInit {
     this.router.navigate(['./', provider], { relativeTo: this.route });
   };
 
-  openDeleteDialog(deleteComponentModal, component) { 
+  openDeleteDialog(deleteComponentModal, component) {
     this.deleteDialog.modal = deleteComponentModal;
     this.deleteDialog.component = component;
     deleteComponentModal.show();
-  }  
+  }
 
 }
