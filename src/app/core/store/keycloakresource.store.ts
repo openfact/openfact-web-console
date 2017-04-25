@@ -17,14 +17,10 @@ function nameOfResource(resource: any) {
   return metadata.name || '';
 }
 
-export abstract class KeycloakResourceStore<T extends KeycloakResource, L extends Array<T>, C extends SearchCriteria<T>, S extends SearchResults<T>, R extends KeycloakService<T, L, S>> extends AbstractStore<T, L, C, S, R>{
+export abstract class KeycloakResourceStore<T extends KeycloakResource, L extends Array<T>, R extends KeycloakService<T, L>> extends AbstractStore<T, L, R>{
 
-  constructor(service: R, private initialList: L, private initialSearch: S, initialCurrent: T, protected type: { new (): T; }) {
-    super(service, initialList, initialSearch, initialCurrent);
-  }
-
-  protected get searchPath(): string {
-    return this.defaultSearchPath;
+  constructor(service: R, private initialList: L, initialCurrent: T, protected type: { new (): T; }) {
+    super(service, initialList, initialCurrent);
   }
 
   /**
@@ -38,29 +34,8 @@ export abstract class KeycloakResourceStore<T extends KeycloakResource, L extend
     }
   }
 
-  update(obj: T): Observable<T> {
-    return this.service.update(obj);
-  }
-
-  delete(obj: T): Observable<any> {
-    return this.service.delete(obj);
-  }
-
-  loadAll(): Observable<L> {
-    super.loadAll();
-    return this.list;
-  }
-
-  load(id: string): void {
-    super.load(id);
-  }
-
-  listQueryParams() {
-    return null;
-  }
-
-  get defaultSearchPath() {
-    return 'search';
+  updateResource(obj: T, resource: any): Observable<T> {
+    return this.service.updateResource(obj, resource);
   }
 
 }

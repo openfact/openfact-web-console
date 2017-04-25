@@ -5,7 +5,7 @@ import { User, Users } from './../models/user.model';
 
 import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
 import { OPENFACT_RESTANGULAR } from './openfact.restangular';
-import { OrganizationResourceService } from './organization.resource.service';
+import { OrganizationResourceSearchService } from './organization.resource.search.service';
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
 import { SearchResults } from './../store/entity/searchresults.model';
@@ -13,7 +13,7 @@ import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
 
 @Injectable()
-export class DocumentService extends OrganizationResourceService<Document, Documents, SearchResults<Document>> {
+export class DocumentService extends OrganizationResourceSearchService<Document, Documents, SearchResults<Document>> {
 
   private uploader: FileUploader;
 

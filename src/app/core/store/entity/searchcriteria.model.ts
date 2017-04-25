@@ -1,6 +1,7 @@
 import { BaseEntity } from './entity.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { SearchResults } from './searchresults.model';
+import { Subscription } from 'rxjs/Subscription';
 
 export interface Paging {
   page: number;
@@ -18,12 +19,26 @@ export class SearchCriteriaWrapper<T extends BaseEntity, C extends SearchCriteri
   private _from: number;
   private _to: number;
 
-  constructor(private _criteria: BehaviorSubject<C>, private searchResults: BehaviorSubject<S>) {
-    this.searchResults.subscribe((searchResults) => {
-      this._from = (this.page - 1) * this.pageSize + 1;
-      this._to = (this.page - 1) * this.pageSize + searchResults.totalSize % this.pageSize;
-      this._totalPages = Math.ceil(searchResults.totalSize / this.pageSize);
-    });
+  private subscription: Subscription;
+
+  constructor(private _criteria: BehaviorSubject<C>, private searchResults: BehaviorSubject<S>) { }
+
+  watchChanges() {
+    if (!this.subscription) {
+      this.subscription = this.searchResults.subscribe((searchResults) => {
+        this._from = (this.page - 1) * this.pageSize + 1;
+        this._to = (this.page - 1) * this.pageSize + searchResults.totalSize % this.pageSize;
+        this._totalPages = Math.ceil(searchResults.totalSize / this.pageSize);
+      });
+    }
+  }
+
+  unwatchChanges() {
+    if (this.subscription) {
+      this.subscription.closed
+      this.subscription.unsubscribe();
+      this.subscription = null;
+    }
   }
 
   get criteria() {

@@ -6,7 +6,7 @@ import { RESTService } from '../store/entity/rest.service';
 import { Restangular } from 'ngx-restangular';
 import { SearchResults } from './../store/entity/searchresults.model';
 
-export abstract class KeycloakService<T extends KeycloakResource, L extends Array<T>, S extends SearchResults<T>> extends RESTService<T, L, S> {
+export abstract class KeycloakService<T extends KeycloakResource, L extends Array<T>> extends RESTService<T, L> {
 
   constructor(keycloakRestangular: Restangular) {
     super(keycloakRestangular);
@@ -40,10 +40,6 @@ export abstract class KeycloakService<T extends KeycloakResource, L extends Arra
   defaultKind() {
     return 'Keycloak';
   }
-
-  get searchPath(): string {
-    return 'search';
-  };
 
   abstract get serviceUrl(): string;
 }

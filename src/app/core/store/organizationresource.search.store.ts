@@ -6,22 +6,23 @@ import { KeycloakResourceStore } from './keycloakresource.store';
 import { KeycloakService } from '../services/keycloak.service';
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
-import { OpenfactResourceStore } from "./openfactresource.store";
+import { OpenfactResourceSearchStore } from "./openfactresource.search.store";
 import { OpenfactService } from '../services/openfact.service';
-import { OrganizationResourceService } from '../services/organization.resource.service';
+import { OrganizationResourceSearchService } from '../services/organization.resource.search.service';
 import { OrganizationScope } from './../services/organization.scope';
 import { RealmScope } from './../services/realm.scope';
 import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 
-export abstract class OrganizationResourceStore<T extends OpenfactResource, L extends Array<T>,
-  R extends OrganizationResourceService<T, L>> extends OpenfactResourceStore<T, L, R> {
+export abstract class OrganizationResourceSearchStore<T extends OpenfactResource, L extends Array<T>,
+  C extends SearchCriteria<T>, S extends SearchResults<T>,
+  R extends OrganizationResourceSearchService<T, L, S>> extends OpenfactResourceSearchStore<T, L, C, S, R> {
 
   private organizationSubscription: Subscription;
 
-  constructor(service: any, initialList, initialCurrent: any, public organizationScope: OrganizationScope, type: any) {
-    super(service, initialList, initialCurrent, type);
+  constructor(service: any, initialList, initialSearch: any, initialCurrent: any, public organizationScope: OrganizationScope, type: any) {
+    super(service, initialList, initialSearch, initialCurrent, type);
     if (this.organizationScope) {
       this.organizationSubscription = this.organizationScope.organization.subscribe(
         organization => {

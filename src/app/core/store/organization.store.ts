@@ -7,12 +7,10 @@ import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
-export class OrganizationStore extends OpenfactResourceStore<Organization, Organizations, SearchCriteria<Organization>, SearchResults<Organization>, OrganizationService> {
+export class OrganizationStore extends OpenfactResourceStore<Organization, Organizations, OrganizationService> {
 
   constructor(organizationService: OrganizationService) {
-    super(organizationService, [],
-      <SearchResults<Organization>>{ items: [], totalSize: 0 },
-      <Organization>{}, Organization);
+    super(organizationService, [], <Organization>{}, Organization);
   }
 
   protected get kind() {

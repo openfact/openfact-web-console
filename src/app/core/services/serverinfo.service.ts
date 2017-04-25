@@ -9,7 +9,7 @@ import { SearchResults } from './../store/entity/searchresults.model';
 const serverInfoUrl = '/admin/serverinfo';
 
 @Injectable()
-export class ServerInfoService extends OpenfactService<ServerInfo, ServerInfos, SearchResults<ServerInfo>> {
+export class ServerInfoService extends OpenfactService<ServerInfo, ServerInfos> {
 
   constructor( @Inject(OPENFACT_RESTANGULAR) openfactRestangular: Restangular) {
     super(openfactRestangular.service(serverInfoUrl));

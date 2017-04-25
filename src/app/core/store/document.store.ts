@@ -4,13 +4,13 @@ import { User, Users } from './../models/user.model';
 import { DocumentService } from './../services/document.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { OrganizationResourceStore } from './organizationresource.store';
+import { OrganizationResourceSearchStore } from './organizationresource.search.store';
 import { OrganizationScope } from './../services/organization.scope';
 import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
-export class DocumentStore extends OrganizationResourceStore<Document, Documents, SearchCriteria<Document>, SearchResults<Document>, DocumentService> {
+export class DocumentStore extends OrganizationResourceSearchStore<Document, Documents, SearchCriteria<Document>, SearchResults<Document>, DocumentService> {
 
   constructor(documentService: DocumentService, organizationScope: OrganizationScope) {
     super(documentService, [],

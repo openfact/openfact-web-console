@@ -3,11 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { Restangular } from 'ngx-restangular';
 import { SearchResults } from './searchresults.model';
 
-export abstract class RESTService<T extends BaseEntity, L extends Array<T>, S extends SearchResults<T>> {
+export abstract class RESTService<T extends BaseEntity, L extends Array<T>> {
 
   protected constructor(protected restangularService: Restangular) { }
-  
-  protected abstract get searchPath(): string;
 
   get(id: string): Observable<T> {
     return this.restangularService.one(id).get();
@@ -15,10 +13,6 @@ export abstract class RESTService<T extends BaseEntity, L extends Array<T>, S ex
 
   list(queryParams: any = null): Observable<L> {
     return this.restangularService.getList(queryParams);
-  }
-
-  search(criteria: any = null): Observable<S> {
-    return this.restangularService.all(this.searchPath).post(criteria);
   }
 
   create(obj: T): Observable<T> {

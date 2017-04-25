@@ -14,12 +14,10 @@ import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
-export class ComponentStore extends OrganizationResourceStore<ComponentModel, Components, SearchCriteria<ComponentModel>, SearchResults<ComponentModel>, ComponentService> {
+export class ComponentStore extends OrganizationResourceStore<ComponentModel, Components, ComponentService> {
 
   constructor(componentService: ComponentService, organizationScope: OrganizationScope) {
-    super(componentService, [],
-      <SearchResults<ComponentModel>>{ items: [], totalSize: 0 },
-      <ComponentModel>{}, organizationScope, ComponentModel);
+    super(componentService, [], <ComponentModel>{}, organizationScope, ComponentModel);
   }
 
   protected get kind() {

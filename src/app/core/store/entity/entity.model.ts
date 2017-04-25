@@ -1,3 +1,1 @@
-export interface BaseEntity {
-    readonly id?: string;
-}
+export interface BaseEntity { readonly id?: string; }

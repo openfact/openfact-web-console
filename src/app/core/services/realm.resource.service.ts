@@ -7,7 +7,7 @@ import { SearchResults } from './../store/entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 import { pathJoin } from '../models/utils';
 
-export abstract class RealmResourceService<T extends KeycloakResource, L extends Array<T>, S extends SearchResults<T>> extends KeycloakService<T, L, S> {
+export abstract class RealmResourceService<T extends KeycloakResource, L extends Array<T>> extends KeycloakService<T, L> {
   private realmSubscription: Subscription;
   private _realm: string;
   protected _serviceUrl: string;

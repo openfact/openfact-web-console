@@ -10,7 +10,7 @@ import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
 
 @Injectable()
-export class UserService extends RealmResourceService<User, Users, SearchResults<User>> {
+export class UserService extends RealmResourceService<User, Users> {
 
   constructor(
     @Inject(KEYCLOAK_RESTANGULAR) keycloakRestangular: Restangular,

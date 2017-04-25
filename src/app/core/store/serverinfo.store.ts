@@ -10,12 +10,10 @@ import { SearchResults } from './entity/searchresults.model';
 import { ServerInfoService } from './../services/serverinfo.service';
 
 @Injectable()
-export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInfos, SearchCriteria<ServerInfo>, SearchResults<ServerInfo>, ServerInfoService> {
+export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInfos, ServerInfoService> {
 
   constructor(serverInfoService: ServerInfoService) {
-    super(serverInfoService, [],
-      <SearchResults<ServerInfo>>{ items: [], totalSize: 0 },
-      <ServerInfo>{}, ServerInfo);
+    super(serverInfoService, [], <ServerInfo>{}, ServerInfo);
   }
 
   protected get kind() {

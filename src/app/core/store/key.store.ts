@@ -12,12 +12,10 @@ import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
-export class KeysStore extends OrganizationResourceStore<Key, Keys, SearchCriteria<Key>, SearchResults<Key>, KeyService> {
+export class KeysStore extends OrganizationResourceStore<Key, Keys, KeyService> {
 
   constructor(keyService: KeyService, organizationScope: OrganizationScope) {
-    super(keyService, [],
-      <SearchResults<Key>>{ items: [], totalSize: 0 },
-      <Key>{}, organizationScope, Key);
+    super(keyService, [], <Key>{}, organizationScope, Key);
   }
 
   protected get kind() {

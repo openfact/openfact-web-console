@@ -8,12 +8,10 @@ import { SearchResults } from './entity/searchresults.model';
 import { UserService } from './../services/user.service';
 
 @Injectable()
-export class UserStore extends RealmResourceStore<User, Users, SearchCriteria<User>, SearchResults<User>, UserService> {
+export class UserStore extends RealmResourceStore<User, Users, UserService> {
 
   constructor(userService: UserService, realmScope: RealmScope) {
-    super(userService, [],
-      <SearchResults<User>>{ items: [], totalSize: 0 },
-      <User>{}, realmScope, User);
+    super(userService, [], <User>{}, realmScope, User);
   }
 
   protected get kind() {

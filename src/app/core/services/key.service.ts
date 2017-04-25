@@ -14,7 +14,7 @@ import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
 
 @Injectable()
-export class KeyService extends OrganizationResourceService<Key, Keys, SearchResults<Key>> {
+export class KeyService extends OrganizationResourceService<Key, Keys> {
 
   constructor(
     @Inject(OPENFACT_RESTANGULAR) openfactRestangular: Restangular,

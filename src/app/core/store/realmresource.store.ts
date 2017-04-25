@@ -14,12 +14,12 @@ import { SearchCriteria } from './entity/searchcriteria.model';
 import { SearchResults } from './entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 
-export abstract class RealmResourceStore<T extends KeycloakResource, L extends Array<T>, C extends SearchCriteria<T>, S extends SearchResults<T>, R extends RealmResourceService<T, L, S>> extends KeycloakResourceStore<T, L, C, S, R> {
+export abstract class RealmResourceStore<T extends KeycloakResource, L extends Array<T>, R extends RealmResourceService<T, L>> extends KeycloakResourceStore<T, L, R> {
 
   private realmSubscription: Subscription;
 
-  constructor(service: any, initialList, initialSearch: any, initialCurrent: any, public realmScope: RealmScope, type: any) {
-    super(service, initialList, initialSearch, initialCurrent, type);
+  constructor(service: any, initialList, initialCurrent: any, public realmScope: RealmScope, type: any) {
+    super(service, initialList, initialCurrent, type);
     if (this.realmScope) {
       this.realmSubscription = this.realmScope.realm.subscribe(
         realm => {
