@@ -59,7 +59,7 @@ export class SettingsAllKeysComponent implements OnInit {
       parent: this._organization.id
     };
 
-    this.componentService.list(null, queryParams).subscribe(
+    this.componentService.list(queryParams).subscribe(
       (components) => {
         for (let i = 0; i < this._key.keys.length; i++) {
           for (let j = 0; j < components.length; j++) {

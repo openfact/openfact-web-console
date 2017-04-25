@@ -27,7 +27,7 @@ export class SettingsEditGenericKeystorePageComponent implements OnInit {
     this.idComponentSubscription = route.params.pluck<Params, string>('component')
       .map((id) => componentStore.load(id))
       .subscribe();
-    serverInfoStore.emptyLoad();
+    serverInfoStore.load();
   }
 
   ngOnInit() { }

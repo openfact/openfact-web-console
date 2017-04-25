@@ -1,7 +1,6 @@
 import { BaseEntity } from './entity.model';
 import { Observable } from 'rxjs/Observable';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './searchresults.model';
 
 export abstract class RESTService<T extends BaseEntity, L extends Array<T>> {
 

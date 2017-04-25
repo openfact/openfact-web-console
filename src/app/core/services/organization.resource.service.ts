@@ -3,7 +3,6 @@ import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from "./openfact.service";
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 import { pathJoin } from '../models/utils';
 
@@ -52,7 +51,7 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
     }
   }
 
-  list(organization: string = null, queryParams: any = null): Observable<L> {
+  list(queryParams: any = null, organization: string = null): Observable<L> {
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     if (url) {
       return this.restangularService.all(url).getList(queryParams);

@@ -11,8 +11,6 @@ import { OpenfactService } from '../services/openfact.service';
 import { OrganizationResourceService } from '../services/organization.resource.service';
 import { OrganizationScope } from './../services/organization.scope';
 import { RealmScope } from './../services/realm.scope';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 
 export abstract class OrganizationResourceStore<T extends OpenfactResource, L extends Array<T>,

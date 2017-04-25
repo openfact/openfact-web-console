@@ -10,8 +10,6 @@ import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
 import { RealmResourceService } from '../services/realm.resource.service';
 import { RealmScope } from './../services/realm.scope';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 
 export abstract class RealmResourceStore<T extends KeycloakResource, L extends Array<T>, R extends RealmResourceService<T, L>> extends KeycloakResourceStore<T, L, R> {

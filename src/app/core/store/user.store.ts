@@ -3,8 +3,6 @@ import { User, Users } from './../models/user.model';
 import { Injectable } from '@angular/core';
 import { RealmResourceStore } from './realmresource.store';
 import { RealmScope } from './../services/realm.scope';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 import { UserService } from './../services/user.service';
 
 @Injectable()

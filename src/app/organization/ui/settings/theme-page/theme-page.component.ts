@@ -21,7 +21,7 @@ export class SettingsThemePageComponent implements OnInit, OnDestroy {
     this.idSubscription = route.parent.parent.params.pluck<Params, string>('organization')
       .map((id) => organizationStore.load(id))
       .subscribe();
-    serverInfoStore.emptyLoad();
+    serverInfoStore.load();
   }
 
   ngOnInit() { }

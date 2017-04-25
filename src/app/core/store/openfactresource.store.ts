@@ -6,8 +6,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 
 function nameOfResource(resource: any) {
   let obj = resource || {};

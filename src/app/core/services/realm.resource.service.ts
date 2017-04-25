@@ -3,7 +3,6 @@ import { KeycloakService } from './keycloak.service';
 import { Observable } from 'rxjs/Observable';
 import { RealmScope } from './realm.scope';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 import { pathJoin } from '../models/utils';
 

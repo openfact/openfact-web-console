@@ -27,7 +27,7 @@ export class DocumentsListToolbarComponent implements OnInit {
   }
 
   search() {
-    this.documentStore.searchAll();
+    this.documentStore.reload();
   }
 
 }

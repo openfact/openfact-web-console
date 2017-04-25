@@ -21,7 +21,7 @@ export class SettingsKeysPageComponent implements OnInit, OnDestroy {
     this.idSubscription = route.parent.parent.params.pluck<Params, string>('organization')
       .map((id) => organizationStore.load(id))
       .subscribe();
-    keyStore.emptyLoad();
+    keyStore.load();
   }
 
   ngOnInit() { }

@@ -5,8 +5,6 @@ import { OpenfactResourceStore } from './openfactresource.store';
 import { Organization } from './../models/organization.model';
 import { OrganizationService } from './../services/organization.service';
 import { Organizations } from './../models/organization.model';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 import { ServerInfoService } from './../services/serverinfo.service';
 
 @Injectable()
@@ -20,8 +18,7 @@ export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInf
     return 'ServerInfo';
   }
 
-  emptyLoad() {
-    this._loadId = '';
+  load(id: string = null) {
     this._loading.next(true);
     this.service.get('').subscribe(
       (entity) => {
@@ -32,6 +29,10 @@ export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInf
         console.log('Error retrieving ' + this.kind + ': ' + error);
         this._loading.next(false);
       });
+  }
+
+  reload() {
+    this.load();
   }
 
 }

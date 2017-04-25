@@ -10,8 +10,6 @@ import { KeyService } from './../services/key.service';
 import { Observable } from 'rxjs/Rx';
 import { OrganizationResourceStore } from './organizationresource.store';
 import { OrganizationScope } from './../services/organization.scope';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
 export class ComponentStore extends OrganizationResourceStore<ComponentModel, Components, ComponentService> {

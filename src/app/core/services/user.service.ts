@@ -5,7 +5,6 @@ import { KEYCLOAK_RESTANGULAR } from './keycloak.restangular';
 import { RealmResourceService } from './realm.resource.service';
 import { RealmScope } from './realm.scope';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/searchresults.model';
 import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
 

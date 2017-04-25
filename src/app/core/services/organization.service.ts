@@ -4,7 +4,6 @@ import { Organization, Organizations } from './../models/organization.model';
 import { OPENFACT_ORGANIZATION_RESTANGULAR } from './openfact.restangular';
 import { OpenfactService } from './openfact.service';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/searchresults.model';
 
 const organizationsUrl = '/admin/organizations';
 
@@ -18,5 +17,6 @@ export class OrganizationService extends OpenfactService<Organization, Organizat
   get serviceUrl(): string {
     return organizationsUrl;
   }
+
 }
 

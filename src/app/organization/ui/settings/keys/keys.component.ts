@@ -65,7 +65,7 @@ export class SettingsKeysComponent implements OnInit {
       parent: this.organization.id
     };
 
-    this.componentService.list(null, queryParams).subscribe(
+    this.componentService.list(queryParams).subscribe(
       (components) => {
         for (let i = 0; i < this.key.keys.length; i++) {
           for (let j = 0; j < components.length; j++) {

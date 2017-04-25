@@ -8,8 +8,6 @@ import { KeyService } from './../services/key.service';
 import { Observable } from 'rxjs/Rx';
 import { OrganizationResourceStore } from './organizationresource.store';
 import { OrganizationScope } from './../services/organization.scope';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
 export class KeysStore extends OrganizationResourceStore<Key, Keys, KeyService> {
@@ -22,8 +20,7 @@ export class KeysStore extends OrganizationResourceStore<Key, Keys, KeyService> 
     return 'Key';
   }
 
-  emptyLoad() {
-    this._loadId = '';
+  load(id: string = null) {
     this._loading.next(true);
     this.service.get('').subscribe(
       (entity) => {
@@ -34,6 +31,10 @@ export class KeysStore extends OrganizationResourceStore<Key, Keys, KeyService> 
         console.log('Error retrieving ' + this.kind + ': ' + error);
         this._loading.next(false);
       });
+  }
+
+  reload() {
+    this.load();
   }
 
 }

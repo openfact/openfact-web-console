@@ -3,8 +3,6 @@ import { OpenfactResourceStore } from './openfactresource.store';
 import { Organization } from './../models/organization.model';
 import { OrganizationService } from './../services/organization.service';
 import { Organizations } from './../models/organization.model';
-import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
 export class OrganizationStore extends OpenfactResourceStore<Organization, Organizations, OrganizationService> {

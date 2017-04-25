@@ -55,7 +55,7 @@ export class SettingsKeyProvidersComponent implements OnInit {
       parent: this._organization.id
     };
 
-    this.componentService.list(null, queryParams).subscribe(
+    this.componentService.list(queryParams).subscribe(
       (components) => {
         this.instances = components;
       }

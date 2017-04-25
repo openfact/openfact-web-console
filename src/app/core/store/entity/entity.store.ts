@@ -1,10 +1,7 @@
-import { SearchCriteria, SearchCriteriaWrapper } from './searchcriteria.model';
-
 import { BaseEntity } from './entity.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { RESTService } from './rest.service';
-import { SearchResults } from './searchresults.model';
 import { plural } from 'pluralize';
 
 export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, R extends RESTService<T, L>> {
