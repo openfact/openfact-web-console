@@ -3,13 +3,16 @@ import { OpenfactResourceStore } from './openfactresource.store';
 import { Organization } from './../models/organization.model';
 import { OrganizationService } from './../services/organization.service';
 import { Organizations } from './../models/organization.model';
-import { SearchResults } from './entity/search.model';
+import { SearchCriteria } from './entity/searchcriteria.model';
+import { SearchResults } from './entity/searchresults.model';
 
 @Injectable()
-export class OrganizationStore extends OpenfactResourceStore<Organization, Organizations, SearchResults<Organization>, OrganizationService> {
+export class OrganizationStore extends OpenfactResourceStore<Organization, Organizations, SearchCriteria<Organization>, SearchResults<Organization>, OrganizationService> {
 
   constructor(organizationService: OrganizationService) {
-    super(organizationService, [], <SearchResults<Organization>>{ items: [], totalSize: 0 }, <Organization>{}, Organization);
+    super(organizationService, [],
+      <SearchResults<Organization>>{ items: [], totalSize: 0 },
+      <Organization>{}, Organization);
   }
 
   protected get kind() {

@@ -8,7 +8,7 @@ import { OPENFACT_RESTANGULAR } from './openfact.restangular';
 import { OrganizationResourceService } from './organization.resource.service';
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/search.model';
+import { SearchResults } from './../store/entity/searchresults.model';
 import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
 

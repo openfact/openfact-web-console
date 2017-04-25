@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
 import { SearchCriteria } from './entity/searchcriteria.model';
-import { SearchResults } from './entity/search.model';
+import { SearchResults } from './entity/searchresults.model';
 
 function nameOfResource(resource: any) {
   let obj = resource || {};
@@ -15,7 +15,7 @@ function nameOfResource(resource: any) {
   return metadata.name || '';
 }
 
-export abstract class OpenfactResourceStore<T extends OpenfactResource, L extends Array<T>, S extends SearchResults<T>, R extends OpenfactService<T, L, S>> extends AbstractStore<T, L, S, R>{
+export abstract class OpenfactResourceStore<T extends OpenfactResource, L extends Array<T>, C extends SearchCriteria<T>, S extends SearchResults<T>, R extends OpenfactService<T, L, S>> extends AbstractStore<T, L, C, S, R> {
 
   constructor(service: R, private initialList: L, private initialSearch: S, initialCurrent: T, protected type: { new (): T; }) {
     super(service, initialList, initialSearch, initialCurrent);

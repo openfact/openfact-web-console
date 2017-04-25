@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
 import { RESTService } from '../store/entity/rest.service';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/search.model';
+import { SearchResults } from './../store/entity/searchresults.model';
 
 export abstract class KeycloakService<T extends KeycloakResource, L extends Array<T>, S extends SearchResults<T>> extends RESTService<T, L, S> {
 

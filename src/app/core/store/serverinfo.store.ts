@@ -5,14 +5,17 @@ import { OpenfactResourceStore } from './openfactresource.store';
 import { Organization } from './../models/organization.model';
 import { OrganizationService } from './../services/organization.service';
 import { Organizations } from './../models/organization.model';
-import { SearchResults } from './entity/search.model';
+import { SearchCriteria } from './entity/searchcriteria.model';
+import { SearchResults } from './entity/searchresults.model';
 import { ServerInfoService } from './../services/serverinfo.service';
 
 @Injectable()
-export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInfos, SearchResults<ServerInfo>, ServerInfoService> {
+export class ServerInfoStore extends OpenfactResourceStore<ServerInfo, ServerInfos, SearchCriteria<ServerInfo>, SearchResults<ServerInfo>, ServerInfoService> {
 
   constructor(serverInfoService: ServerInfoService) {
-    super(serverInfoService, [], <SearchResults<ServerInfo>>{ items: [], totalSize: 0 }, <ServerInfo>{}, ServerInfo);
+    super(serverInfoService, [],
+      <SearchResults<ServerInfo>>{ items: [], totalSize: 0 },
+      <ServerInfo>{}, ServerInfo);
   }
 
   protected get kind() {

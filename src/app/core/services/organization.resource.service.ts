@@ -3,7 +3,7 @@ import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from "./openfact.service";
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
-import { SearchResults } from './../store/entity/search.model';
+import { SearchResults } from './../store/entity/searchresults.model';
 import { Subscription } from 'rxjs/Subscription';
 import { pathJoin } from '../models/utils';
 

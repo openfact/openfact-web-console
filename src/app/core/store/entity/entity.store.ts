@@ -1,59 +1,48 @@
+import { SearchCriteria, SearchCriteriaWrapper } from './searchcriteria.model';
+
 import { BaseEntity } from './entity.model';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { Paging } from './paging.model';
 import { RESTService } from './rest.service';
-import { SearchCriteria } from './searchcriteria.model';
-import { SearchResults } from './search.model';
+import { SearchResults } from './searchresults.model';
 import { plural } from 'pluralize';
 
-export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S extends SearchResults<T>, R extends RESTService<T, L, S>> {
+export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, C extends SearchCriteria<T>, S extends SearchResults<T>, R extends RESTService<T, L, S>> {
 
   protected _list: BehaviorSubject<L>;
 
   protected _search: BehaviorSubject<S>;
-  protected _isSearch: boolean = null;
-  protected _paging = new Paging();
-  protected _hasMore: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  protected _totalPages: BehaviorSubject<number> = new BehaviorSubject(1);
+  protected _criteria: BehaviorSubject<C> = new BehaviorSubject<C>(null);
 
   protected _current: BehaviorSubject<T>;
+  protected _loadId: string = null;
 
   protected _loading: BehaviorSubject<boolean> = new BehaviorSubject(false);
-
-  protected _loadId: string = null;
 
   constructor(protected service: R, initialList: L, initialSearch: S, initialCurrent: T) {
     this._list = new BehaviorSubject(initialList);
     this._search = new BehaviorSubject(initialSearch);
     this._current = new BehaviorSubject(initialCurrent);
+
+    this._criteria.subscribe((criteria) => {
+      if (criteria) {
+        this.searchAllExecute(criteria);
+      }
+    });
   }
 
   protected abstract get kind(): string;
+
+  protected get defaultSearchCriteria() {
+    return <C>{ paging: { page: 1, pageSize: 10 } };
+  }
 
   get list(): Observable<L> { return this._list.asObservable(); }
 
   get search(): Observable<S> { return this._search.asObservable(); }
 
-  get hasMore(): Observable<boolean> { return this._hasMore.asObservable(); }
-
-  get totalPages(): Observable<number> { return this._totalPages.asObservable(); }
-
-  get paging(): Paging { return this._paging; }
-
-  set paging(paging: Paging) {
-    this._paging = paging;
-    this.searchAll();
-  }
-
-  changePage(page: number) {
-    this._paging.page = page;
-    this.searchAll();
-  }
-
-  changePageSize(pageSize: number) {
-    this._paging.pageSize = pageSize;
-    this.searchAll();
+  get criteria(): SearchCriteriaWrapper<T, C, S> {
+    return new SearchCriteriaWrapper<T, C, S>(this._criteria, this._search);
   }
 
   get resource(): Observable<T> { return this._current.asObservable(); }
@@ -69,8 +58,9 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   }
 
   loadAll(): Observable<L> {
-    this._isSearch = false;
+    this._criteria.next(null);
     this._loadId = null;
+
     this._loading.next(true);
     let listObserver = this.service.list(this.listQueryParams());
     listObserver.subscribe(
@@ -85,22 +75,21 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
     return listObserver;
   }
 
-  searchAll(criteria: any = null): Observable<S> {  
-    this._isSearch = true;
-    this._hasMore.next(false);
+  searchAll(criteria: C = null) {
     this._loadId = null;
+    this._criteria.next(criteria || this._criteria.getValue() || this.defaultSearchCriteria);
+  }
+
+  protected searchAllExecute(criteria: SearchCriteria<T>): Observable<S> {
     this._loading.next(true);
-    let searchObserver = this.service.search(this.searchCriteria(criteria));
+    let searchObserver = this.service.search(criteria);
     searchObserver.subscribe(
       (search) => {
-        this._hasMore.next(search.totalSize > this._paging.maxNumberOfItems());
-        this._totalPages.next(Math.ceil((search.totalSize + this._paging.pageSize - 1) / this._paging.pageSize));
         this._search.next(search);
         this._loading.next(false);
       },
       (error) => {
         console.log('Error searching ' + plural(this.kind) + ': ' + error);
-        this._hasMore.next(false);
         this._loading.next(false);
       }
     );
@@ -108,6 +97,8 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
   }
 
   load(id: string) {
+    this._criteria.next(null);
+
     this._loadId = id;
     this._loading.next(true);
     this.service.get(id).subscribe(
@@ -123,10 +114,10 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
 
   reload() {
     let id = this._loadId;
-    let isSearch = this._isSearch;
-    if (id != null) {
+    let criteria = this._criteria.getValue();
+    if (id) {
       this.load(id);
-    } else if (isSearch) {
+    } else if (criteria) {
       this.searchAll();
     } else {
       this.loadAll();
@@ -135,36 +126,6 @@ export abstract class AbstractStore<T extends BaseEntity, L extends Array<T>, S 
 
   listQueryParams() {
     return null;
-  }
-
-  firstPage() {
-    if (this._paging.page > 1) {
-      this.changePage(1);
-    }
-  }
-
-  previousPage() {
-    if (this._paging.page > 1) {
-      this._paging.previousPage();
-      this.changePage(this._paging.page);
-    }
-  }
-
-  nextPage() {
-    if (this._hasMore.getValue()) {
-      this._paging.nextPage()
-      this.changePage(this._paging.page);
-    }
-  }
-
-  lastPage() {
-    if (this._paging.pageSize < this._totalPages.getValue()) {
-      this.changePage(this._totalPages.getValue());
-    }
-  }
-
-  searchCriteria(criteria: any): SearchCriteria {
-    return <SearchCriteria>Object.assign(criteria || {}, { paging: this._paging });
   }
 
 }
