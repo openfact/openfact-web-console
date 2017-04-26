@@ -26,7 +26,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   close() {
-    const url = this.router.createUrlTree(['./', { outlets: { secondary: null } }]);
+    const url = this.router.createUrlTree(['./', { outlets: { popup: null } }]);
     this.router.navigateByUrl(url, { relativeTo: this.route });
   }
 

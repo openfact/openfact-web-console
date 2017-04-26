@@ -51,7 +51,15 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
     let listObserver = this.service.list(this.listQueryParams());
     listObserver.subscribe(
       (list: any) => {
-        this._list.next(list.items.map((item) => this.service.restangularize(item)));
+        let parent = list.parentResource;
+        let route = list.route;
+        let fromServer = list.fromServer;
+        let collection = list.restangularCollection;
+        let reqParams = list.reqParams;
+
+        this._list.next(list.items.map((item) => {
+          return this.service.restangularize(item, parent, route, fromServer, collection, reqParams);
+        }));
         this._totalSize.next(list.totalSize);
         this._loading.next(false);
       },
@@ -63,15 +71,16 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
   }
 
   listQueryParams() {
-    let requiredActions = this._requiredActions.map((action) => action + ' ');
     let query = '';
 
     this._query.getValue().forEach((key: string, value: string) => {
-      query = query + key + ':' + value + ' ';
+      if (value) {
+        query = query + key + ':' + value + ' ';
+      }
     });
 
     return {
-      requiredActions: requiredActions,
+      requiredActions: this._requiredActions.getValue(),
       query: query,
       first: this._first.getValue(),
       max: this._max.getValue()

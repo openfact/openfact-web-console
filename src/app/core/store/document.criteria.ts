@@ -17,6 +17,7 @@ export class DocumentCriteria extends Pagination {
   addQuery(key: string, value: string) {
     const map = this._query.getValue();
     map.setValue(key, value);
+
     this._query.next(map);
   }
 

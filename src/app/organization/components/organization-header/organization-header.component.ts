@@ -33,7 +33,7 @@ export class OrganizationHeaderComponent implements OnInit {
   }
 
   about() {
-    const url = this.router.createUrlTree(['./', { outlets: { secondary: 'about' } }]);
+    const url = this.router.createUrlTree(['./', { outlets: { popup: 'about' } }]);
     this.router.navigateByUrl(url, { relativeTo: this.route });
   }
 

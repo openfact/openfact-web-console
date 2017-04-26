@@ -4,16 +4,22 @@
       <thead>
         <tr role="row">
           <th width="10" class="center">#</th>
+          <th>Type</th>
           <th>Document Id</th>
+          <th>Currency</th>
+          <th>Customer</th>
           <th>Enabled</th>
           <th colspan="3" rowspan="1" *openfactAccess="'manageUsers'">Actions</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr role="row" class="odd" *ngFor="let document of search.items; let i = index;">
+        <tr role="row" class="odd" *ngFor="let document of documents; let i = index;">
           <td>{{i+1}}</td>
+          <td>{{document.documentType}}</td>
           <td>{{document.documentId}}</td>
+          <td>{{document.documentCurrencyCode}}</td>
+          <td>{{document.customerRegistrationName}}</td>
           <td>
             <span *ngIf="!document.enabled"><i class="pficon pficon-warning-triangle-o"></i></span> {{document.enabled}}
           </td>
@@ -44,18 +50,18 @@
         <button dropdownToggle type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" title="15"><span class="filter-option pull-left">{{criteria.pageSize}}</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button>
         <div *dropdownMenu class="dropdown-menu open">
           <ul class="dropdown-menu inner" role="menu">
-            <li data-original-index="0" [ngClass]="{'selected': criteria.pageSize === 6}"><a href="javascript:void(0)" (click)="criteria.setPageSize(6)"><span class="text">6</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-            <li data-original-index="1" [ngClass]="{'selected': criteria.pageSize === 10}"><a href="javascript:void(0)" (click)="criteria.setPageSize(10)"><span class="text">10</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-            <li data-original-index="2" [ngClass]="{'selected': criteria.pageSize === 15}"><a href="javascript:void(0)" (click)="criteria.setPageSize(15)"><span class="text">15</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-            <li data-original-index="3" [ngClass]="{'selected': criteria.pageSize === 25}"><a href="javascript:void(0)" (click)="criteria.setPageSize(25)"><span class="text">25</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
-            <li data-original-index="4" [ngClass]="{'selected': criteria.pageSize === 50}"><a href="javascript:void(0)" (click)="criteria.setPageSize(50)"><span class="text">50</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+            <li data-original-index="0" [ngClass]="{'selected': criteria.pageSize === 6}"><a href="javascript:void(0)" (click)="criteria.pageSize = 6"><span class="text">6</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+            <li data-original-index="1" [ngClass]="{'selected': criteria.pageSize === 10}"><a href="javascript:void(0)" (click)="criteria.pageSize = 10"><span class="text">10</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+            <li data-original-index="2" [ngClass]="{'selected': criteria.pageSize === 15}"><a href="javascript:void(0)" (click)="criteria.pageSize = 15"><span class="text">15</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+            <li data-original-index="3" [ngClass]="{'selected': criteria.pageSize === 25}"><a href="javascript:void(0)" (click)="criteria.pageSize = 25"><span class="text">25</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
+            <li data-original-index="4" [ngClass]="{'selected': criteria.pageSize === 50}"><a href="javascript:void(0)" (click)="criteria.pageSize = 50"><span class="text">50</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li>
           </ul>
         </div>
       </div>
       <span>per page</span>
     </div>
     <div class="form-group">
-      <span><span class="pagination-pf-items-current">{{criteria.from}}-{{criteria.to}}</span> of <span class="pagination-pf-items-total">{{search.totalSize}}</span></span>
+      <span><span class="pagination-pf-items-current">{{criteria.from}}-{{criteria.to}}</span> of <span class="pagination-pf-items-total">{{criteria.totalSize}}</span></span>
       <ul class="pagination pagination-pf-back">
         <li><a (click)="criteria.firstPage()" href="javascript:void(0)" title="First Page"><span class="i fa fa-angle-double-left"></span></a></li>
         <li><a (click)="criteria.previousPage()" href="javascript:void(0)" title="Previous Page"><span class="i fa fa-angle-left"></span></a></li>

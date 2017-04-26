@@ -17,7 +17,7 @@ export class Pagination {
   }
 
   get page() {
-    return Math.floor(this._first.getValue() / this.pageSize);
+    return Math.ceil((this._first.getValue() + 1) / this.pageSize);
   }
 
   get pageSize() {
@@ -41,16 +41,20 @@ export class Pagination {
     this._refresh.next(true);
   }
 
+  get totalSize() {
+    return this._totalResults.getValue();
+  }
+
   get totalPages() {
     return Math.ceil(this._totalResults.getValue() / this.pageSize);
   }
 
   get from() {
-    return (this.page - 1) * this.pageSize + 1;
+    return this._first.getValue() + 1;
   }
 
   get to() {
-    return (this.page - 1) * this.pageSize + this._totalResults.getValue() % this.pageSize;
+    return this._first.getValue() + this._max.getValue();
   }
 
   nextPage() {

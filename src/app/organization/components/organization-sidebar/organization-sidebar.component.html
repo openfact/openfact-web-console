@@ -1,11 +1,11 @@
 <div class="nav-pf-vertical nav-pf-vertical-with-sub-menus nav-pf-persistent-secondary">
 
   <div class="organization-selector">
-    <h2>{{currentOrganization | async | firstLetterUpperCase}} <i class="fa fa-angle-down"></i></h2>
+    <h2>{{(currentOrganization || '') | firstLetterUpperCase}} <i class="fa fa-angle-down"></i></h2>
     <div class="organization-dropmenu">
       <ul>
         <li *ngFor="let organization of organizations | async">
-          <a [routerLink]="['/organizations', organization.organization]">{{organization.organization | firstLetterUpperCase}}</a>
+          <a [routerLink]="['/organizations', organization.organization]" *ngIf="organization.organization != currentOrganization">{{organization.organization | firstLetterUpperCase}}</a>
         </li>
       </ul>
       <div class="organization-add" *openfactAccess="'createOrganizations'">
@@ -19,12 +19,6 @@
       <a routerLink="./documents">
         <span class="fa fa-wpforms" title="Documents"></span>
         <span class="list-group-item-value">Documents</span>
-      </a>
-    </li>
-    <li class="list-group-item" routerLinkActive="active">
-      <a routerLink="events">
-        <span class="fa fa-calendar" title="Events"></span>
-        <span class="list-group-item-value">Events</span>
       </a>
     </li>
     <li class="list-group-item" routerLinkActive="active">

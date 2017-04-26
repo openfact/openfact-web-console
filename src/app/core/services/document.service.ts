@@ -5,6 +5,7 @@ import { User, Users } from './../models/user.model';
 
 import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
 import { OPENFACT_RESTANGULAR } from './openfact.restangular';
+import { Observable } from 'rxjs/Rx';
 import { OrganizationResourceService } from './organization.resource.service';
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
@@ -21,6 +22,15 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     organizationScope: OrganizationScope,
     private keycloakOAuthService: KeycloakOAuthService) {
     super(openfactRestangular, organizationScope, '/documents', '/admin/organizations');
+  }
+
+  list(queryParams: any = null, organization: string = null): Observable<any> {
+    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    if (url) {
+      return this.restangularService.all(url).customGET('', queryParams);
+    } else {
+      return Observable.create((observer) => observer.next({ items: [], totalSize: 0 }));
+    }
   }
 
   private refreshUploader() {
@@ -58,6 +68,17 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   onOrganizationChanged() {
     super.onOrganizationChanged();
     this.refreshUploader();
+  }
+
+
+  restangularize(item: Document, parentX = null, routeX = null, fromServerX = null, collectionX = null, reqParamsX = null): Document {
+    let restangularService = this.restangularService;
+    let parent = restangularService.parentResource;
+    let route = restangularService.route;
+    let fromServer = restangularService.fromServer;
+    let collection = restangularService.restangularCollection;
+    let reqParams = restangularService.reqParams;
+    return this.restangularService.restangularizeElement(parentX || parent, item, routeX || route, fromServerX || fromServer, collectionX || collection, reqParamsX || reqParams);
   }
 
 }

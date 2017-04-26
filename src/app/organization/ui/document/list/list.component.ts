@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Document, Documents } from './../../../../core/models/document.model';
 
+import { DocumentCriteria } from './../../../../core/store/document.criteria';
 import { DocumentDeleteDialogComponent } from './../delete-dialog/delete-dialog.component';
 import { DocumentStore } from './../../../../core/store/document.store';
 
@@ -21,10 +22,14 @@ export class DocumentsListComponent implements OnInit {
   @ViewChild(DocumentDeleteDialogComponent)
   deleteDialog: DocumentDeleteDialogComponent;
 
+  criteria: DocumentCriteria;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private store: DocumentStore) { }
+    private store: DocumentStore) {
+    this.criteria = store.criteria;
+  }
 
   ngOnInit() { }
 

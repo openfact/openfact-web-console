@@ -12,11 +12,11 @@ import { Organizations } from './../../../core/models/organization.model';
 })
 export class OrganizationSidebarComponent implements OnInit {
 
-  currentOrganization: Observable<string>;
+  currentOrganization: string;
   private readonly organizations: Observable<Organizations>;
 
   constructor(organizationScope: OrganizationScope, private organizationStore: OrganizationStore) {
-    this.currentOrganization = organizationScope.organization;
+    organizationScope.organization.subscribe((organization) => this.currentOrganization = organization);
     this.organizations = organizationStore.list;    
   }
 
