@@ -5,8 +5,10 @@ import { Document } from './../../../../core/models/document.model';
 import { DocumentDeleteDialogComponent } from './../delete-dialog/delete-dialog.component';
 import { DocumentSendToCustomPartyDialogComponent } from './../send-to-custom-party-dialog/send-to-custom-party-dialog.component';
 import { DocumentService } from './../../../../core/services/document.service';
+import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'openfact-document-view-toolbar',
@@ -36,6 +38,7 @@ export class DocumentViewToolbarComponent implements OnInit {
   openDeleteDialog(deleteDocumentModal) {
     this.deleteDialog.modal = deleteDocumentModal;
     this.deleteDialog.document = this.document;
+    this.deleteDialog.redirect = true;
     deleteDocumentModal.show();
   }
 
@@ -52,11 +55,27 @@ export class DocumentViewToolbarComponent implements OnInit {
   }
 
   downloadXml() {
-    this.documentService.downloadXml(this.document.id);
+    this.documentService.obtainXml(this.document).subscribe((res: Response) => {
+      const contentDisposition = res.headers.get('Content-Disposition');
+      let filename = this.document.documentId + '.xml';
+      if (contentDisposition) {
+        filename = res.headers.get('Content-Disposition').match(/filename=(.*)/)[1];
+      }
+      var file = new Blob([res.blob()], { type: res.headers.get('Content-Type') });
+      saveAs(file, filename);
+    });
   }
 
   downloadPdf() {
-
+    this.documentService.obtainReport(this.document).subscribe((res: Response) => {
+      const contentDisposition = res.headers.get('Content-Disposition');
+      let filename = this.document.documentId + '.pdf';
+      if (contentDisposition) {
+        filename = res.headers.get('Content-Disposition').match(/filename=(.*)/)[1];
+      }
+      var file = new Blob([res.blob()], { type: res.headers.get('Content-Type') });
+      saveAs(file, filename);
+    });
   }
 
 }

@@ -7,6 +7,7 @@ import { ComponentStore } from './store/component.store';
 import { ConfigService } from './../config.service';
 import { DocumentService } from './services/document.service';
 import { DocumentStore } from './store/document.store';
+import { KEYCLOAK_HTTP_PROVIDER } from './../keycloak/keycloak.http';
 import { KeyService } from './services/key.service';
 import { KeysStore } from './store/key.store';
 import { NgModule } from '@angular/core';
@@ -64,6 +65,8 @@ import { UserStore } from './store/user.store';
     RealmScope,
     UserService,
     UserStore,
+
+    KEYCLOAK_HTTP_PROVIDER
   ]
 })
 export class CoreModule { }

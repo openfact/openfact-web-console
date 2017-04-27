@@ -1,6 +1,6 @@
 import { Document, Documents } from './../models/document.model';
 import { FileItem, FileUploader } from 'ng2-file-upload';
-import { Headers, ResponseContentType } from '@angular/http';
+import { Headers, Http, Response, ResponseContentType } from '@angular/http';
 import { Inject, Injectable } from '@angular/core';
 import { User, Users } from './../models/user.model';
 
@@ -12,7 +12,6 @@ import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
 import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
-import { saveAs } from 'file-saver';
 
 @Injectable()
 export class DocumentService extends OrganizationResourceService<Document, Documents> {
@@ -22,19 +21,35 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   constructor(
     @Inject(OPENFACT_RESTANGULAR) openfactRestangular: Restangular,
     organizationScope: OrganizationScope,
+    private http: Http,
     private keycloakOAuthService: KeycloakOAuthService) {
     super(openfactRestangular, organizationScope, '/documents', '/admin/organizations');
   }
 
-  downloadXml(id: string, organization: string = null) {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
-    let a = this.restangularService.one(url, id).customGET('representation/xml')
-      .subscribe((response) => {
-        console.log("entro");
-        var file = new Blob([response], { type: 'text/csv' });
-        saveAs(file, 'something.xml');
-      });
-    console.log(a);
+  /**
+   * 
+   * @param document 
+   */
+  obtainXml(document: Document): Observable<Response> {
+    let resty: any = document;
+    const url = resty.all('representation/xml').getRestangularUrl();
+    return this.http.get(url, {
+      headers: new Headers(),
+      responseType: ResponseContentType.ArrayBuffer
+    });
+  }
+
+  /**
+   * 
+   * @param document 
+   */
+  obtainReport(document: Document, queryParams: any = null): Observable<Response> {
+    let resty: any = document;
+    const url = resty.all('report').getRestangularUrl();
+    return this.http.get(url, {
+      headers: new Headers(),
+      responseType: ResponseContentType.ArrayBuffer
+    });
   }
 
   /**
