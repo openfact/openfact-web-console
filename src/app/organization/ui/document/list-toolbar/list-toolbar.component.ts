@@ -36,11 +36,8 @@ export class DocumentsListToolbarComponent implements OnInit {
   }
 
   search() {
-    if (this.query.filtertext) {
-      this.documentStore.criteria.addQuery('filtertext', this.query.filtertext);
-    } else {
-      this.documentStore.criteria.removeQuery('filtertext');
-    }
+    this.criteria.addQuery('filtertext', this.query.filtertext);
+    this.documentStore.reload();
   }
 
 }

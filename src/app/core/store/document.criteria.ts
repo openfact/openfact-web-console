@@ -5,39 +5,53 @@ import { Pagination } from './entity/pagination.store';
 
 export class DocumentCriteria extends Pagination {
 
-  constructor(
-    _first: BehaviorSubject<number>,
-    _max: BehaviorSubject<number>,
-    _totalResults: BehaviorSubject<number>,
-    protected _query: BehaviorSubject<Collections.Dictionary<string, string>>,
-    protected _requiredActions: BehaviorSubject<Array<string>>) {
-    super(_first, _max, _totalResults);
+  protected _query: Collections.Dictionary<string, string>;
+  protected _requiredActions: Collections.Set<string>;
+
+  constructor(_totalResults: BehaviorSubject<number>) {
+    super(_totalResults);
+
+    this._query = new Collections.Dictionary<string, string>();
+    this._requiredActions = new Collections.Set<string>();;
+  }
+
+  get query() {
+    let query = '';
+
+    this._query.forEach((key: string, value: string) => {
+      if (value) {
+        query = query + key + ':' + value + ' ';
+      }
+    });
+    return query;
+  }
+
+  get requiredActions() {
+    return this._requiredActions.toArray();
   }
 
   addQuery(key: string, value: string) {
-    const map = this._query.getValue();
-    map.setValue(key, value);
-
-    this._query.next(map);
+    this._query.setValue(key, value);
+    this._first.next(0);
   }
 
   removeQuery(key: string | Array<string>) {
-    const map = this._query.getValue();
     if (key instanceof Array) {
-      key.forEach(k => map.remove(k));
+      key.forEach(k => this._query.remove(k));
     } else {
-      map.remove(key);
+      this._query.remove(key);
     }
-    this._query.next(map);
+    this._first.next(0);
   }
 
   addRequiredAction(requiredAction: string) {
-    const list = this._requiredActions.getValue();
-    const index = list.indexOf(requiredAction);
-    if (index == -1) {
-      list.push(requiredAction);
-    }
-    this._requiredActions.next(list);
+    this._requiredActions.add(requiredAction);
+    this._first.next(0);
+  }
+
+  removeRequiredAction(requiredAction: string) {
+    this._requiredActions.remove(requiredAction);
+    this._first.next(0);
   }
 
 }

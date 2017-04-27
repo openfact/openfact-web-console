@@ -15,7 +15,7 @@
 
       <tbody>
         <tr role="row" class="odd" *ngFor="let document of documents; let i = index;">
-          <td>{{i+1}}</td>
+          <td>{{i+criteria.from}}</td>
           <td>{{document.documentType}}</td>
           <td>{{document.documentId}}</td>
           <td>{{document.documentCurrencyCode}}</td>
@@ -67,7 +67,7 @@
         <li><a (click)="criteria.previousPage()" href="javascript:void(0)" title="Previous Page"><span class="i fa fa-angle-left"></span></a></li>
       </ul>
       <label class="sr-only">Current Page</label>
-      <input #currentPage (keyup.enter)="criteria.setPage(currentPage.value)" class="pagination-pf-page" type="text" [value]="criteria.page">
+      <input #currentPage (keyup.enter)="criteria.page = currentPage.value" class="pagination-pf-page" type="text" [value]="criteria.page">
       <span>of <span class="pagination-pf-pages">{{criteria.totalPages}}</span></span>
       <ul class="pagination pagination-pf-forward">
         <li><a (click)="criteria.nextPage()" href="javascript:void(0)" title="Next Page"><span class="i fa fa-angle-right"></span></a></li>

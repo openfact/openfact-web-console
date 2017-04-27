@@ -1,5 +1,6 @@
 import { Document, Documents } from './../models/document.model';
 import { FileItem, FileUploader } from 'ng2-file-upload';
+import { Headers, ResponseContentType } from '@angular/http';
 import { Inject, Injectable } from '@angular/core';
 import { User, Users } from './../models/user.model';
 
@@ -11,6 +12,7 @@ import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
 import { UserStore } from './../store/user.store';
 import { pathJoin } from '../models/utils';
+import { saveAs } from 'file-saver';
 
 @Injectable()
 export class DocumentService extends OrganizationResourceService<Document, Documents> {
@@ -24,6 +26,22 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     super(openfactRestangular, organizationScope, '/documents', '/admin/organizations');
   }
 
+  downloadXml(id: string, organization: string = null) {
+    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    let a = this.restangularService.one(url, id).customGET('representation/xml')
+      .subscribe((response) => {
+        console.log("entro");
+        var file = new Blob([response], { type: 'text/csv' });
+        saveAs(file, 'something.xml');
+      });
+    console.log(a);
+  }
+
+  /**
+   * 
+   * @param queryParams 
+   * @param organization 
+   */
   list(queryParams: any = null, organization: string = null): Observable<any> {
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     if (url) {
@@ -33,6 +51,9 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     }
   }
 
+  /**
+   * 
+   */
   private refreshUploader() {
     if (this.uploader) {
       this.uploader.setOptions({
@@ -41,6 +62,10 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     }
   }
 
+  /**
+   * 
+   * @param uploader 
+   */
   uploadAll(uploader: FileUploader) {
     this.keycloakOAuthService.getToken().then(
       (token: string) => {
@@ -50,6 +75,9 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     );
   }
 
+  /**
+   * 
+   */
   fileUpload() {
     if (!this.uploader) {
       this.uploader = new FileUploader({});
@@ -58,6 +86,11 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     return this.uploader;
   }
 
+  /**
+   * 
+   * @param organization 
+   * @param config 
+   */
   buildFileUpload(organization: string = null, config: any = {}): FileUploader {
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
 
@@ -70,7 +103,15 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     this.refreshUploader();
   }
 
-
+  /**
+   * 
+   * @param item 
+   * @param parentX 
+   * @param routeX 
+   * @param fromServerX 
+   * @param collectionX 
+   * @param reqParamsX 
+   */
   restangularize(item: Document, parentX = null, routeX = null, fromServerX = null, collectionX = null, reqParamsX = null): Document {
     let restangularService = this.restangularService;
     let parent = restangularService.parentResource;

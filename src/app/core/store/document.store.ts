@@ -16,29 +16,17 @@ import { plural } from 'pluralize';
 @Injectable()
 export class DocumentStore extends OrganizationResourceStore<Document, Documents, DocumentService> {
 
-  protected _first: BehaviorSubject<number>;
-  protected _max: BehaviorSubject<number>;
-  protected _query: BehaviorSubject<Collections.Dictionary<string, string>>;
-  protected _requiredActions: BehaviorSubject<Array<string>>;
-
   protected _totalSize: BehaviorSubject<number>;
   protected _criteria: DocumentCriteria;
 
   constructor(documentService: DocumentService, organizationScope: OrganizationScope) {
     super(documentService, [], <Document>{}, organizationScope, Document);
-    this._first = new BehaviorSubject<number>(0);
-    this._max = new BehaviorSubject<number>(10);
-    this._query = new BehaviorSubject<Collections.Dictionary<string, string>>(new Collections.Dictionary<string, string>());
-    this._requiredActions = new BehaviorSubject<Array<string>>([]);
     this._totalSize = new BehaviorSubject<number>(0);
 
-    this._criteria = new DocumentCriteria(this._first, this._max, this._totalSize, this._query, this._requiredActions);
-
+    this._criteria = new DocumentCriteria(this._totalSize);
     this._criteria.refresh.subscribe((refresh) => {
       if (refresh) this.reload();
     });
-    this._query.subscribe(() => this.reload());
-    this._requiredActions.subscribe(() => this.reload());
   }
 
   get criteria() {
@@ -71,19 +59,11 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
   }
 
   listQueryParams() {
-    let query = '';
-
-    this._query.getValue().forEach((key: string, value: string) => {
-      if (value) {
-        query = query + key + ':' + value + ' ';
-      }
-    });
-
     return {
-      requiredActions: this._requiredActions.getValue(),
-      query: query,
-      first: this._first.getValue(),
-      max: this._max.getValue()
+      requiredActions: this._criteria.requiredActions,
+      query: this._criteria.query,
+      first: this._criteria.first,
+      max: this._criteria.max
     };
   }
 
