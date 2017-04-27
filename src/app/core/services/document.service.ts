@@ -75,6 +75,17 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
 
   /**
    * 
+   * @param document 
+   * @param party 
+   * @return Observable<any>
+   */
+  getSendEvents(document: Document): Observable<any> {
+    let resty: any = document;
+    return resty.all('sendEvents').getList();
+  }
+
+  /**
+   * 
    * @param queryParams 
    * @param organization 
    */
