@@ -1,7 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { DocumentCriteria } from './../../../../core/store/document.criteria';
 import { DocumentStore } from './../../../../core/store/document.store';
 
 @Component({
@@ -11,8 +10,6 @@ import { DocumentStore } from './../../../../core/store/document.store';
 })
 export class DocumentsListToolbarComponent implements OnInit {
 
-  private criteria: DocumentCriteria;
-
   query = {
     filtertext: null
   };
@@ -20,9 +17,7 @@ export class DocumentsListToolbarComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private documentStore: DocumentStore) {
-    this.criteria = this.documentStore.criteria;
-  }
+    private documentStore: DocumentStore) { }
 
   ngOnInit() {
   }
@@ -36,7 +31,7 @@ export class DocumentsListToolbarComponent implements OnInit {
   }
 
   search() {
-    this.criteria.addQuery('filtertext', this.query.filtertext);
+    this.documentStore.addQuery('filtertext', this.query.filtertext);
     this.documentStore.reload();
   }
 

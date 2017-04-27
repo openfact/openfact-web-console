@@ -6,14 +6,18 @@ import { DocumentStore } from './../../../../core/store/document.store';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
-  selector: 'openfact-delete-document-dialog',
-  templateUrl: './delete-dialog.component.html',
-  styleUrls: ['./delete-dialog.component.scss']
+  selector: 'openfact-send-to-custom-party-dialog',
+  templateUrl: './send-to-custom-party-dialog.component.html',
+  styleUrls: ['./send-to-custom-party-dialog.component.scss']
 })
-export class DocumentDeleteDialogComponent implements OnInit {
+export class DocumentSendToCustomPartyDialogComponent implements OnInit {
 
   document: Document = new Document();
   modal: any;
+
+  customParty: any = {
+    email: null
+  };
 
   constructor(
     private documentService: DocumentService,
@@ -23,13 +27,12 @@ export class DocumentDeleteDialogComponent implements OnInit {
 
   ngOnInit() { }
 
-  ok() {
-    console.log('deleting document ' + this.document.documentId);
+  send() {
+    console.log('sending document ' + this.document.documentId);
     this.modal.hide();
-    this.documentService.delete(this.document).subscribe(
+    this.documentService.sendToCustomParty(this.document, this.customParty).subscribe(
       () => {
-        this.toastr.success('Success! The document has been deleted.');
-        this.documentStore.reload();
+        this.toastr.success('Info! The document has been sended.');
       },
     );
   }

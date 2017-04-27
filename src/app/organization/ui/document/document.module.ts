@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from './../../../core/core.module';
 import { DocumentDeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { DocumentSendToCustomPartyDialogComponent } from './send-to-custom-party-dialog/send-to-custom-party-dialog.component';
 import { DocumentUploadPageComponent } from './upload-page/upload-page.component';
 import { DocumentViewComponent } from './view/view.component';
 import { DocumentViewPageComponent } from './view-page/view-page.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
         DocumentViewWrapperComponent,
         DocumentDeleteDialogComponent,
         DocumentUploadPageComponent,
+        DocumentSendToCustomPartyDialogComponent,
     ],
     entryComponents: [],
     exports: [

@@ -17,20 +17,68 @@ import { plural } from 'pluralize';
 export class DocumentStore extends OrganizationResourceStore<Document, Documents, DocumentService> {
 
   protected _totalSize: BehaviorSubject<number>;
-  protected _criteria: DocumentCriteria;
+  protected _pagination: Pagination;
+
+  protected _query: Collections.Dictionary<string, string>;
+  protected _requiredActions: Collections.Set<string>;
 
   constructor(documentService: DocumentService, organizationScope: OrganizationScope) {
     super(documentService, [], <Document>{}, organizationScope, Document);
     this._totalSize = new BehaviorSubject<number>(0);
 
-    this._criteria = new DocumentCriteria(this._totalSize);
-    this._criteria.refresh.subscribe((refresh) => {
+    this._query = new Collections.Dictionary<string, string>();
+    this._requiredActions = new Collections.Set<string>();
+
+    this._pagination = new Pagination(this._totalSize);
+    this._pagination.refresh.subscribe((refresh) => {
       if (refresh) this.reload();
     });
   }
 
-  get criteria() {
-    return this._criteria;
+  /**
+   * 
+   */
+  get query() {
+    let query = '';
+    this._query.forEach((key: string, value: string) => {
+      if (value) { query = query + key + ':' + value + ' '; }
+    });
+    return query;
+  }
+
+  get requiredActions() {
+    return this._requiredActions.toArray();
+  }
+
+  addQuery(key: string, value: string) {
+    this._query.setValue(key, value);
+    this.pagination.clear();
+  }
+
+  removeQuery(key: string | Array<string>) {
+    if (key instanceof Array) {
+      key.forEach(k => this._query.remove(k));
+    } else {
+      this._query.remove(key);
+    }
+    this.pagination.clear();
+  }
+
+  addRequiredAction(requiredAction: string) {
+    this._requiredActions.add(requiredAction);
+    this.pagination.clear();
+  }
+
+  removeRequiredAction(requiredAction: string) {
+    this._requiredActions.remove(requiredAction);
+    this.pagination.clear();
+  }
+
+  /**
+   * 
+   */
+  get pagination() {
+    return this._pagination;
   }
 
   loadAll(): Observable<Documents> {
@@ -60,10 +108,10 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
 
   listQueryParams() {
     return {
-      requiredActions: this._criteria.requiredActions,
-      query: this._criteria.query,
-      first: this._criteria.first,
-      max: this._criteria.max
+      requiredActions: this.requiredActions,
+      query: this.query,
+      first: this._pagination.first,
+      max: this._pagination.max
     };
   }
 

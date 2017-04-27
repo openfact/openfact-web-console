@@ -16,10 +16,16 @@ export class Pagination {
     this._refresh = new BehaviorSubject<boolean>(false);
   }
 
+  /**
+   * @return first
+   */
   get first() {
     return this._first.getValue();
   }
 
+  /**
+   * @return max
+   */
   get max() {
     return this._max.getValue();
   }
@@ -84,6 +90,10 @@ export class Pagination {
 
   lastPage() {
     this.page = this.totalPages;
+  }
+
+  clear() {
+    this._first.next(0);
   }
 
 }

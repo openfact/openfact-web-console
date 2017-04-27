@@ -22,7 +22,7 @@
                 <a href="javascript:void(0);" (click)="sendToCustomer()"><span class="fa fa-child"></span> Send to Customer</a>
               </li>
               <li>
-                <a href="javascript:void(0);" (click)="sendToCustomParty()"><span class="fa fa-share"></span> Send to Custom Party</a>
+                <a href="javascript:void(0);" (click)="openSendToCustomPartyDialog(sendToCustomPartyDocumentModal)"><span class="fa fa-share"></span> Send to Custom Party</a>
               </li>
             </ul>
           </div>
@@ -56,5 +56,12 @@
   aria-hidden="true">
   <div class="modal-dialog">
     <openfact-delete-document-dialog></openfact-delete-document-dialog>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #sendToCustomPartyDocumentModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <openfact-send-to-custom-party-dialog></openfact-send-to-custom-party-dialog>
   </div>
 </div>

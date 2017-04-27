@@ -2,9 +2,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Document, Documents } from './../../../../core/models/document.model';
 
-import { DocumentCriteria } from './../../../../core/store/document.criteria';
 import { DocumentDeleteDialogComponent } from './../delete-dialog/delete-dialog.component';
 import { DocumentStore } from './../../../../core/store/document.store';
+import { Pagination } from './../../../../core/store/entity/pagination.store';
 
 @Component({
   selector: 'openfact-documents-list',
@@ -22,13 +22,13 @@ export class DocumentsListComponent implements OnInit {
   @ViewChild(DocumentDeleteDialogComponent)
   deleteDialog: DocumentDeleteDialogComponent;
 
-  criteria: DocumentCriteria;
+  pagination: Pagination;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private store: DocumentStore) {
-    this.criteria = store.criteria;
+    this.pagination = store.pagination;
   }
 
   ngOnInit() { }
