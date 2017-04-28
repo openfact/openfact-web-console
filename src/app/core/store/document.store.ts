@@ -4,7 +4,6 @@ import { Document, Documents } from './../models/document.model';
 import { User, Users } from './../models/user.model';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentCriteria } from './document.criteria';
 import { DocumentService } from './../services/document.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
