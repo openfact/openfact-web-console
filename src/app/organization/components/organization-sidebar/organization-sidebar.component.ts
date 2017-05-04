@@ -17,7 +17,7 @@ export class OrganizationSidebarComponent implements OnInit {
 
   constructor(organizationScope: OrganizationScope, private organizationStore: OrganizationStore) {
     organizationScope.organization.subscribe((organization) => this.currentOrganization = organization);
-    this.organizations = organizationStore.list;    
+    this.organizations = organizationStore.list;
   }
 
   ngOnInit() {

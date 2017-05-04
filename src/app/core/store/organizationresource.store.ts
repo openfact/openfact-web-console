@@ -6,7 +6,7 @@ import { KeycloakResourceStore } from './keycloakresource.store';
 import { KeycloakService } from '../services/keycloak.service';
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
-import { OpenfactResourceStore } from "./openfactresource.store";
+import { OpenfactResourceStore } from './openfactresource.store';
 import { OpenfactService } from '../services/openfact.service';
 import { OrganizationResourceService } from '../services/organization.resource.service';
 import { OrganizationScope } from './../services/organization.scope';

@@ -19,19 +19,19 @@ export abstract class OpenfactService<T extends OpenfactResource, L extends Arra
   }
 
   update(obj: T): Observable<T> {
-    let resty: any = obj;
+    const resty: any = obj;
     return resty.customPUT(obj);
   }
 
   updateResource(obj: T, resource: any) {
-    let id = obj.id;
+    const id = obj.id;
     console.log('Updating key ' + id + ' with value ' + JSON.stringify(resource, null, '  '));
-    let resty: any = obj;
+    const resty: any = obj;
     return resty.customPUT(resource);
   }
 
   delete(obj: T): any {
-    let resty: any = obj;
+    const resty: any = obj;
     return resty.customDELETE();
   }
 

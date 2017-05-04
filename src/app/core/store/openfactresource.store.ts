@@ -2,14 +2,14 @@ import { Organization, Organizations } from './../models/organization.model';
 
 import { AbstractStore } from './entity/entity.store';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
 
 function nameOfResource(resource: any) {
-  let obj = resource || {};
-  let metadata = obj.metadata || {};
+  const obj = resource || {};
+  const metadata = obj.metadata || {};
   return metadata.name || '';
 }
 
@@ -24,7 +24,7 @@ export abstract class OpenfactResourceStore<T extends OpenfactResource, L extend
      */
   instantiate(resource: any): T {
     if (resource) {
-      let item = new this.type();
+      const item = new this.type();
       item.setResource(resource);
       // lets add the Restangular crack
       return this.service.restangularize(item);

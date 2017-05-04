@@ -2,7 +2,7 @@ import { Organization, Organizations } from './../models/organization.model';
 
 import { AbstractStore } from './entity/entity.store';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { KeycloakResource } from './../models/keycloakresource.model';
 import { KeycloakService } from '../services/keycloak.service';
 import { Observable } from 'rxjs/Observable';
@@ -10,8 +10,8 @@ import { OpenfactResource } from './../models/openfactresource.model';
 import { OpenfactService } from '../services/openfact.service';
 
 function nameOfResource(resource: any) {
-  let obj = resource || {};
-  let metadata = obj.metadata || {};
+  const obj = resource || {};
+  const metadata = obj.metadata || {};
   return metadata.name || '';
 }
 

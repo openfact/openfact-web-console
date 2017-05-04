@@ -27,11 +27,11 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
-   * @param document 
+   *
+   * @param document
    */
   obtainXml(document: Document): Observable<Response> {
-    let resty: any = document;
+    const resty: any = document;
     const url = resty.all('representation/xml').getRestangularUrl();
     return this.http.get(url, {
       headers: new Headers(),
@@ -40,11 +40,11 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
-   * @param document 
+   *
+   * @param document
    */
   obtainReport(document: Document, queryParams: any = null): Observable<Response> {
-    let resty: any = document;
+    const resty: any = document;
     const url = resty.all('report').getRestangularUrl();
     return this.http.get(url, {
       headers: new Headers(),
@@ -53,44 +53,44 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
-   * @param document 
+   *
+   * @param document
    * @return Observable<any>
    */
   sendToCustomer(document: Document): Observable<any> {
-    let resty: any = document;
+    const resty: any = document;
     return resty.all('send-to-customer').post();
   }
 
   /**
-   * 
-   * @param document 
-   * @param party 
+   *
+   * @param document
+   * @param party
    * @return Observable<any>
    */
   sendToCustomParty(document: Document, party: any): Observable<any> {
-    let resty: any = document;
+    const resty: any = document;
     return resty.all('send-to-third-party-by-email').post(party);
   }
 
   /**
-   * 
-   * @param document 
-   * @param party 
+   *
+   * @param document
+   * @param party
    * @return Observable<any>
    */
   getSendEvents(document: Document): Observable<any> {
-    let resty: any = document;
+    const resty: any = document;
     return resty.all('sendEvents').getList();
   }
 
   /**
-   * 
-   * @param queryParams 
-   * @param organization 
+   *
+   * @param queryParams
+   * @param organization
    */
   list(queryParams: any = null, organization: string = null): Observable<any> {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    const url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     if (url) {
       return this.restangularService.all(url).customGET('', queryParams);
     } else {
@@ -99,7 +99,7 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
+   *
    */
   private refreshUploader() {
     if (this.uploader) {
@@ -110,8 +110,8 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
-   * @param uploader 
+   *
+   * @param uploader
    */
   uploadAll(uploader: FileUploader) {
     this.keycloakOAuthService.getToken().then(
@@ -123,7 +123,7 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
+   *
    */
   fileUpload() {
     if (!this.uploader) {
@@ -134,9 +134,9 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
-   * @param organization 
-   * @param config 
+   *
+   * @param organization
+   * @param config
    */
   buildFileUpload(organization: string = null, config: any = {}): FileUploader {
     let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
@@ -151,21 +151,21 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
   }
 
   /**
-   * 
-   * @param item 
-   * @param parentX 
-   * @param routeX 
-   * @param fromServerX 
-   * @param collectionX 
-   * @param reqParamsX 
+   *
+   * @param item
+   * @param parentX
+   * @param routeX
+   * @param fromServerX
+   * @param collectionX
+   * @param reqParamsX
    */
   restangularize(item: Document, parentX = null, routeX = null, fromServerX = null, collectionX = null, reqParamsX = null): Document {
-    let restangularService = this.restangularService;
-    let parent = restangularService.parentResource;
-    let route = restangularService.route;
-    let fromServer = restangularService.fromServer;
-    let collection = restangularService.restangularCollection;
-    let reqParams = restangularService.reqParams;
+    const restangularService = this.restangularService;
+    const parent = restangularService.parentResource;
+    const route = restangularService.route;
+    const fromServer = restangularService.fromServer;
+    const collection = restangularService.restangularCollection;
+    const reqParams = restangularService.reqParams;
     return this.restangularService.restangularizeElement(parentX || parent, item, routeX || route, fromServerX || fromServer, collectionX || collection, reqParamsX || reqParams);
   }
 

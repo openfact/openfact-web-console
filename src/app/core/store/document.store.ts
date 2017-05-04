@@ -35,7 +35,7 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
   }
 
   /**
-   * 
+   *
    */
   get query() {
     let query = '';
@@ -74,7 +74,7 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
   }
 
   /**
-   * 
+   *
    */
   get pagination() {
     return this._pagination;
@@ -83,14 +83,14 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
   loadAll(): Observable<Documents> {
     this._loadId = null;
     this._loading.next(true);
-    let listObserver = this.service.list(this.listQueryParams());
+    const listObserver = this.service.list(this.listQueryParams());
     listObserver.subscribe(
       (list: any) => {
-        let parent = list.parentResource;
-        let route = list.route;
-        let fromServer = list.fromServer;
-        let collection = list.restangularCollection;
-        let reqParams = list.reqParams;
+        const parent = list.parentResource;
+        const route = list.route;
+        const fromServer = list.fromServer;
+        const collection = list.restangularCollection;
+        const reqParams = list.reqParams;
 
         this._list.next(list.items.map((item) => {
           return this.service.restangularize(item, parent, route, fromServer, collection, reqParams);

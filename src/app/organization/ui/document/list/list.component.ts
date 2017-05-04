@@ -40,11 +40,11 @@ export class DocumentsListComponent implements OnInit {
   }
 
   view(document: Document) {
-    this.router.navigate([document.id], { relativeTo: this.route })
+    this.router.navigate([document.id], { relativeTo: this.route });
   }
 
   edit(document: Document) {
-    this.router.navigate([document.id, 'edit'], { relativeTo: this.route })
+    this.router.navigate([document.id, 'edit'], { relativeTo: this.route });
   }
 
 }

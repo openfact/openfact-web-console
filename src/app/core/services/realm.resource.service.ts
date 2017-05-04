@@ -42,12 +42,12 @@ export abstract class RealmResourceService<T extends KeycloakResource, L extends
   }
 
   get(id: string, realm: string = null): Observable<T> {
-    let url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
+    const url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
     return this.restangularService.one(url, id).get();
   }
 
   list(realm: string = null, queryParams: any = null): Observable<L> {
-    let url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
+    const url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
     return this.restangularService.all(url).getList(queryParams);
   }
 
@@ -55,7 +55,7 @@ export abstract class RealmResourceService<T extends KeycloakResource, L extends
     if (!realm) {
       realm = obj.realm;
     }
-    let url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
+    const url = realm ? this.serviceUrlForRealm(realm) : this.serviceUrl;
     return this.restangularService.all(url).post(obj);
   }
 
@@ -78,7 +78,7 @@ export abstract class RealmResourceService<T extends KeycloakResource, L extends
 
   protected createServiceUrl(urlPrefix: string, realm: string, urlSuffix: string): string {
     if (realm) {
-      let url = pathJoin(urlPrefix, realm, urlSuffix);
+      const url = pathJoin(urlPrefix, realm, urlSuffix);
       return url;
     }
     return '';

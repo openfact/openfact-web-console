@@ -27,7 +27,7 @@ export class OrganizationScope {
     return this.getRouteParams()['organization'] || this.defaultOrganization();
   }
 
-  defaultOrganization(): string {    
+  defaultOrganization(): string {
     return null;
   }
 

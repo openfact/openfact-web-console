@@ -59,7 +59,7 @@ export class SettingsSmtpComponent implements OnInit {
   save() {
     this.working = true;
 
-    let resource = { smtpServer: this.form.value };
+    const resource = { smtpServer: this.form.value };
     this.organizationService.updateResource(this.organization, resource).subscribe(
       () => {
         this.working = false;

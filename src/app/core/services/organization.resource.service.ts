@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { OpenfactResource } from './../models/openfactresource.model';
-import { OpenfactService } from "./openfact.service";
+import { OpenfactService } from './openfact.service';
 import { OrganizationScope } from './organization.scope';
 import { Restangular } from 'ngx-restangular';
 import { Subscription } from 'rxjs/Subscription';
@@ -43,7 +43,7 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   }
 
   get(id: string, organization: string = null): Observable<T> {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    const url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     if (url) {
       return this.restangularService.one(url, id).get();
     } else {
@@ -52,7 +52,7 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   }
 
   list(queryParams: any = null, organization: string = null): Observable<L> {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    const url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     if (url) {
       return this.restangularService.all(url).getList(queryParams);
     } else {
@@ -61,7 +61,7 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   }
 
   create(obj: T, organization: string = null): Observable<T> {
-    let url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
+    const url = organization ? this.serviceUrlForOrganization(organization) : this.serviceUrl;
     return this.restangularService.all(url).post(obj);
   }
 
@@ -84,7 +84,7 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
 
   protected createServiceUrl(urlPrefix: string, organization: string, urlSuffix: string): string {
     if (organization) {
-      let url = pathJoin(urlPrefix, organization, urlSuffix);
+      const url = pathJoin(urlPrefix, organization, urlSuffix);
       return url;
     }
     return '';

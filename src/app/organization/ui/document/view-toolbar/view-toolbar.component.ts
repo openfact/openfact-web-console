@@ -61,7 +61,7 @@ export class DocumentViewToolbarComponent implements OnInit {
       if (contentDisposition) {
         filename = res.headers.get('Content-Disposition').match(/filename=(.*)/)[1];
       }
-      var file = new Blob([res.blob()], { type: res.headers.get('Content-Type') });
+      const file = new Blob([res.blob()], { type: res.headers.get('Content-Type') });
       saveAs(file, filename);
     });
   }
@@ -73,7 +73,7 @@ export class DocumentViewToolbarComponent implements OnInit {
       if (contentDisposition) {
         filename = res.headers.get('Content-Disposition').match(/filename=(.*)/)[1];
       }
-      var file = new Blob([res.blob()], { type: res.headers.get('Content-Type') });
+      const file = new Blob([res.blob()], { type: res.headers.get('Content-Type') });
       saveAs(file, filename);
     });
   }

@@ -1,4 +1,4 @@
-import { InjectionToken, NgModule } from "@angular/core";
+import { InjectionToken, NgModule } from '@angular/core';
 
 import { ConfigService } from './../../config.service';
 import { Restangular } from 'ngx-restangular';

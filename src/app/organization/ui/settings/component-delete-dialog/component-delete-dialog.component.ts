@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { ComponentModel } from './../../../../core/models/component.model';
@@ -13,7 +14,10 @@ export class ComponentDeleteDialogComponent implements OnInit {
   component: ComponentModel = new ComponentModel();
   modal: any;
 
-  constructor(private componentService: ComponentService) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private componentService: ComponentService) {
   }
 
   ngOnInit() { }
@@ -24,7 +28,7 @@ export class ComponentDeleteDialogComponent implements OnInit {
 
     this.componentService.delete(this.component).subscribe(
       () => {
-        alert("reload");
+        this.router.navigate(['../'], { relativeTo: this.route });
       },
     );
   }

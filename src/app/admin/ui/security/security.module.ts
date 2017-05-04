@@ -31,7 +31,7 @@ const routes: Routes = [
     CoreModule
   ],
   declarations: [
-    SecurityComponent,    
+    SecurityComponent,
   ],
   entryComponents: [],
   exports: [
