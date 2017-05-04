@@ -31,12 +31,12 @@
       </td>
 
       <td *ngIf="activeMap.getValue(item).publicKey" class="kc-action-cell">
-        <of-view-key [key]="activeMap.getValue(item).publicKey" [label]="'view' " [isLink]="true"></of-view-key>
+        <openfact-view-key [key]="activeMap.getValue(item).publicKey" [label]="'view' " [isLink]="true"></openfact-view-key>
       </td>
       <td *ngIf="!activeMap.getValue(item).publicKey"></td>
 
       <td *ngIf="activeMap.getValue(item).certificate" class="kc-action-cell">
-        <of-view-key [key]="activeMap.getValue(item).certificate" [label]="'view' " [isLink]="true"></of-view-key>
+        <openfact-view-key [key]="activeMap.getValue(item).certificate" [label]="'view' " [isLink]="true"></openfact-view-key>
       </td>
       <td *ngIf="!activeMap.getValue(item).certificate"></td>
     </tr>

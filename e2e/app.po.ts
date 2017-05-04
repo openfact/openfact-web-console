@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 export class OpenfactWebConsolePage {
   navigateTo() {
@@ -6,6 +6,6 @@ export class OpenfactWebConsolePage {
   }
 
   getParagraphText() {
-    return element(by.css('of-root h1')).getText();
+    return element(by.css('openfact-root h1')).getText();
   }
 }

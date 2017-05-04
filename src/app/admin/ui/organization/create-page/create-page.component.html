@@ -12,7 +12,7 @@
       <div>
         <h3>Create organization</h3>
         <form [formGroup]="form" (ngSubmit)="save()" class="form-horizontal">
-          <of-form-fields-status [ofForm]="form"></of-form-fields-status>
+          <openfact-form-fields-status [ofForm]="form"></openfact-form-fields-status>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">Import
@@ -27,31 +27,31 @@
             </div>
           </div>
 
-          <div class="form-group" [ofFormFieldValidationState]="form.get('organization')">
-            <label class="col-md-2 control-label" [ofFormRequiredLabel]="form.get('organization')">Name
+          <div class="form-group" [openfact-form-field-validation-state]="form.get('organization')">
+            <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('organization')">Name
 						  <i class="fa fa-question-circle text-muted" ngbTooltip="Name of the organization." placement="right"></i>
             </label>
             <div class="col-md-9">
               <input formControlName="organization" type="text" class="form-control" autofocus/>
-              <of-form-field-validation-messages [ofFormControl]="form.get('organization')">
-              </of-form-field-validation-messages>
+              <openfact-form-field-validation-messages [ofFormControl]="form.get('organization')">
+              </openfact-form-field-validation-messages>
             </div>
           </div>
-          <div class="form-group" [ofFormFieldValidationState]="form.get('description')">
-            <label class="col-md-2 control-label" [ofFormRequiredLabel]="form.get('description')">Description
+          <div class="form-group" [openfact-form-field-validation-state]="form.get('description')">
+            <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('description')">Description
 						  <i class="fa fa-question-circle text-muted" ngbTooltip="Description of the organization." placement="right"></i>
             </label>
             <div class="col-md-9">
               <textarea formControlName="description" type="text" class="form-control"></textarea>
-              <of-form-field-validation-messages [ofFormControl]="form.get('description')">
-              </of-form-field-validation-messages>
+              <openfact-form-field-validation-messages [ofFormControl]="form.get('description')">
+              </openfact-form-field-validation-messages>
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
-              <of-button-save [ofForm]="form" [working]="working"></of-button-save>
-              <of-button-cancel (ofOnCancel)="cancel($event)"></of-button-cancel>
+              <openfact-button-save [ofForm]="form" [working]="working"></openfact-button-save>
+              <openfact-button-cancel (ofOnCancel)="cancel($event)"></openfact-button-cancel>
             </div>
           </div>
         </form>

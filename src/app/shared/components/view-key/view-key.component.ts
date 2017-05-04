@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'of-view-key',
+  selector: 'openfact-view-key',
   templateUrl: './view-key.component.html'
 })
 export class ViewKeyComponent implements OnInit {

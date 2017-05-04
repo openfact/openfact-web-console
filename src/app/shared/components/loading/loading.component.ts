@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { showStateTrigger } from './../../animations/animations';
 
 @Component({
-  selector: 'of-loading',
+  selector: 'openfact-loading',
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.scss'],
   animations: [showStateTrigger]

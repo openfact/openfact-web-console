@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'of-limited-string',
+  selector: 'openfact-limited-string',
   templateUrl: './limited-string.component.html'
 })
 export class LimitedStringComponent implements OnInit {

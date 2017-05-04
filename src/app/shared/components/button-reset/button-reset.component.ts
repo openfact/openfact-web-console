@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'of-button-reset',
+  selector: 'openfact-button-reset',
   templateUrl: './button-reset.component.html'
 })
 export class ButtonResetComponent implements OnInit {

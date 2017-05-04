@@ -2,7 +2,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'of-form-fields-status',
+  selector: 'openfact-form-fields-status',
   templateUrl: './form-fields-status.component.html'
 })
 export class FormFieldsStatusComponent implements OnInit {

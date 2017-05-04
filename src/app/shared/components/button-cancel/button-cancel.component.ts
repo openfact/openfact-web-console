@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'of-button-cancel',
+  selector: 'openfact-button-cancel',
   templateUrl: './button-cancel.component.html'
 })
 export class ButtonCancelComponent implements OnInit {

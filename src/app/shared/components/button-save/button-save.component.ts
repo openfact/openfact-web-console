@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'of-button-save',
+  selector: 'openfact-button-save',
   templateUrl: './button-save.component.html'
 })
 export class ButtonSaveComponent implements OnInit {

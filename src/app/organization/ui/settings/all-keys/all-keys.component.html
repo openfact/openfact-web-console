@@ -35,12 +35,12 @@
       </td>
 
       <td *ngIf="item.publicKey" class="kc-action-cell">
-        <of-view-key [key]="item.publicKey" [label]="'view' " [isLink]="true"></of-view-key>
+        <openfact-view-key [key]="item.publicKey" [label]="'view' " [isLink]="true"></openfact-view-key>
       </td>
       <td *ngIf="!item.publicKey"></td>
 
       <td *ngIf="item.certificate" class="kc-action-cell">
-        <of-view-key [key]="item.certificate" [label]="'view' " [isLink]="true"></of-view-key>
+        <openfact-view-key [key]="item.certificate" [label]="'view' " [isLink]="true"></openfact-view-key>
       </td>
       <td *ngIf="!item.certificate"></td>
     </tr>
