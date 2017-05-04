@@ -11,8 +11,8 @@ import { Observable } from 'rxjs/Rx';
 })
 export class DocumentsListPageComponent implements OnInit {
 
-  private readonly documents: Observable<Documents>;
-  private readonly loading: Observable<boolean>;
+  readonly documents: Observable<Documents>;
+  readonly loading: Observable<boolean>;
 
   constructor(private documentStore: DocumentStore) {
     this.documents = this.documentStore.list;

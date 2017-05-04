@@ -22,7 +22,7 @@ export class UsersCreatePageComponent implements OnInit {
 
   user: User;
 
-  private readonly organizations: Observable<Organizations>;
+  readonly organizations: Observable<Organizations>;
 
   constructor(
     private router: Router,
@@ -45,14 +45,14 @@ export class UsersCreatePageComponent implements OnInit {
       enabled: [true],
       attributes: this.formBuilder.group({
         organization: [null, Validators.compose([])]
-      }),
+      })
     });
   }
 
-  save(form: FormControl) {
+  save() {
     this.working = true;
 
-    this.userService.create(form.value).subscribe(
+    this.userService.create(this.form.value).subscribe(
       () => {
         this.toastr.success('Success! The user has been created.');
         this.router.navigate(['../../'], { relativeTo: this.route });

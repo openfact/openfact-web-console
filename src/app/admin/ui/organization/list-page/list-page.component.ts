@@ -11,8 +11,8 @@ import { Organizations } from './../../../../core/models/organization.model';
 })
 export class OrganizationsListPageComponent implements OnInit {
 
-  private readonly organizations: Observable<Organizations>;
-  private readonly loading: Observable<boolean>;
+  readonly organizations: Observable<Organizations>;
+  readonly loading: Observable<boolean>;
 
   constructor(private organizationStore: OrganizationStore) {
     this.organizations = this.organizationStore.list;

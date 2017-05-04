@@ -49,10 +49,10 @@ export class SettingsGeneralInformationComponent implements OnInit {
     this.form.patchValue(this.organization);
   }
 
-  save(form: FormControl) {
+  save() {
     this.working = true;
 
-    let resource = form.value;
+    let resource = this.form.value;
     this.organizationService.updateResource(this.organization, resource).subscribe(
       () => {
         this.working = false;

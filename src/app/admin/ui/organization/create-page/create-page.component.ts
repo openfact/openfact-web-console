@@ -44,16 +44,16 @@ export class OrganizationsCreatePageComponent implements OnInit {
     this.importing = true;
   }
 
-  save(form: FormControl) {
+  save() {
     this.working = true;
-    const organizationCopy = Object.assign(this.organization || {}, form.value);
+    const organizationCopy = Object.assign(this.organization || {}, this.form.value);
 
     this.organizationService.create(organizationCopy).subscribe(
-      result => {
+      (result) => {
         this.toastr.success('Success! The organization has been created.');
         this._router.navigate(['../']);
       },
-      error => {
+      () => {
         this.working = false;
       }
     );

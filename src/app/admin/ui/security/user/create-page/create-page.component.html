@@ -11,7 +11,7 @@
 
       <div>
         <h3>Create user</h3>
-        <form [formGroup]="form" (ngSubmit)="save(form)" class="form-horizontal">
+        <form [formGroup]="form" (ngSubmit)="save()" class="form-horizontal">
           <of-form-fields-status [ofForm]="form"></of-form-fields-status>
 
           <div class="form-group" [ofFormFieldValidationState]="form.get('username')">

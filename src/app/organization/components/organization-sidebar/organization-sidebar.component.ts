@@ -13,7 +13,7 @@ import { Organizations } from './../../../core/models/organization.model';
 export class OrganizationSidebarComponent implements OnInit {
 
   currentOrganization: string;
-  private readonly organizations: Observable<Organizations>;
+  readonly organizations: Observable<Organizations>;
 
   constructor(organizationScope: OrganizationScope, private organizationStore: OrganizationStore) {
     organizationScope.organization.subscribe((organization) => this.currentOrganization = organization);

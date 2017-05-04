@@ -12,8 +12,8 @@ import { Users } from './../../../../../core/models/user.model';
 })
 export class UsersListPageComponent implements OnInit {
 
-  private readonly users: Observable<Users>;
-  private readonly loading: Observable<boolean>;
+  readonly users: Observable<Users>;
+  readonly loading: Observable<boolean>;
 
   constructor(private userStore: UserStore) {
     this.users = this.userStore.list;

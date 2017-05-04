@@ -11,6 +11,7 @@ import { DocumentService } from './../../../../core/services/document.service';
 export class DocumentUploadPageComponent implements OnInit {
 
   uploader: FileUploader;
+  hasDropZoneOver = false;
 
   constructor(private documentService: DocumentService) { }
 
@@ -21,5 +22,7 @@ export class DocumentUploadPageComponent implements OnInit {
   uploadAll() {
     this.documentService.uploadAll(this.uploader);
   }
+
+  fileOver() { }
 
 }

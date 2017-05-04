@@ -56,14 +56,12 @@ export class SettingsSmtpComponent implements OnInit {
     this.form.patchValue(this.organization.smtpServer);
   }
 
-  save(form: FormControl) {
+  save() {
     this.working = true;
 
-    let resource = { smtpServer: form.value };
+    let resource = { smtpServer: this.form.value };
     this.organizationService.updateResource(this.organization, resource).subscribe(
       () => {
-        console.log("entro");
-
         this.working = false;
         this.form.markAsPristine();
         this.toastr.success('Success! Your changes have been saved to the organization.');

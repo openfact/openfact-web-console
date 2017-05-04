@@ -22,7 +22,7 @@ export class UserEditComponent implements OnInit, OnChanges {
   form: FormGroup;
   working = false;
 
-  private readonly organizations: Observable<Organizations>;
+  readonly organizations: Observable<Organizations>;
 
   constructor(
     private router: Router,
@@ -55,8 +55,8 @@ export class UserEditComponent implements OnInit, OnChanges {
     });
   }
 
-  save(form: FormGroup) {
-    this.userService.updateResource(this.user, form.value).subscribe(
+  save() {
+    this.userService.updateResource(this.user, this.form.value).subscribe(
       () => {
         this.toastr.success('Success! The user has been updated.');
         this.router.navigate(['../../'], { relativeTo: this.route });
