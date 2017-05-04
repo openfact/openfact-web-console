@@ -23,6 +23,6 @@ export class DocumentUploadPageComponent implements OnInit {
     this.documentService.uploadAll(this.uploader);
   }
 
-  fileOver() { }
+  fileOver(event: any) { }
 
 }
