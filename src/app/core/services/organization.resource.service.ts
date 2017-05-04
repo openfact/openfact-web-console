@@ -35,7 +35,7 @@ export abstract class OrganizationResourceService<T extends OpenfactResource, L 
   }
 
   set organization(organization: string) {
-    if (organization != this._organization) {
+    if (organization !== this._organization) {
       this._organization = organization;
       this._serviceUrl = null;
       this.onOrganizationChanged();

@@ -1,8 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="save()" class="form-horizontal">
   <openfact-form-fields-status [ofForm]="form"></openfact-form-fields-status>
 
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('emailTheme')">
-    <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('emailTheme')">Email Theme
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('emailTheme')">
+    <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('emailTheme')">Email Theme
 		  <i class="fa fa-question-circle text-muted" ngbTooltip="Email theme for the current organization." placement="right"></i>
     </label>
     <div class="col-md-3">
@@ -14,8 +14,8 @@
       </openfact-form-field-validation-messages>
     </div>
   </div>
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('reportTheme')">
-    <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('reportTheme')">Report Theme
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('reportTheme')">
+    <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('reportTheme')">Report Theme
 		  <i class="fa fa-question-circle text-muted" ngbTooltip="Report theme for the current organization." placement="right"></i>
     </label>
     <div class="col-md-3">
@@ -27,8 +27,8 @@
       </openfact-form-field-validation-messages>
     </div>
   </div>
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('internationalizationEnabled')">
-    <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('internationalizationEnabled')">Internationalization Enabled
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('internationalizationEnabled')">
+    <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('internationalizationEnabled')">Internationalization Enabled
 			<i class="fa fa-question-circle text-muted" ngbTooltip="Set true to enable internationalization on current organization." placement="right"></i>
     </label>
     <div class="col-md-4">
@@ -38,8 +38,8 @@
     </div>
   </div>
 
-  <div [hidden]="!form.get('internationalizationEnabled').value" class="form-group" [openfact-form-field-validation-state]="form.get('defaultLocale')">
-    <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('defaultLocale')">Default Locale
+  <div [hidden]="!form.get('internationalizationEnabled').value" class="form-group" [openfactFormFieldValidationState]="form.get('defaultLocale')">
+    <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('defaultLocale')">Default Locale
 			<i class="fa fa-question-circle text-muted" ngbTooltip="Default locale for the current organization. This is important for reports which are generated from the backend." placement="right"></i>
     </label>
     <div class="col-md-3">

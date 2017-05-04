@@ -1,5 +1,5 @@
 import { ActivatedRoute, Params } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ComponentStore } from './../../../../core/store/component.store';
 import { OrganizationStore } from './../../../../core/store/organization.store';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './edit-generic-keystore-page.component.html',
   styleUrls: ['./edit-generic-keystore-page.component.scss']
 })
-export class SettingsEditGenericKeystorePageComponent implements OnInit {
+export class SettingsEditGenericKeystorePageComponent implements OnInit, OnDestroy {
 
   private idOrganizationSubscription: Subscription;
   private idComponentSubscription: Subscription;

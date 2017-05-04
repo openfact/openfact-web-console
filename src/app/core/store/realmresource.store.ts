@@ -12,7 +12,8 @@ import { RealmResourceService } from '../services/realm.resource.service';
 import { RealmScope } from './../services/realm.scope';
 import { Subscription } from 'rxjs/Subscription';
 
-export abstract class RealmResourceStore<T extends KeycloakResource, L extends Array<T>, R extends RealmResourceService<T, L>> extends KeycloakResourceStore<T, L, R> {
+export abstract class RealmResourceStore<T extends KeycloakResource, L extends Array<T>, R extends RealmResourceService<T, L>>
+  extends KeycloakResourceStore<T, L, R> {
 
   private realmSubscription: Subscription;
 

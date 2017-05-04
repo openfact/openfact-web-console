@@ -166,7 +166,13 @@ export class DocumentService extends OrganizationResourceService<Document, Docum
     const fromServer = restangularService.fromServer;
     const collection = restangularService.restangularCollection;
     const reqParams = restangularService.reqParams;
-    return this.restangularService.restangularizeElement(parentX || parent, item, routeX || route, fromServerX || fromServer, collectionX || collection, reqParamsX || reqParams);
+    return this.restangularService.restangularizeElement(
+      parentX || parent,
+      item,
+      routeX || route,
+      fromServerX || fromServer,
+      collectionX || collection,
+      reqParamsX || reqParams);
   }
 
 }

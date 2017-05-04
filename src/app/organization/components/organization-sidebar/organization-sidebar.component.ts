@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { OrganizationScope } from './../../../core/services/organization.scope';
 import { OrganizationStore } from './../../../core/store/organization.store';
 import { Organizations } from './../../../core/models/organization.model';

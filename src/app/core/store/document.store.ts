@@ -30,7 +30,7 @@ export class DocumentStore extends OrganizationResourceStore<Document, Documents
 
     this._pagination = new Pagination(this._totalSize);
     this._pagination.refresh.subscribe((refresh) => {
-      if (refresh) this.reload();
+      if (refresh) { this.reload(); }
     });
   }
 

@@ -15,7 +15,8 @@ function nameOfResource(resource: any) {
   return metadata.name || '';
 }
 
-export abstract class KeycloakResourceStore<T extends KeycloakResource, L extends Array<T>, R extends KeycloakService<T, L>> extends AbstractStore<T, L, R>{
+export abstract class KeycloakResourceStore<T extends KeycloakResource, L extends Array<T>, R extends KeycloakService<T, L>>
+  extends AbstractStore<T, L, R> {
 
   constructor(service: R, private initialList: L, initialCurrent: T, protected type: { new (): T; }) {
     super(service, initialList, initialCurrent);

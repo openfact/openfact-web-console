@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Document } from './../../../../core/models/document.model';
 import { DocumentStore } from './../../../../core/store/document.store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'openfact-document-view-wrapper-send-events',

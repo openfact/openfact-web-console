@@ -3,7 +3,7 @@ import { Directive, HostBinding, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Directive({
-  selector: '[openfact-form-field-validation-state]'
+  selector: '[openfactFormFieldValidationState]'
 })
 export class FormFieldValidationStateDirective implements OnInit {
 

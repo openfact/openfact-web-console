@@ -1,8 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="save()" class="form-horizontal">
   <openfact-form-fields-status [ofForm]="form"></openfact-form-fields-status>
 
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('assignedIdentificationId')">
-    <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('assignedIdentificationId')">RUC
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('assignedIdentificationId')">
+    <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('assignedIdentificationId')">RUC
 			<i class="fa fa-question-circle text-muted" ngbTooltip="AssignedIdentificationId of the organization." placement="right"></i>
     </label>
     <div class="col-md-3">
@@ -11,8 +11,8 @@
       </openfact-form-field-validation-messages>
     </div>
   </div>
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('additionalAccountId')">
-    <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('additionalAccountId')">Additional Account ID
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('additionalAccountId')">
+    <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('additionalAccountId')">Additional Account ID
 			<i class="fa fa-question-circle text-muted" ngbTooltip="AdditionalAccountId of the organization." placement="right"></i>
     </label>
     <div class="col-md-3">
@@ -21,7 +21,7 @@
       </openfact-form-field-validation-messages>
     </div>
   </div>
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('supplierName')">
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('supplierName')">
     <label class="col-md-2 control-label">Supplier Name
 			<i class="fa fa-question-circle text-muted" ngbTooltip="Supplier name of the organization." placement="right"></i>
     </label>
@@ -31,7 +31,7 @@
       </openfact-form-field-validation-messages>
     </div>
   </div>
-  <div class="form-group" [openfact-form-field-validation-state]="form.get('registrationName')">
+  <div class="form-group" [openfactFormFieldValidationState]="form.get('registrationName')">
     <label class="col-md-2 control-label">Registration Name
 			<i class="fa fa-question-circle text-muted" ngbTooltip="Registration name of the organization" placement="right"></i>
     </label>
@@ -43,8 +43,8 @@
   </div>
 
   <div formGroupName="postalAddress">
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('postalAddressId')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('postalAddressId')">Postal Address ID
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('postalAddressId')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('postalAddressId')">Postal Address ID
 				<i class="fa fa-question-circle text-muted" ngbTooltip="Postal Address Id name where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-4">
@@ -53,8 +53,8 @@
         </openfact-form-field-validation-messages>
       </div>
     </div>
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('cityName')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('cityName')">City Name
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('cityName')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('cityName')">City Name
 				<i class="fa fa-question-circle text-muted" ngbTooltip="City name where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-4">
@@ -63,8 +63,8 @@
         </openfact-form-field-validation-messages>
       </div>
     </div>
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('citySubdivisionName')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('citySubdivisionName')">City Sub Division Name
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('citySubdivisionName')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('citySubdivisionName')">City Sub Division Name
 				<i class="fa fa-question-circle text-muted" ngbTooltip="City Subdivision name where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-4">
@@ -73,8 +73,8 @@
         </openfact-form-field-validation-messages>
       </div>
     </div>
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('countryIdentificationCode')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('countryIdentificationCode')">Country Identification Code
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('countryIdentificationCode')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('countryIdentificationCode')">Country Identification Code
 				<i class="fa fa-question-circle text-muted" ngbTooltip="Country identification code where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-2">
@@ -83,8 +83,8 @@
         </openfact-form-field-validation-messages>
       </div>
     </div>
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('countrySubentity')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('countrySubentity')">Country Sub Entity
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('countrySubentity')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('countrySubentity')">Country Sub Entity
 				<i class="fa fa-question-circle text-muted" ngbTooltip="Country sub entity where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-4">
@@ -93,8 +93,8 @@
         </openfact-form-field-validation-messages>
       </div>
     </div>
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('district')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('district')">District
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('district')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('district')">District
 				<i class="fa fa-question-circle text-muted" ngbTooltip="District where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-4">
@@ -103,8 +103,8 @@
         </openfact-form-field-validation-messages>
       </div>
     </div>
-    <div class="form-group" [openfact-form-field-validation-state]="form.get('postalAddress').get('streetName')">
-      <label class="col-md-2 control-label" [openfact-form-required-label]="form.get('postalAddress').get('streetName')">Street Name
+    <div class="form-group" [openfactFormFieldValidationState]="form.get('postalAddress').get('streetName')">
+      <label class="col-md-2 control-label" [openfactFormRequiredLabel]="form.get('postalAddress').get('streetName')">Street Name
 				<i class="fa fa-question-circle text-muted" ngbTooltip="Street name where the organization is located." placement="right"></i>
       </label>
       <div class="col-md-4">

@@ -2,7 +2,7 @@ import { AbstractControl, FormControl, Validators } from '@angular/forms';
 import { Directive, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[openfact-form-required-label]'
+  selector: '[openfactFormRequiredLabel]'
 })
 export class FormRequiredLabelDirective implements OnInit {
 

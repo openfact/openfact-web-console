@@ -34,7 +34,7 @@ export abstract class RealmResourceService<T extends KeycloakResource, L extends
   }
 
   set realm(realm: string) {
-    if (realm != this._realm) {
+    if (realm !== this._realm) {
       this._realm = realm;
       this._serviceUrl = null;
       this.onRealmChanged();
