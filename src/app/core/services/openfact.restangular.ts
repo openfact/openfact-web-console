@@ -37,7 +37,7 @@ function OpenfactErrorInterceptor(error, operation, what, url, response, toastr:
   } else if (error.status === 403) {
     window.location.replace('/forbidden');
   } else if (error.status === 404) {
-    //window.location.replace('/notfound');
+    window.location.replace('/notfound');
   } else if (error.status) {
     let data: Response;
     try {
@@ -51,8 +51,7 @@ function OpenfactErrorInterceptor(error, operation, what, url, response, toastr:
     } else {
       toastr.error('An unexpected server response has occurred');
     }
-
-    //return false; // response handled
   }
-  return true; // response not handled
+
+  return true;
 }
