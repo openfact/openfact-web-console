@@ -1,19 +1,26 @@
+import * as _ from 'lodash';
+
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { getOAuthConfig } from './../../environments/oauth';
 
 declare var Keycloak: any;
+
+export const defaults = Object.freeze({
+  url: 'http://localhost:8080/auth',
+  realm: 'openfact',
+  clientId: 'openfact-web-console'
+});
 
 @Injectable()
 export class KeycloakOAuthService {
   static auth: any = {};
 
-  static init(): Promise<any> {
-    const keycloakAuth: any = Keycloak({
-      url: environment.keykloakBaseUrl,
-      realm: 'openfact',
-      clientId: 'openfact-web-console',
-    });
+  static config() {
+    return Object.freeze(_.merge({}, defaults, getOAuthConfig()));
+  }
 
+  static init(): Promise<any> {
+    const keycloakAuth: any = Keycloak(KeycloakOAuthService.config());
     KeycloakOAuthService.auth.loggedIn = false;
 
     return new Promise((resolve, reject) => {

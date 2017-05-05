@@ -4,11 +4,10 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 const defaults = Object.freeze({
-  apiEndpoint: 'http://localhost:8080/rest',
-  title: 'Openfact',
+  apiEndpoint: 'http://localhost:8080'
 });
 
-const defaultConfigJson = '/assets/config.json';
+const defaultConfigJson = '/config/config.json';
 
 export function configServiceInitializer(config: ConfigService) {
   return () => config.load();
@@ -25,6 +24,7 @@ export class ConfigService {
     return this._http.get(configJson).map(res => res.json())
       .toPromise()
       .then((config) => {
+        for (let k in config) { if (config[k] && config[k].indexOf('{{') !== -1) { delete config[k]; } }
         this.settingsRepository = Object.freeze(_.merge({}, this.settingsRepository, config));
       })
       .catch(() => {
