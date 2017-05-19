@@ -26,3 +26,10 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+  
+  docker login
+  ng build --prod
+  docker build -t openfact-web-console .
+  docker tag openfact-web-console openfact/openfact-web-console
+  docker push openfact/openfact-web-console
