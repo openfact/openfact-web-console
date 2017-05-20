@@ -5,8 +5,8 @@ var express = require('express'),
     fs = require('fs'),
     app = express(),
     path = require("path"),
-    keycloakConfig = require('./app/keycloak.config.js'),
-    openfactConfig = require('./app/openfact.config.js');
+    keycloakConfig = require('./src/configenv/keycloak.config.js'),
+    openfactConfig = require('./src/configenv/openfact.config.js');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
@@ -19,11 +19,11 @@ app.use(function (err, req, res, next) {
 });
 
 // keycloak config server
-app.get('/keycloak.json', function (req, res, next) {
+app.get('/config/keycloak.json', function (req, res, next) {
     res.json(keycloakConfig);
 });
 // openfact config server
-app.get('/openfact.json', function (req, res, next) {
+app.get('/config/openfact.json', function (req, res, next) {
     res.json(openfactConfig);
 });
 
