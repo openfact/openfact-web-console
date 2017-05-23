@@ -29,6 +29,11 @@ app.get('/config/openfact.json', function (req, res, next) {
 
 app.use(express.static(path.join(__dirname, '/dist')));
 
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 console.log("openfact config: " + JSON.stringify(openfactConfig));
 console.log("keycloak config: " + JSON.stringify(keycloakConfig));
 
