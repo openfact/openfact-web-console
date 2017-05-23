@@ -1,3 +1,6 @@
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise'
+
 import * as _ from 'lodash';
 
 import { Http } from '@angular/http';
@@ -7,7 +10,7 @@ const defaults = Object.freeze({
   apiEndpoint: 'http://localhost:8080'
 });
 
-const defaultConfigJson = '/config/config.json';
+const defaultConfigJson = '/config/openfact.json';
 
 export function configServiceInitializer(config: ConfigService) {
   return () => config.load();
@@ -24,8 +27,8 @@ export class ConfigService {
     return this._http.get(configJson).map(res => res.json())
       .toPromise()
       .then((config) => {
-        for (let k in config) { if (config[k] && config[k].indexOf('{{') !== -1) { delete config[k]; } }
         this.settingsRepository = Object.freeze(_.merge({}, this.settingsRepository, config));
+        return this;
       })
       .catch(() => {
         console.log('Error: Configuration service unreachable!');
