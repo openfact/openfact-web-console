@@ -40,6 +40,14 @@ console.log("keycloak config: " + JSON.stringify(keycloakConfig));
 if (process.env.KEYCLOAK_URL) {
 // register client
     console.log("fetching access token");
+
+    console.log("Url:", process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL);
+    console.log("Realm:", process.env.KEYCLOAK_REALM);
+    console.log("Total:", (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token');
+
+    console.log("Username:", process.env.KEYCLOAK_USERNAME);
+    console.log("Password:", process.env.KEYCLOAK_PASSWORD);
+
     request.post({
         uri: (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token',
         strictSSL: false,
@@ -82,6 +90,11 @@ if (process.env.KEYCLOAK_URL) {
             }, function (err, resp, body) {
                 console.log("register client result: " + resp.statusCode + " " + resp.statusMessage + " " + JSON.stringify(body));
             });
+        } else {
+            console.log("Error auth");
+            console.log("err:", err);
+            console.log("resp:", resp);
+            console.log("body:", body);
         }
     });
 } else {
