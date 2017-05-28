@@ -66,7 +66,7 @@ if (process.env.KEYCLOAK_URL) {
                     bearer: token
                 },
                 json: {
-                    clientId: process.env.KEYCLOAK_CLIENT_ID || 'aclient',
+                    clientId: process.env.KEYCLOAK_CLIENT_ID || 'openfact-web-console',
                     enabled: true,
                     protocol: "openid-connect",
                     redirectUris: [
