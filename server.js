@@ -31,22 +31,15 @@ app.use(express.static(path.join(__dirname, '/dist')));
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 console.log("openfact config: " + JSON.stringify(openfactConfig));
 console.log("keycloak config: " + JSON.stringify(keycloakConfig));
 
 if (process.env.KEYCLOAK_URL) {
-// register client
+    // register client
     console.log("fetching access token");
-
-    console.log("Url:", process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL);
-    console.log("Realm:", process.env.KEYCLOAK_REALM);
-    console.log("Total:", (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token');
-
-    console.log("Username:", process.env.KEYCLOAK_USERNAME);
-    console.log("Password:", process.env.KEYCLOAK_PASSWORD);
 
     request.post({
         uri: (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token',
@@ -63,7 +56,6 @@ if (process.env.KEYCLOAK_URL) {
         if (!err && resp.statusCode == 200) {
             console.log("Access token result: " + resp.statusCode + " " + resp.statusMessage + " " + JSON.stringify(body));
             var token = body.access_token;
-
 
             // register client
             console.log("registering client '" + process.env.KEYCLOAK_CLIENT_ID + "' in realm '" + process.env.KEYCLOAK_REALM + "' at " + process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL);
@@ -91,10 +83,7 @@ if (process.env.KEYCLOAK_URL) {
                 console.log("register client result: " + resp.statusCode + " " + resp.statusMessage + " " + JSON.stringify(body));
             });
         } else {
-            console.log("Error auth");
-            console.log("err:", err);
-            console.log("resp:", resp);
-            console.log("body:", body);
+            console.log("Error cloud not establish a authentication");
         }
     });
 } else {
