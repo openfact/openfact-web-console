@@ -31,15 +31,16 @@ app.use(express.static(path.join(__dirname, '/dist')));
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 console.log("openfact config: " + JSON.stringify(openfactConfig));
 console.log("keycloak config: " + JSON.stringify(keycloakConfig));
 
 if (process.env.KEYCLOAK_URL) {
-// register client
+    // register client
     console.log("fetching access token");
+
     request.post({
         uri: (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token',
         strictSSL: false,
@@ -56,7 +57,6 @@ if (process.env.KEYCLOAK_URL) {
             console.log("Access token result: " + resp.statusCode + " " + resp.statusMessage + " " + JSON.stringify(body));
             var token = body.access_token;
 
-
             // register client
             console.log("registering client '" + process.env.KEYCLOAK_CLIENT_ID + "' in realm '" + process.env.KEYCLOAK_REALM + "' at " + process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL);
             request.post({
@@ -66,7 +66,7 @@ if (process.env.KEYCLOAK_URL) {
                     bearer: token
                 },
                 json: {
-                    clientId: process.env.KEYCLOAK_CLIENT_ID || 'aclient',
+                    clientId: process.env.KEYCLOAK_CLIENT_ID || 'openfact-web-console',
                     enabled: true,
                     protocol: "openid-connect",
                     redirectUris: [
@@ -82,6 +82,8 @@ if (process.env.KEYCLOAK_URL) {
             }, function (err, resp, body) {
                 console.log("register client result: " + resp.statusCode + " " + resp.statusMessage + " " + JSON.stringify(body));
             });
+        } else {
+            console.log("Error cloud not establish a authentication");
         }
     });
 } else {
