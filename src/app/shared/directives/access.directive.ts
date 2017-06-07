@@ -1,6 +1,5 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
-import { KeycloakHttp } from './../../keycloak/keycloak.http';
 import { KeycloakOAuthService } from './../../keycloak/keycloak.oauth.service';
 
 const openfactResource = 'openfact';

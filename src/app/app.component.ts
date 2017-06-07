@@ -1,6 +1,6 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import {Component, ViewContainerRef} from '@angular/core';
 
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import {ToastsManager} from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'openfact-root',
@@ -11,7 +11,8 @@ export class AppComponent {
 
   title = 'Openfact';
 
-  constructor(private toastr: ToastsManager, vcr: ViewContainerRef) {
+  constructor(private toastr: ToastsManager,
+              vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 

@@ -24,7 +24,6 @@ import { MomentModule } from 'angular2-moment';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReadFileComponent } from './components/read-file/read-file.component';
-import { RestangularModule } from 'ngx-restangular';
 import { RouterModule } from '@angular/router';
 import { ToArrayPipe } from './pipes/to-array.pipe';
 import { ToDatePipe } from './pipes/to-date.pipe';

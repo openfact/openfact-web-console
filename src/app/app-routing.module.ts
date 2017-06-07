@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'server-info', component: ServerInfoComponent },
   { path: 'admin', loadChildren: 'app/admin/ui/ui.module#AdminUIModule' },
   { path: 'organizations/:organization', loadChildren: 'app/organization/ui/ui.module#OrganizationUIModule' },
-  { path: 'notfound', component: Error404Component },
+  { path: 'not-found', component: Error404Component },
   { path: 'forbidden', component: Error403Component },
   { path: 'server-error', component: Error500Component },
   { path: 'about', component: AboutComponent, outlet: 'popup' },

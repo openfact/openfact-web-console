@@ -68,7 +68,7 @@ export class ButtonDeleteComponent implements OnInit {
     if (this.disableDelete) {
       return;
     }
-    this.modal.show();
+    this.modal.hide();
     this.onConfirm.emit(true);
   }
 
