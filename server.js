@@ -37,12 +37,12 @@ app.get('*', (req, res) => {
 console.log("openfact config: " + JSON.stringify(openfactConfig));
 console.log("keycloak config: " + JSON.stringify(keycloakConfig));
 
-if (process.env.KEYCLOAK_URL) {
+if (process.env.KEYCLOAK_AUTH_SERVER_URL) {
     // register client
     console.log("fetching access token");
 
     request.post({
-        uri: (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token',
+        uri: (process.env.KEYCLOAK_AUTH_SERVER_URL || process.env.KEYCLOAK_SERVICE_URL) + '/realms/' + process.env.KEYCLOAK_REALM + '/protocol/openid-connect/token',
         strictSSL: false,
         json: true,
         form: {
@@ -58,15 +58,15 @@ if (process.env.KEYCLOAK_URL) {
             var token = body.access_token;
 
             // register client
-            console.log("registering client '" + process.env.KEYCLOAK_CLIENT_ID + "' in realm '" + process.env.KEYCLOAK_REALM + "' at " + process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL);
+            console.log("registering client '" + process.env.KEYCLOAK_RESOURCE + "' in realm '" + process.env.KEYCLOAK_REALM + "' at " + process.env.KEYCLOAK_AUTH_SERVER_URL || process.env.KEYCLOAK_SERVICE_URL);
             request.post({
-                uri: (process.env.KEYCLOAK_URL || process.env.KEYCLOAK_SERVICE_URL) + '/admin/realms/' + process.env.KEYCLOAK_REALM + '/clients',
+                uri: (process.env.KEYCLOAK_AUTH_SERVER_URL || process.env.KEYCLOAK_SERVICE_URL) + '/admin/realms/' + process.env.KEYCLOAK_REALM + '/clients',
                 strictSSL: false,
                 auth: {
                     bearer: token
                 },
                 json: {
-                    clientId: process.env.KEYCLOAK_CLIENT_ID || 'openfact-web-console',
+                    clientId: process.env.KEYCLOAK_RESOURCE || 'openfact-web-console',
                     enabled: true,
                     protocol: "openid-connect",
                     redirectUris: [
@@ -87,7 +87,7 @@ if (process.env.KEYCLOAK_URL) {
         }
     });
 } else {
-    console.log("Skipping KEYCLOAK configuration: missing KEYCLOAK_URL");
+    console.log("Skipping KEYCLOAK configuration: missing KEYCLOAK_AUTH_SERVER_URL");
 }
 
 http.createServer(app).listen(port);
