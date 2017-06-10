@@ -1,5 +1,6 @@
 //  OpenShift sample Node application
-var express = require('express'),
+var compression = require('compression'),
+    express = require('express'),
     http = require('http'),
     request = require('request'),
     fs = require('fs'),
@@ -27,6 +28,10 @@ app.get('/config/openfact.json', function (req, res, next) {
     res.json(openfactConfig);
 });
 
+// Use compresssion
+app.use(compression());
+
+// Add dist folder
 app.use(express.static(path.join(__dirname, '/dist')));
 
 // Catch all other routes and return the index file
